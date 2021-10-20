@@ -15,9 +15,7 @@ from time import gmtime, strftime
 from telethon import events
 from telethon.tl.functions.channels import GetParticipantRequest
 from telethon.tl.types import ChannelParticipantAdmin, ChannelParticipantCreator
-
 from var import Var
-
 from userbot import CMD_LIST, LOAD_PLUG, LOGS, SUDO_LIST, bot
 from userbot.helpers.exceptions import CancelProcess
 from userbot.Config import Config
@@ -185,7 +183,7 @@ def load_addons(shortname):
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(mod)
-        LOGS.info("LegendBot-Addons ~ " + shortname)
+        LOGS.info("♦️Extra Plugin♦️ ~ " + shortname)
     else:
         import userbot.utils
         import sys
@@ -195,7 +193,10 @@ def load_addons(shortname):
         name = "LegendBot-Addons.{}".format(shortname)
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
-        mod.bot = bot
+        mod.bot = Legend
+        mod.LegendBot = LegendBot
+        mod.tbot = LegendBot
+        mod.Legend = Legend
         mod.tgbot = bot.tgbot
         mod.Var = Var
         mod.command = command
@@ -218,7 +219,7 @@ def load_addons(shortname):
         spec.loader.exec_module(mod)
         # for imports
         sys.modules["LegendBot-Addons." + shortname] = mod
-        LOGS.info("🔱LegendBot-Addons🔱 ~ " + shortname)
+        LOGS.info("🔱Extra Plugin🔱 ~ " + shortname)
 
 def load_abuse(shortname):
     if shortname.startswith("__"):
@@ -243,8 +244,10 @@ def load_abuse(shortname):
         name = "ABUSE.{}".format(shortname)
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
-        mod.bot = bot
-        #mod.LEGEND = LEGEND
+        mod.bot = Legend
+        mod.LegendBot = LegendBot
+        mod.tbot = LegendBot
+        mod.Legend = Legend
         mod.tgbot = bot.tgbot
         mod.Var = Var
         mod.command = command
@@ -479,31 +482,7 @@ async def edit_or_reply(
     await event.delete()
     os.remove(file_name)
 
-
-async def delete_LEGEND(event, text, time=None, parse_mode=None, link_preview=None):
-    parse_mode = parse_mode or "md"
-    link_preview = link_preview or False
-    time = time or 5
-    if event.sender_id in Config.SUDO_USERS:
-        reply_to = await event.get_reply_message()
-        LEGENDevent = (
-            await reply_to.reply(text, link_preview=link_preview, parse_mode=parse_mode)
-            if reply_to
-            else await event.reply(
-                text, link_preview=link_preview, parse_mode=parse_mode
-            )
-        )
-    else:
-        LEGENDevent = await event.edit(
-            text, link_preview=link_preview, parse_mode=parse_mode
-        )
-    await asyncio.sleep(time)
-    return await LEGENDevent.delete()
-
-# from paperplaneextended
 on = bot.on
-
-
 async def eor(
     event,
     text,
@@ -589,8 +568,6 @@ async def delete_LEGEND(event, text, time=None, parse_mode=None, link_preview=No
     await asyncio.sleep(time)
     return await LEGENDevent.delete()
 
-# from paperplaneextended
-on = bot.on
 
 
 def on(**args):
@@ -915,5 +892,4 @@ def start_assistant(shortname):
         mod.tgbot = bot.tgbot
         spec.loader.exec_module(mod)
         sys.modules["userbot.plugins.assistant" + shortname] = mod
-        print("[🤴Assistant🤴 2.1] ~ HAS ~ 💞Installed💞 ~" + shortname)  
-
+        print("[🤴Assistant🤴 3.0] ~ HAS ~ 💞Installed💞 ~" + shortname)  
