@@ -37,7 +37,7 @@ except:
 from userbot import bot
 from LEGENDBOT.utils import admin_cmd, sudo_cmd, edit_or_reply, progress
 from userbot.cmdhelp import CmdHelp
-from userbot.helpers.functions import deEmojify
+from userbot.helpers.funct import deEmojify
 
 from userbot.utils import delete_LEGEND, edit_or_reply
 
