@@ -29,7 +29,7 @@ LEGEND_FIRST = (
 )
         
         
-if Var.PRIVATE_GROUP_ID is not None:
+if Var.LOGGER_ID is not None:
     @borg.on(admin_cmd(pattern="block|.blk ?(.*)"))
     async def approve_p_m(event):
         if event.fwd_from:
@@ -310,9 +310,9 @@ async def hehehe(event):
     if event.is_private:
         if not pm_sql.is_approved(chat.id):
             pm_sql.approve(
-                chat.id, "**My Boss iz here.... It's your lucky day nibba😏**"
+                chat.id, "**My Boss iz here....**"
             )
-            await borg.send_message(chat, "**💞⚡Welcome My Ossum Owner⚡💞🇮🇳!!**")
+            await borg.send_message(chat, "**⚡Welcome My Owner⚡!!**")
 
 
 CmdHelp("pm_permit").add_command(
