@@ -15,9 +15,21 @@
 
 
 echo """
-              
-Legendary LEGENDBOT!!
-@Legend_Userbot
+ 
+╭╮╱╱╭━━━┳━━━┳━━━┳━╮╱╭┳━━━╮
+┃┃╱╱┃╭━━┫╭━╮┃╭━━┫┃╰╮┃┣╮╭╮┃
+┃┃╱╱┃╰━━┫┃╱╰┫╰━━┫╭╮╰╯┃┃┃┃┃
+┃┃╱╭┫╭━━┫┃╭━┫╭━━┫┃╰╮┃┃┃┃┃┃
+┃╰━╯┃╰━━┫╰┻━┃╰━━┫┃╱┃┃┣╯╰╯┃
+╰━━━┻━━━┻━━━┻━━━┻╯╱╰━┻━━━╯
+╭━━╮╭━━━┳━━━━╮
+┃╭╮┃┃╭━╮┃╭╮╭╮┃
+┃╰╯╰┫┃╱┃┣╯┃┃╰╯
+┃╭━╮┃┃╱┃┃╱┃┃
+┃╰━╯┃╰━╯┃╱┃┃
+╰━━━┻━━━╯╱╰╯
 """
-
+rm -rf LEGENDUSERBOT
+git clone https://github.com/LEGENDS-OP/LEGENDUSERBOT
+cd LEGENDUSERBOT
 python3 -m userbot
