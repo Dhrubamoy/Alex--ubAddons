@@ -50,7 +50,7 @@ async def set_not_afk(event):
         )
         try:
             await borg.send_message(  # pylint:disable=E0602
-                Config.PRIVATE_GROUP_BOT_API_ID,  # pylint:disable=E0602
+                Config.LOGGER_ID,  # pylint:disable=E0602
                 "#AFKFALSE \nSet AFK mode to False\nReply to pic and use .afk reason"
                 + "🔥ι αм ϐαϲκ αℓινє\n**𝔑𝔬 𝔏𝔬𝔫𝔤𝔢𝔯 𝔞𝔣𝔨.**\n⏱️ `աαs αբk for:``"
                 + total_afk_time
@@ -58,7 +58,7 @@ async def set_not_afk(event):
         except Exception as e:  # pylint:disable=C0103,W0703
             await borg.send_message(  # pylint:disable=E0602
                 event.chat_id,
-                "Please set `PRIVATE_GROUP_BOT_API_ID` "
+                "Please set `LOGGER_ID` "
                 + "for the proper functioning of afk functionality "
                 + "Ask in @Legend_Userbot to get help setting this value\n\n `{}`".format(str(e)),
                 reply_to=event.message.id,
@@ -98,7 +98,7 @@ async def on_afk(event):
         message_to_reply = (
             f"[{DEFAULTUSER}](tg://user?id={LEGEND}) iѕ Currently Unavailable\n\n•♦️•Ꮮ𝚊𝚜𝚝 𝚂𝚎𝚎𝚗 : `{total_afk_time}`\n"
             + f"•♦️•Ꭱ𝚎𝚊𝚜𝚘𝚗 : `{reason}`"
-  if reason
+  if reason:
            else f"ᎻᎬᎽ Տιя / Ꮇιѕѕ🤔!\nᏆ αм ϲυяяєиτℓγ υиαναιℓαϐℓє😛. ι яєρℓγ υ αƒτєя ϲοмє ϐαϲκοиℓιиє.\n__Since when, you ask? From__ `{total_afk_time}`\nI'll be back when I feel to come🚶😛"
         )
         msg = await event.reply(message_to_reply, file=LEGENDpic)
@@ -145,7 +145,7 @@ async def _(event):
         await event.delete()
         try:
             await borg.send_message(  # pylint:disable=E0602
-                Config.PRIVATE_GROUP_BOT_API_ID,  # pylint:disable=E0602
+                Config.LOGGER_ID,  # pylint:disable=E0602
                 f"#AFKTRUE \nSet AFK mode to True, and Reason is {reason}",file=LEGENDpic
             )
         except Exception as e:  # pylint:disable=C0103,W0703
