@@ -188,7 +188,6 @@ if ENV:
         OPEN_LOAD_LOGIN = os.environ.get("OPEN_LOAD_LOGIN", None)
         OPEN_LOAD_KEY = os.environ.get("OPEN_LOAD_KEY", None)
         # number of colums of buttons to be displayed in .legend command
-
 else:
     class Config(object):
         DB_URI = None
