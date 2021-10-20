@@ -1,5 +1,5 @@
+import os
 from sample_config import Config
-
 
 class Development(Config):
   # get this values from my.telegram.org. 
