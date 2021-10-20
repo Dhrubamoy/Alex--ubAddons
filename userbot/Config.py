@@ -8,13 +8,6 @@ if ENV:
         # emoji to be displayed  in help .legend
         NO_OF_COLUMNS = int(os.environ.get("NO_OF_COLUMNS", 2))
         # emoji to be displayed  in help .legend
-        ASSISTANT = os.environ.get("ASSISTANT", None)
-        ABUSE = os.environ.get("ABUSE", None)
-        APP_ID = os.environ.get("APP_ID", None)
-        API_HASH = os.environ.get("API_HASH", None)
-        ALIVE_MSG = os.environ.get("ALIVE_MSG", None)
-        AWAKE_PIC = os.environ.get("AWAKE_PIC", None)
-        ALIVE_PIC = os.environ.get("ALIVE_PIC", None)
         BL_CHAT = os.environ.get("BL_CHAT", "-1001344140905")
         G_BAN_LOGGER_GROUP = int(os.environ.get("G_BAN_LOGGER_GROUP", -1001169892177))
         FBAN_LOGGER_GROUP = os.environ.get("FBAN_LOGGER_GROUP", None)
