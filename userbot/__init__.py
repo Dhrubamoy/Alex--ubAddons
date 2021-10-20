@@ -41,7 +41,7 @@ LegendBot = TelegramClient(
 ).start(bot_token=Config.BOT_TOKEN)
 
 
-bot = Legend
+bot = kbot = Legend
 tbot = LegendBot
 
 
