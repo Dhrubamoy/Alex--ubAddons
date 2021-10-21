@@ -98,7 +98,7 @@ async def on_afk(event):
         message_to_reply = (
             f"[{DEFAULTUSER}](tg://user?id={LEGEND}) iѕ Currently Unavailable\n\n•♦️•Ꮮ𝚊𝚜𝚝 𝚂𝚎𝚎𝚗 : `{total_afk_time}`\n"
             + f"•♦️•Ꭱ𝚎𝚊𝚜𝚘𝚗 : `{reason}`"
-  if reason
+           if reason
            else f"ᎻᎬᎽ Տιя / Ꮇιѕѕ🤔!\nᏆ αм ϲυяяєиτℓγ υиαναιℓαϐℓє😛. ι яєρℓγ υ αƒτєя ϲοмє ϐαϲκοиℓιиє.\n__Since when, you ask? From__ `{total_afk_time}`\nI'll be back when I feel to come🚶😛"
         )
         msg = await event.reply(message_to_reply, file=LEGENDpic)
@@ -155,5 +155,5 @@ async def _(event):
 CmdHelp("afk").add_command(
   'afk', '<reply to media>/<or type a reson>', 'Marks you AFK(Away from Keyboard) with reason(if given) also shows afk time. Media also supported.'
 ).add_type(
-   "Official"
+  "Official"
 ).add()
