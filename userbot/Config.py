@@ -191,3 +191,10 @@ if ENV:
 else:
     class Config(object):
         DB_URI = None
+
+class Production(Config):
+    LOGGER = False
+
+
+class Development(Config):
+    LOGGER = True
