@@ -44,7 +44,7 @@ async def set_not_afk(event):
     if ".afk" not in current_message and "yes" in USER_AFK:  # pylint:disable=E0602
         LEGENDBOT = await borg.send_message(
             event.chat_id,
-            "🔥ι αм ϐαϲκ αℓινє !\n**и𝔬 𝔏οиgєя 𝔞ƒκ.**\n⏱️ `աαs αƒk fοя:``"
+            "⚜I αм bαϲκ αℓινє !\nN𝔬 𝔏οиgєя more 𝔞ƒκ.\n⏱️`wαs αƒk fοя:``"
             + total_afk_time
             + "`", file=LEGENDpic
         )
@@ -52,7 +52,7 @@ async def set_not_afk(event):
             await borg.send_message(  # pylint:disable=E0602
                 Config.LOGGER_ID,  # pylint:disable=E0602
                 "#AFKFALSE \nSet AFK mode to False\nReply to pic and use .afk reason"
-                + "🔥ι αм ϐαϲκ αℓινє\n**𝔑𝔬 𝔏𝔬𝔫𝔤𝔢𝔯 𝔞𝔣𝔨.**\n⏱️ `աαs αբk for:``"
+                + "⚜I αм bαϲκ αℓινє !\nN𝔬 𝔏οиgєя more 𝔞ƒκ.\n⏱️`wαs αƒk fοя:``"
                 + total_afk_time
             )
         except Exception as e:  # pylint:disable=C0103,W0703
