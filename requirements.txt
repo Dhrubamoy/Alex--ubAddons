@@ -73,7 +73,6 @@ oauth2client
 opencv-python--headless
 Pillow>=5.3.0
 PyGithub
-PyDictionary
 pygments
 pymediainfo
 patool
