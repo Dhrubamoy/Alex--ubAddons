@@ -19,9 +19,9 @@ async def send(event):
     if event.fwd_from:
         return
     message_id = event.message.id
-    thumb = LEGEND_logo
+    thumb = LEGEND_logo1
     input_str = event.pattern_match.group(1)
-    omk = f"**⍟ 𝙿𝚕𝚞𝚐𝚒𝚗 𝚗𝚊𝚖𝚎 ≈** `{input_str}`\n**⍟ 𝚄𝚙𝚕𝚘𝚊𝚍𝚎𝚍 𝙱𝚢 ≈** {legend_mention}\n\n⚡ **[Lêɠêɳ̃dẞø†](https://t.me/Legend_Userbot)** ⚡"
+    omk = f"**⍟ 𝙿𝚕𝚞𝚐𝚒𝚗 𝚗𝚊𝚖𝚎 ≈** `{input_str}`\n**⍟ 𝚄𝚙𝚕𝚘𝚊𝚍𝚎𝚍 𝙱𝚢 ≈** {legend_mention}\n\n⚜ **[Lêɠêɳ̃dẞø†](https://t.me/Legend_Userbot)** ⚜"
     the_plugin_file = "./userbot/plugins/{}.py".format(input_str)
     if os.path.exists(the_plugin_file):
         lauda = await event.client.send_file(
@@ -69,7 +69,7 @@ async def install(event):
                             a = "__𝙸𝚗𝚜𝚝𝚊𝚕𝚕𝚒𝚗𝚐...__"
                             b = 1
                         await event.edit(a)
-                    return await event.edit(f"✅ **𝙸𝚗𝚜𝚝𝚊𝚕𝚕𝚎𝚍 𝙼𝚘𝚍𝚞𝚕𝚎** :- `{shortname}` \n✨ BY :- {legend_mention}\n\n{string}\n\n        ⚡ **[『Lêɠêɳ̃dẞø†』](t.me/Legend_Userbot)**\n ⚠️Dont Try To Install External Plugin⚠️\n Click Here for Uninstall 👉`.uninstall {shortname}`⚡", link_preview=False)
+                    return await event.edit(f"✅ **𝙸𝚗𝚜𝚝𝚊𝚕𝚕𝚎𝚍 𝙼𝚘𝚍𝚞𝚕𝚎** :- `{shortname}` \n✨ BY :- {legend_mention}\n\n{string}\n\n        ⚡ **[『Lêɠêɳ̃dẞø†』](t.me/Legend_Userbot)**\n⚠️Dont Try To Install External Plugin⚠️\n Click Here & Do Uninstall 👉`.uninstall {shortname}`⚡", link_preview=False)
                 return await event.edit(f"Installed module `{os.path.basename(downloaded_file_name)}`")
             else:
                 os.remove(downloaded_file_name)
@@ -88,7 +88,7 @@ async def uninstall(event):
     try:
         remove_plugin(shortname)
         os.remove(dir_path)
-        await event.edit(f"**𝚄𝚗𝚒𝚜𝚝𝚊𝚕𝚕𝚎𝚍**`{shortname}` 𝚂𝚞𝚌𝚌𝚎𝚜𝚜𝚏𝚞𝚕𝚕𝚢")
+        await event.edit(f"**𝚄𝚗𝚒𝚜𝚝𝚊𝚕𝚕𝚎𝚍** `{shortname}` 𝚂𝚞𝚌𝚌𝚎𝚜𝚜𝚏𝚞𝚕𝚕𝚢")
     except OSError as e:
         await event.edit("Error: %s : %s" % (dir_path, e.strerror))
 
@@ -175,6 +175,10 @@ CmdHelp("core").add_command(
   "send", "<file name>", "Sends the given file from your userbot server, if any.", "send alive"
 ).add_command(
   "cmds", None, "Gives out the list of modules in LEGENDBOT."
+).add_warning(
+  "Before Install Any Plugin.Open That File file by command .open"
+).add_info(
+  "Xtra Plugin"
 ).add_type(
   "Official"
 ).add()
