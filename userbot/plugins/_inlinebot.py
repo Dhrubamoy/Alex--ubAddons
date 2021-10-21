@@ -48,26 +48,26 @@ LEGEND_FIRST = (
 
 var_txt = """
      ♦️ALL VAR♦️
-🔸️ALIVE_NAME = `{}`
-🔸️ALIVE_MSG = `{}`
-🔸️ABUSE = {}
-🔸️ASSISTANT = {}
-🔸️AWAKE_PIC = `{}`
-🔸️BOT_USERNAME = `{}`
-🔸️BOT_TOKEN = `{}`
-🔸️EXTRA_PLUGIN = `{}`
-🔸️OP_PIC = `{}`
-🔸️PM_DATA = {}
-🔸️PM_PIC = `{}`
-🔸️LOGGER_ID = `{}`
+•ALIVE_NAME = `{}`
+•ALIVE_MSG = `{}`
+•ABUSE = {}
+•ASSISTANT = {}
+•AWAKE_PIC = `{}`
+•BOT_USERNAME = `{}`
+•BOT_TOKEN = `{}`
+•EXTRA_PLUGIN = `{}`
+•OP_PIC = `{}`
+•PM_DATA = {}
+•PM_PIC = `{}`
+•LOGGER_ID = `{}`
 """
 
 
 
 
 alive_txt = """
-    **{}**\n
-   **🏅Bø† ẞ†α†µѕ🏅**
+**{}**\n
+  🏅Bø† ẞ†α†µѕ🏅
 **•{}•Oաղ̃ҽ̈r :** {}\n
 **•{}•Lêɠêɳ̃dẞø† :** {}
 **•{}•†ҽ̀lҽ́ƭhøղ  :** {}
@@ -180,7 +180,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
         elif event.query.user_id == bot.uid and query == "fsub":
             fsub_btn = [
                 [Button.url(f"{LEGEND_USER}", f"tg://openmessage?user_id={The_LegendBoy}")],
-                [Button.url("💞My Channel💞", f"https://t.me/{my_channel}"), 
+                [Button.url("📍My Channel📍", f"https://t.me/{my_channel}"), 
                 Button.url("💝My Group💝", f"https://t.me/{my_group}")],
             ]
             if ALV_PIC and ALV_PIC.endswith((".jpg", ".png")):
@@ -361,7 +361,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
 
     @tgbot.on(callbackquery.CallbackQuery(data=compile(b"unmute")))
     async def on_pm_click(event):
-        hunter = (event.data_match.group(1)).decode("UTF-8")
+        hunter = (event.data_match.group(2)).decode("UTF-8")
         legend = hunter.split("+")
         if not event.sender_id == int(legend[0]):
             return await event.answer("This Ain't For You!!", alert=True)
@@ -401,7 +401,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
     async def on_plug_in_callback_query_handler(event):
         if event.query.user_id == bot.uid or event.query.user_id in Config.SUDO_USERS:
             veriler = custom.Button.inline(f"{legend_emoji1} Re-Open Menu {legend_emoji2}", data="reopen")
-            await event.edit(f"**⚜️ Lêɠêɳ̃dẞø† Mêñû Prõvîdêr háš běěn čłøšĕd⚜️**\n\n**Bot Of :**  {legend_mention}\n\n            [©️Lêɠêɳ̃dẞø†]({chnl_link})", buttons=veriler, link_preview=False)
+            await event.edit(f"**⚜️ Lêɠêɳ̃dẞø† Mêñû Prõvîdêr háš běěn čłøšĕd ⚜️**\n\n**Bot Of :**  {legend_mention}\n\n            [©️Lêɠêɳ̃dẞø†]({chnl_link})", buttons=veriler, link_preview=False)
         else:
             reply_pop_up_alert = "κγα υиgℓι καя янє нο мєяє ϐοτ ραя αgαя ϲнαнιγє τοн κнυ∂ κα ϐαиα ℓο иα. Aα נατє нο υиgℓι καяиє мєяє ϐοτ ρє.   ©Lêɠêɳ̃dẞø†"
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
@@ -423,7 +423,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
             )
         else:
             return await event.answer(
-                "This Menu Only For My Master.   ©Lêɠêɳ̃dẞø†",
+                "This Button Only For My Master.   ©Lêɠêɳ̃dẞø†",
                 cache_time=0,
                 alert=True,
             )
@@ -501,13 +501,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
             )
         else:
             return await event.answer(
-                "MY MASTER ONLY CAN ACCESS THIS. ©Lêɠêɳ̃dẞø†™ ",
+                "MY MASTER ONLY CAN ACCESS THIS BUTTON. DEPLOY UR OWN ©Lêɠêɳ̃dẞø†™ ",
                 cache_time=0,
                 alert=True,
             )
-
-
-
-
-
-    
