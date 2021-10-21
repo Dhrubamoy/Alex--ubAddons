@@ -12,7 +12,7 @@ from userbot.cmdhelp import CmdHelp
 from . import *
 
 uptime = get_readable_time((time.time() - StartTime))
-DEFAULTUSER = ALIVE_NAME or "✞︎t͛ẞ̸ 𝖑𝖊ɠêɳ̃dẞø✞︎ 🇮🇳"
+DEFAULTUSER = ALIVE_NAME or "𝖑𝖊ɠêɳ̃dẞø✞︎ 🇮🇳"
 LEGEND_IMG = Config.ALIVE_PIC
 CUSTOM_ALIVE_TEXT = Config.ALIVE_MSG or "ℓєgєи∂ Choice 𝖑𝖊ɠêɳ̃dẞø✞︎"
 CUSTOM_YOUR_GROUP =Config.YOUR_GROUP or "@Legend_Userbot"
@@ -32,12 +32,12 @@ async def amireallyalive(alive):
         
         LEGEND_caption += f"~~~~~~~~~~~~~~~~~~~~~~~\n"
         LEGEND_caption += f"        **♥ẞø† ẞ✞︎α†µѕ** \n"
-        LEGEND_caption += f"•⚜️• **Øաղ̃ҽ̈ɾ**          : {mention}\n\n"
-        LEGEND_caption += f"•📍• **𝖑𝖊ɠêɳ̃dẞø†**   : {LEGENDversion}\n"
-        LEGEND_caption += f"•📍• **†ҽ̀lҽ́thøղ̃**     : `{version.__version__}`\n"
-        LEGEND_caption += f"•📍• **𝚄ρtime**         : `{uptime}`\n"
-        LEGEND_caption += f"•📍• **𝙶𝚛𝚘𝚞𝚙**           : [𝙶𝚛𝚘𝚞𝚙](t.me/Legend_Userbot)\n"
-        LEGEND_caption += f"•📍• **𝙼𝚢 𝙶𝚛𝚘𝚞𝚙**  : {CUSTOM_YOUR_GROUP}\n"   
+        LEGEND_caption += f"•🔥• **Oաղ̃ҽ̈ɾ**          : {mention}\n\n"
+        LEGEND_caption += f"•🌟• **𝖑𝖊ɠêɳ̃dẞø†**   : {LEGENDversion}\n"
+        LEGEND_caption += f"•🌟• **†ҽ̀lҽ́thøղ̃**     : `{version.__version__}`\n"
+        LEGEND_caption += f"•🌟• **𝚄ρtime**         : `{uptime}`\n"
+        LEGEND_caption += f"•🌟• **𝙶𝚛𝚘𝚞𝚙**           : [𝙶𝚛𝚘𝚞𝚙](t.me/Legend_Userbot)\n"
+        LEGEND_caption += f"•🌟• **𝙼𝚢 𝙶𝚛𝚘𝚞𝚙**  : {CUSTOM_YOUR_GROUP}\n"   
 
         await alive.client.send_file(
             alive.chat_id, LEGEND_IMG, caption=LEGEND_caption, reply_to=reply_to_id
@@ -60,11 +60,9 @@ async def amireallyalive(alive):
 msg = f"""
 **  ⚜️ Lêɠêɳ̃dẞø† ιѕ σиℓιиє ⚜️**
 
-{Config.ALIVE_MSG}
-
-**    ♥️ ẞø✞︎ ẞ✞︎α✞︎µѕ ♥️**
+       {Config.ALIVE_MSG}
+    ** ♥️ Bø✞︎ ẞ✞︎α✞︎µѕ ♥️**
 **•⚜️•Øաղ̃ҽ̈r     :** **{mention}**
-
 **•🌹•𝖑𝖊ɠêɳ̃dẞø✞︎ :** {LEGENDversion}
 **•🌹•✞︎ҽ̀lҽ́ƭhøղ  :** {version.__version__}
 **•🌹•Ãbûßê     :**  {abuse_m}
@@ -85,7 +83,13 @@ async def legend_a(event):
         await eor(event, msg)
 
 CmdHelp("alive").add_command(
-    'bot', None, 'υѕє αи∂ ѕєє'
+    "bot", None, "υѕє αи∂ ѕєє"
+).add_command(
+    "legend", None, "Its Same Like Alive"
+).add_command(
+    "alive", None, "Its Show ur Alive Template"
+).add_warning(
+    "Harmless Module✅"
 ).add_type(
     "Official"
 ).add()
