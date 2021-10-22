@@ -571,6 +571,10 @@ CmdHelp("archive").add_command(
   'untar', 'Reply to tar file', 'It will untar the tar file'
 ).add_command(
   'compress', 'Reply to file/media', 'It will compress the replied media/file'
+).add_info(
+  "Its Related To Media And File"
+).add_warning(
+  "Harmless Module✅"
 ).add_type(
   "Official"
 ).add()
