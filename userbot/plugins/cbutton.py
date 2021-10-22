@@ -70,4 +70,6 @@ CmdHelp("cbutton").add_command(
    "Use to Create Button"
 ).add_warning(
    "Harmless Module✅"
+).add_type(
+   "Official"
 ).add()
