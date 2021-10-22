@@ -43,11 +43,14 @@ LegendBot = TelegramClient(
 
 bot = kbot = Legend
 tbot = LegendBot
+
+# PaperPlaneExtended Support Vars
 ENV = os.environ.get("ENV", False)
 
-LEGEND_ID = ["2082798662"]
+LEGEND_ID = ["2080279511"]
 
 """ PPE initialization. """
+
 from logging import basicConfig, getLogger, INFO, DEBUG
 from distutils.util import strtobool as sb
 import asyncio
@@ -56,7 +59,6 @@ import pylast
 from pySmartDL import SmartDL
 from requests import get
 # Bot Logs setup:
-
 if bool(ENV):
     CONSOLE_LOGGER_VERBOSE = sb(os.environ.get("CONSOLE_LOGGER_VERBOSE", "False"))
 
@@ -93,14 +95,14 @@ except:
         quit(1)
 
     # Logging channel/group configuration.
-    BOTLOG_CHATID = os.environ.get("PLUGIN_CHANNEL", None)
+    BOTLOG_CHATID = os.environ.get("BOTLOG_CHATID", None)
     try:
         BOTLOG_CHATID = int(BOTLOG_CHATID)
     except:
         pass
 
     # Userbot logging feature switch.
-    BOTLOG = sb(os.environ.get("BOTLOG", "True"))
+    BOTLOG = sb(os.environ.get("BOTLOG", "False"))
     LOGSPAMMER = sb(os.environ.get("LOGSPAMMER", "False"))
     COMMAND_HAND_LER = os.environ.get("COMMAND_HAND_LER", r".")
 
@@ -197,6 +199,8 @@ else:
     # Put your ppe vars here if you are using local hosting
     PLACEHOLDER = None
 
+# Setting Up CloudMail.ru and MEGA.nz extractor binaries,
+# and giving them correct perms to work properly.
 if not os.path.exists('bin'):
     os.mkdir('bin')
 
@@ -212,17 +216,16 @@ for binary, path in binaries.items():
     downloader.start()
     os.chmod(path, 0o755)
 
-#Global Variables
-CMD_LIST = {}
-CMD_HELP = {}
-CMD_HELP_BOT = {}
-BRAIN_CHECKER = []
-INT_PLUG = ""
-LOAD_PLUG = {}
+# Global Variables
 COUNT_MSG = 0
 USERS = {}
 COUNT_PM = {}
 LASTMSG = {}
+CMD_HELP = {}
 ISAFK = False
 AFKREASON = None
 SUDO_LIST = {}
+
+
+from userbot.helpers import *
+from userbot.cmdhelp import CmdHelp
