@@ -15,7 +15,7 @@ async def gcast(event):
         return edit_or_reply(event, "`Give some text to Globally Broadcast`")
     tt = event.text
     msg = tt[6:]
-    event = await edit_or_reply(event, "`Globally Broadcasting Msg...`")
+    event = await edit_or_reply(event, "__Globally Broadcasting Msg...__")
     er = 0
     done = 0
     async for x in bot.iter_dialogs():
@@ -26,7 +26,7 @@ async def gcast(event):
                 await bot.send_message(chat, msg)
             except BaseException:
                 er += 1
-    await kk.edit(f"Done in {done} chats, error in {er} chat(s)")
+    await event.edit(f"Done in {done} chats, error in {er} chat(s)")
 
 
 @bot.on(admin_cmd(pattern="gucast ?(.*)"))
@@ -49,12 +49,12 @@ async def gucast(event):
                 await bot.send_message(chat, msg)
             except BaseException:
                 er += 1
-    await kk.edit(f"Done in {done} chats, error in {er} chat(s)")
+    await event.edit(f"Done in {done} chats, error in {er} chat(s)")
     
 CmdHelp("broadcast").add_command(
    'gcast', None, 'Publish message to all channel and group'
 ).add_command(
-  'gcust', None, 'Same as Gcast'
+   'gucast', None, 'Same as Gcast But Its Send All The Member With In All Group'
 ).add_type(
-  "Official"
+   "Official"
 ).add()
