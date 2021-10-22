@@ -1,3 +1,7 @@
+import pylast
+from pySmartDL import SmartDL
+from requests import get
+from distutils.util import strtobool as sb
 import os
 from telethon.tl.types import ChatBannedRights
 ENV = bool(os.environ.get("ENV", False))
