@@ -16,15 +16,13 @@ from telethon import events
 from telethon.tl.functions.channels import GetParticipantRequest
 from telethon.tl.types import ChannelParticipantAdmin, ChannelParticipantCreator
 from var import Var
-from userbot import CMD_LIST, LOAD_PLUG, LOGS, SUDO_LIST, bot
 from userbot.helpers.exceptions import CancelProcess
 from userbot.Config import Config
 from userbot import bot
 from telethon import events
 from pathlib import Path
 from var import Var
-from userbot import LOAD_PLUG
-from userbot import CMD_LIST, SUDO_LIST
+from userbot import CMD_LIST, SUDO_LIST, LOAD_PLUG, LOGS, SUDO_LIST, bot, tbot
 import logging
 import inspect
 import asyncio
@@ -34,7 +32,6 @@ import subprocess
 import sys
 import traceback
 import datetime
-from . import *
 from telethon.tl.functions.messages import GetPeerDialogsRequest
 
 from typing import List
