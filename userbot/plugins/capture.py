@@ -61,11 +61,13 @@ async def _(event):
         await eod(legend, traceback.format_exc())
 
 CmdHelp("capture").add_command(
-        "screenshot", "<link>", "Gives out the web screenshot of given link via Google Crome Bin in .png format", ".screenshot https://github.com/LEGEND-OS/LEGENDBOT"
+        "screenshot", "<link>", "Gives out the web screenshot of given link via Google Crome Bin in .png format", "screenshot https://github.com/LEGEND-OS/LEGENDBOT"
 ).add_command(
 	"webshot", "<link>", f"Same as screenshot."
 ).add_info(
 	"Website Screenshot Maker."
 ).add_warning(
 	"✅ Harmless Module."
+).add_type(
+        "Official"
 ).add()
