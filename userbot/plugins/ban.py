@@ -1,10 +1,3 @@
-# Copyright (C) 2019 The Raphielscape Company LLC.
-#
-# Licensed under the Raphielscape Public License, Version 1.c (the "License");
-# you may not use this file except in compliance with the License.
-"""
-Userbot module to help you manage a group
-"""
 
 from asyncio import sleep
 from os import remove
@@ -104,36 +97,6 @@ async def _(event):
         await event.edit(f"{input_cmd}ned Successfully!")
 
 
-@bot.on(admin_cmd(pattern="pgs ?(.*)", allow_sudo=True))
-async def _(event):
-    if event.fwd_from:
-        return
-    if event.reply_to_msg_id:
-        i = 1
-        msgs = []
-        from_user = None
-        input_str = event.pattern_match.group(1)
-        if input_str:
-            from_user = await bot.get_entity(input_str)
-            logger.info(from_user)
-        async for message in bot.iter_messages(
-            event.chat_id,
-            min_id=event.reply_to_msg_id,
-            from_user=from_user
-        ):
-            i = i + 1
-            msgs.append(message)
-            if len(msgs) == 100:
-                await bot.delete_messages(event.chat_id, msgs, revoke=True)
-                msgs = []
-        if len(msgs) <= 100:
-            await bot.delete_messages(event.chat_id, msgs, revoke=True)
-            msgs = []
-            await event.delete()
-        else:
-            await event.edit("**PURGE** Failed!")
-
-
 @bot.on(admin_cmd(pattern="(ban|unban) ?(.*)"))
 async def _(event):
     # Space weirdness in regex required because argument is optional and other
@@ -213,12 +176,15 @@ async def get_user_from_id(user, event):
         return None
 
     return user_obj
+
 CmdHelp("ban").add_command(
   'ban', None, 'Ban A Person From Group'
 ).add_command(
   'unban', None, 'Unban A Person From Group'
-).add_command(
-  'pgs', None, 'reply to a message and use command'
+).add_info(
+  "Plugin Related To Use In Group"
+).add_warning(
+  "⚠️Warning"
 ).add_type(
-    "Official"
+  "Official"
 ).add()
