@@ -66,12 +66,12 @@ async def amireallyalive(event):
         LEGEND_caption = f"**{mention}**\n"
         
         LEGEND_caption += f"~~~~~~~~~~~~~~~~~~~~~~~\n"
-        LEGEND_caption += f"     💫 ✞︎t͛ẞ̸ 𝖑𝖊ɠêɳ̃dẞø✞︎ ιѕ αωακє 💫\n"
-        LEGEND_caption += f"•🔥•     : ν2.ο\n"
+        LEGEND_caption += f"     ⚜ 𝓛𝓮𝓰𝓮𝓷𝓭𝓑𝓸𝓽 𝓘𝓼 𝓐𝔀𝓪𝓴𝓮 ⚜\n"
+        LEGEND_caption += f"•🔥• Lêɠêɳ̃dẞø†     : ν3.0\n"
         LEGEND_caption += f"•🔥• 𝚃𝙴𝙻𝙴𝚃𝙷𝙾𝙽      : `{version.__version__}`\n"
         LEGEND_caption += f"•🔥• 𝚄𝙿𝚃𝙸𝙼𝙴         : `{uptime}`\n"
         LEGEND_caption += f"•🔥• 𝙲𝙷𝙰𝙽𝙽𝙴𝙻        : [𝕮нαииєℓ](t.me/Official_LegendBot)\n"
-        LEGEND_caption += f"•🔥• 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿 : {CUSTOM_YOUR_GROUP}\n"   
+        LEGEND_caption += f"•🔥• ᴹʸ 𝙶𝚁𝙾𝚄𝙿 : {CUSTOM_YOUR_GROUP}\n"   
 
         await event.client.send_file(
             event.chat_id, LEGEND_IMG, caption=LEGEND_caption, reply_to=reply_to_id
@@ -92,6 +92,8 @@ async def amireallyalive(event):
 
 CmdHelp("awake").add_command(
     'awake', None, 'υѕє αи∂ ѕєє'
+).add_info(
+    "Same Like Alive"
 ).add_type(
     "Official"
 ).add()
