@@ -125,16 +125,20 @@ async def _(event):
         await event.client.send_message(
             event.chat_id, response.message, reply_to=reply_message
         )
-CmdHelp("bots").add_command(
-'reader', None, 'open that url in telegraph'
+CmdHelp("checkbot").add_command(
+     'reader', None, 'open that url in telegraph'
 ).add_command(
-'purl', None, 'Get a direct Downmpad Link'
+     'purl', None, 'Get a direct Downmpad Link'
 ).add_command(
-'history', None, 'Reply To any User get Detail Of her/Hime'
+     'history', None, 'Reply To any User get Detail Of her/Hime'
 ).add_command(
-'recognize', None, 'Send Detail about it'
+     'recognize', None, 'Send Detail about it'
 ).add_command(
-'limit', None, 'Chech If u are limited or not'
+     'limit', None, 'Chech If u are limited or not'
+).add_info(
+     "Its Work Like Bot On Telegram Access Through Userbot"
+).add_warning(
+     "Harmless Module✅"
 ).add_type(
   "Official"
 ).add()
