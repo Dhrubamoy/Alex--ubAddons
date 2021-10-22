@@ -5,14 +5,13 @@ from telethon.sessions import StringSession
 from telethon import TelegramClient
 from userbot.Config import Config
 from var import Var
+from userbot.Config import Config
 from userbot.helpers import *
 from userbot.cmdhelp import CmdHelp
 from telethon.network.connection.tcpabridged import ConnectionTcpAbridged
-BOTLOG = True
 StartTime = time.time()
 LEGENDversion = "𝚅3.0"
 botversion = "𝚅3.0"
-from .Config import Config
 if Config.LEGEND_STRING:
     session = StringSession(str(Config.LEGEND_STRING))
 else:
@@ -42,30 +41,11 @@ LegendBot = TelegramClient(
     connection_retries=None,
 ).start(bot_token=Config.BOT_TOKEN)
 
-
 bot = kbot = Legend
 tbot = LegendBot
 ENV = os.environ.get("ENV", False)
 
 LEGEND_ID = ["2082798662"]
-
-# Setting Up CloudMail.ru and MEGA.nz extractor binaries,
-# and giving them correct perms to work properly.
-if not os.path.exists('bin'):
-    os.mkdir('bin')
-
-binaries = {
-    "https://raw.githubusercontent.com/yshalsager/megadown/master/megadown":
-    "bin/megadown",
-    "https://raw.githubusercontent.com/yshalsager/cmrudl.py/master/cmrudl.py":
-    "bin/cmrudl"
-}
-
-for binary, path in binaries.items():
-    downloader = SmartDL(binary, path, progress_bar=False)
-    downloader.start()
-    os.chmod(path, 0o755)
-
 
 """ PPE initialization. """
 from logging import basicConfig, getLogger, INFO, DEBUG
@@ -217,18 +197,32 @@ else:
     # Put your ppe vars here if you are using local hosting
     PLACEHOLDER = None
 
-# Global Variables
-COUNT_MSG = 0
-USERS = {}
-COUNT_PM = {}
-LASTMSG = {}
-CMD_HELP = {}
-ISAFK = False
-AFKREASON = None
-SUDO_LIST = {}
-DEVS = ["2082798662"]
+if not os.path.exists('bin'):
+    os.mkdir('bin')
+
+binaries = {
+    "https://raw.githubusercontent.com/yshalsager/megadown/master/megadown":
+    "bin/megadown",
+    "https://raw.githubusercontent.com/yshalsager/cmrudl.py/master/cmrudl.py":
+    "bin/cmrudl"
+}
+
+for binary, path in binaries.items():
+    downloader = SmartDL(binary, path, progress_bar=False)
+    downloader.start()
+    os.chmod(path, 0o755)
+
+#Global Variables
 CMD_LIST = {}
+CMD_HELP = {}
 CMD_HELP_BOT = {}
 BRAIN_CHECKER = []
 INT_PLUG = ""
 LOAD_PLUG = {}
+COUNT_MSG = 0
+USERS = {}
+COUNT_PM = {}
+LASTMSG = {}
+ISAFK = False
+AFKREASON = None
+SUDO_LIST = {}
