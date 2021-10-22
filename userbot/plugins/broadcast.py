@@ -55,6 +55,10 @@ CmdHelp("broadcast").add_command(
    'gcast', None, 'Publish message to all channel and group'
 ).add_command(
    'gucast', None, 'Same as Gcast But Its Send All The Member With In All Group'
+).add_info(
+   "Its Used To Send Messages To all Group"
+).add_warning(
+   "Harmless Module✅"
 ).add_type(
    "Official"
 ).add()
