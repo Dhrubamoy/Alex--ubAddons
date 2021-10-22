@@ -1,14 +1,6 @@
-"""Create Button Posts
-"""
-from . import *
-CmdHelp("cbutton").add_command(
-   'cbutton', None, 'Use And See'
-).add() 
-
 import re
-
 from telethon import custom
-
+from . import *
 from userbot.utils import admin_cmd
 
 # regex obtained from: https://github.com/PaulSonOfLars/tgbot/blob/master/tg_bot/modules/helper_funcs/string_handling.py#L23
@@ -21,9 +13,9 @@ async def _(event):
         await event.edit("need to set up a @BotFather bot for this module to work")
         return
 
-    if Config.PRIVATE_CHANNEL_BOT_API_ID is None:
+    if Config.LOGGER_ID is None:
         await event.edit(
-            "need to have a `PRIVATE_CHANNEL_BOT_API_ID` for this module to work"
+            "need to have a `LOGGER_ID` for this module to work"
         )
         return
 
@@ -73,7 +65,7 @@ async def _(event):
         tgbot_reply_message = tgbot_reply_message.media
 
     await tgbot.send_message(
-        entity=Config.PRIVATE_CHANNEL_BOT_API_ID,
+        entity=Config.LOGGER_ID,
         message=message_text,
         parse_mode="html",
         file=tgbot_reply_message,
@@ -82,10 +74,7 @@ async def _(event):
         silent=True,
     )
 
-
 # Helpers
-
-
 def build_keyboard(buttons):
     keyb = []
     for btn in buttons:
@@ -94,3 +83,11 @@ def build_keyboard(buttons):
         else:
             keyb.append([custom.Button.url(btn[0], btn[1])])
     return keyb
+
+CmdHelp("cbutton").add_command(
+   'cbutton', None, 'Use And See', '.cbutton Test [Google]<buttonurl:https://www.google.com> [Support]<buttonurl:https://t.me/Legend_Userbot:same> [Channel]<buttonurl:https://t.me/Its_LegendBot>'
+).add_info(
+   "Use to Create Button"
+).add_warning(
+   "Harmless Module✅"
+).add()
