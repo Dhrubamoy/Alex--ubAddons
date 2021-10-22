@@ -22,7 +22,7 @@ legend = bot.uid
 mention = f"[{DEFAULTUSER}](tg://user?id={legend})"
 
 
-PM_IMG = "https://telegra.ph/file/71339ef5c1b34cffa6cb5.jpg"
+PM_IMG = "https://telegra.ph/file/4f03f6d4e9521902eb57f.jpg"
 pm_caption ="**𝖑𝖊ɠêɳ̃dẞø✞︎ 𝙸𝚜 𝙾𝚗𝚕𝚒𝚗𝚎**\n\n"
 
 pm_caption += f"**┏🔥✞t͛ẞ̸ 𝖑𝖊ɠêɳ̃dẞø✞︎t🔥┓**\n"
