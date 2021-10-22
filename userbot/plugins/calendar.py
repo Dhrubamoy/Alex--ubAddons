@@ -1,5 +1,4 @@
-"""Malayalam Calendar plugin for @UniBorg
-SYNTAX: .calendar YYYY-MM-DD"""
+
 from telethon import events
 import asyncio
 from datetime import datetime
@@ -13,7 +12,7 @@ from . import *
 async def _(event):
     if event.fwd_from:
         return
-    start = datetime.now()
+    start = datetime.datetime.now()
     input_str = event.pattern_match.group(1)
     input_sgra = input_str.split(".")
     if len(input_sgra) == 3:
@@ -37,4 +36,10 @@ async def _(event):
 
 CmdHelp("calender").add_command(
    'calender', None, '.calender YYYY.MM.DD To Show Calender'
+).add_info(
+   "use .command with format of date YYYY.MM.DD"
+).add_warning(
+   "Harmless Module✅"
+).add_type(
+   "Official"
 ).add() 
