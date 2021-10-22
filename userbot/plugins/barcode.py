@@ -64,6 +64,8 @@ async def _(event):
     await event.delete()
 CmdHelp("barcode").add_command(
   'barcode', None, '.barcode <name>'
+).add_info(
+   "Create Barcode Reader With Name"
 ).add_type(
-    "Official"
+   "Official"
 ).add()
