@@ -12,7 +12,7 @@ BOTLOG = True
 StartTime = time.time()
 LEGENDversion = "𝚅3.0"
 botversion = "𝚅3.0"
-from .Config import *
+from .Config import Config
 if Config.LEGEND_STRING:
     session = StringSession(str(Config.LEGEND_STRING))
 else:
@@ -45,32 +45,9 @@ LegendBot = TelegramClient(
 
 bot = kbot = Legend
 tbot = LegendBot
-
-
-DEVS = ["2082798662"]
-CMD_LIST = {}
-# for later purposes
-CMD_HELP = {}
-CMD_HELP_BOT = {}
-BRAIN_CHECKER = []
-INT_PLUG = ""
-LOAD_PLUG = {}
-
-# PaperPlaneExtended Support Vars
 ENV = os.environ.get("ENV", False)
 
 LEGEND_ID = ["2082798662"]
-
-""" PPE initialization. """
-
-from logging import basicConfig, getLogger, INFO, DEBUG
-from distutils.util import strtobool as sb
-import asyncio
-
-import pylast
-from pySmartDL import SmartDL
-from requests import get
-# Bot Logs setup:
 
 # Setting Up CloudMail.ru and MEGA.nz extractor binaries,
 # and giving them correct perms to work properly.
@@ -89,15 +66,16 @@ for binary, path in binaries.items():
     downloader.start()
     os.chmod(path, 0o755)
 
-# Global Variables
-COUNT_MSG = 0
-USERS = {}
-COUNT_PM = {}
-LASTMSG = {}
-CMD_HELP = {}
-ISAFK = False
-AFKREASON = None
-SUDO_LIST = {}
+
+""" PPE initialization. """
+from logging import basicConfig, getLogger, INFO, DEBUG
+from distutils.util import strtobool as sb
+import asyncio
+
+import pylast
+from pySmartDL import SmartDL
+from requests import get
+# Bot Logs setup:
 
 if bool(ENV):
     CONSOLE_LOGGER_VERBOSE = sb(os.environ.get("CONSOLE_LOGGER_VERBOSE", "False"))
@@ -238,3 +216,19 @@ except:
 else:
     # Put your ppe vars here if you are using local hosting
     PLACEHOLDER = None
+
+# Global Variables
+COUNT_MSG = 0
+USERS = {}
+COUNT_PM = {}
+LASTMSG = {}
+CMD_HELP = {}
+ISAFK = False
+AFKREASON = None
+SUDO_LIST = {}
+DEVS = ["2082798662"]
+CMD_LIST = {}
+CMD_HELP_BOT = {}
+BRAIN_CHECKER = []
+INT_PLUG = ""
+LOAD_PLUG = {}
