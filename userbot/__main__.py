@@ -1,4 +1,4 @@
-from userbot import bot, tbot
+from userbot import *
 from sys import argv
 import sys
 import os
