@@ -113,7 +113,7 @@ CmdHelp("blacklist").add_command(
 ).add_info(
   "Used In Group To Add Word To Blacklist"
 ).add_warning(
-   "⚠️Warning"
+  "⚠️Warning"
 ).add_type(
   "Official"
 ).add()
