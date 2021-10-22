@@ -110,6 +110,10 @@ CmdHelp("blacklist").add_command(
   'rmblacklist', '<word>/<words>', 'The given word or words will be removed from blacklist in that specific chat'
 ).add_command(
   'listblacklist', None, 'Shows you the list of blacklist words in that specific chat'
+).add_info(
+  "Used In Group To Add Word To Blacklist"
+).add_warning(
+   "⚠️Warning"
 ).add_type(
   "Official"
 ).add()
