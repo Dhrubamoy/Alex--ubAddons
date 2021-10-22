@@ -14,9 +14,9 @@ if ENV:
         if FBAN_LOGGER_GROUP:
             FBAN_LOGGER_GROUP = int(FBAN_LOGGER_GROUP)
 
-        EMOJI_IN_HELP1 = os.environ.get("EMOJI_IN_HELP1", "⚜️ ")
+        EMOJI_IN_HELP1 = os.environ.get("EMOJI_IN_HELP1", "🚀 ")
         EMOJI_IN_HELP2 = os.environ.get("EMOJI_IN_HELP2", "⚡ ")
-        ALIVE_EMOJI = os.environ.get("ALIVE_EMOJI", "🔥")
+        ALIVE_EMOJI = os.environ.get("ALIVE_EMOJI", "⚜")
         # specify command handler that should be used for the plugins
         # this should be a valid "regex" pattern
         COMMAND_HAND_LER = os.environ.get("COMMAND_HAND_LER", r"\.")
