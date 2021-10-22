@@ -34,7 +34,7 @@ async def _(event):
     end = datetime.now()
     ms = (end - start).seconds
 
-CmdHelp("calender").add_command(
+CmdHelp("calendar").add_command(
    'calender', None, '.calender YYYY.MM.DD To Show Calender'
 ).add_info(
    "use .command with format of date YYYY.MM.DD"
