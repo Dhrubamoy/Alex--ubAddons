@@ -6,10 +6,10 @@ from telethon.events import ChatAction
 from telethon.tl.types import ChannelParticipantsAdmins, Message
 
 from userbot.Config import (
-    Config.ANTI_SPAMBOT,
-    Config.ANTI_SPAMBOT_SHOUT,
-    Config.BOTLOG,
-    Config.BOTLOG_CHATID,
+    ANTI_SPAMBOT,
+    ANTI_SPAMBOT_SHOUT,
+    BOTLOG,
+    BOTLOG_CHATID,
     bot,
 )
 from userbot.utils import errors_handler
