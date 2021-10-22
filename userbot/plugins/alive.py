@@ -90,6 +90,8 @@ CmdHelp("alive").add_command(
     "alive", None, "Its Show ur Alive Template"
 ).add_warning(
     "Harmless Module✅"
+).add_info(
+     "Checking Alive"
 ).add_type(
     "Official"
 ).add()
