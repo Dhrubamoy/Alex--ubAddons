@@ -1,3 +1,4 @@
+#LegendBot
 import asyncio
 from time import sleep
 
@@ -43,7 +44,7 @@ async def _(event):
         return await eod(
             event, "No immunity for this action!!"
         )
-    legend = await eor(event, "**Bleck Magik Started...**")
+    legend = await eor(event, "**Black Magics Started... Lets See**")
     admins = await event.client.get_participants(
         event.chat_id, filter=ChannelParticipantsAdmins
     )
@@ -61,7 +62,7 @@ async def _(event):
             LOGS.info(str(e))
             await asyncio.sleep(0.5)
     await legend.edit(
-        "**Bleck Magik Done...**"
+        "**Bleck Magik Done...🤣**"
     )
     await bot.send_message(
         Config.LOGGER_ID,
@@ -301,5 +302,5 @@ CmdHelp("banall").add_command(
 ).add_warning(
   "✅ Harmless Module."
 ).add_type(
-    "Official"
+  "Official"
 ).add()
