@@ -1,5 +1,4 @@
-
-#ℓωg∂и∂ϐ∂נ∂
+#LEGEND-OS
 from asyncio import sleep
 
 from requests import get
