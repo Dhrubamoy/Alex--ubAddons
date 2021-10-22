@@ -78,6 +78,10 @@ CmdHelp("antiflood").add_command(
   'setflood', '<number>', 'Warns the user if he/she spams the chat and if you are an admin then it mutes him/her in the grp'
 ).add_command(
    'setflood', '0', 'OFF THE ANTIFLOOD'
+).add_info(
+   "Use in Group For Give Ban After Flood"
+).add_warning(
+   "Harmless"
 ).add_type(
-    'Offcial✅'
+    "Offcial✅"
 ).add()
