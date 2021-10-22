@@ -4,9 +4,7 @@ import requests
 from userbot import ALIVE_NAME, CMD_HELP
 from LEGENDBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 from userbot.cmdhelp import CmdHelp
-
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "✞︎t͛ẞ̸ 𝖑𝖊ɠêɳ̃d"
-
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "L𝖊ɠêɳ̃d"
 
 @bot.on(admin_cmd(pattern="app (.*)"))
 @bot.on(sudo_cmd(pattern="app (.*)", allow_sudo=True))
@@ -14,7 +12,7 @@ async def apk(event):
     if event.fwd_from:
         return
     app_name = event.pattern_match.group(1)
-    event = await edit_or_reply(event, "Searching!")
+    event = await edit_or_reply(event, "__Searching!__")
     try:
         remove_space = app_name.split(" ")
         final_name = "+".join(remove_space)
@@ -72,7 +70,7 @@ async def apk(event):
             + app_link
             + "'>View in Play Store</a>"
         )
-        app_details += f"\n\n===> {DEFAULTUSER} <==="
+        app_details += f"\n\n⚡===> {DEFAULTUSER} <===⚡"
         await event.edit(app_details, link_preview=True, parse_mode="HTML")
     except IndexError:
         await event.edit("No result found in search. Please enter **Valid app name**")
@@ -171,6 +169,10 @@ CmdHelp("app").add_command(
   'mods', '<app name>', 'Searches the modded/premium app'
 ).add_command(
   'appr', '<app name>', 'Searches the app in the playstore and provides the link to the app in playstore and fetchs app details with Xpl0iter request link.'
+).add_info(
+  "Related To App/Applications Only For Android"
+).add_warning(
+  "Harmless Module✅"
 ).add_type(
-  "Offcial"
+  "Official"
 ).add()
