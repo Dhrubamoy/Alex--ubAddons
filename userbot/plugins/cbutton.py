@@ -1,8 +1,10 @@
 import re
 from telethon import custom
-from . import *
-from userbot.utils import admin_cmd
-
+from userbot import *
+import os
+from telethon import Button, events
+from userbot.utils import admin_cmd, eor
+BOT_USERNAME = Comfig.TG_BOT_USER_NAME_BF_HER
 # regex obtained from: https://github.com/PaulSonOfLars/tgbot/blob/master/tg_bot/modules/helper_funcs/string_handling.py#L23
 BTN_URL_REGEX = re.compile(r"(\{([^\[]+?)\}\<buttonurl:(?:/{0,2})(.+?)(:same)?\>)")
 
