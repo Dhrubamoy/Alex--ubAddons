@@ -14,15 +14,10 @@ async def reply_id(event):
     return reply_to_id
 
 
-DEFAULTUSER = ALIVE_NAME or "ℓєgєи∂ϐοτ"
+
 LEGEND_IMG = Config.AWAKE_PIC
 CUSTOM_ALIVE_TEXT = Config.ALIVE_MSG or "ℓєgєи∂ Choice ℓєgєи∂ϐοτ"
 CUSTOM_YOUR_GROUP =Config.YOUR_GROUP or "@Legend_Userbot"
-
-USERID = bot.uid
-
-mention = f"[{DEFAULTUSER}](tg://user?id={USERID})"
-
 
 def get_readable_time(seconds: int) -> str:
     count = 0
@@ -63,7 +58,7 @@ async def amireallyalive(event):
     reply_to_id = await reply_id(event)
 
     if  LEGEND_IMG:
-        LEGEND_caption = f"**{mention}**\n"
+        LEGEND_caption = f"**{legend_mention}**\n"
         
         LEGEND_caption += f"~~~~~~~~~~~~~~~~~~~~~~~\n"
         LEGEND_caption += f"     ⚜ 𝓛𝓮𝓰𝓮𝓷𝓭𝓑𝓸𝓽 𝓘𝓼 𝓐𝔀𝓪𝓴𝓮 ⚜\n"
