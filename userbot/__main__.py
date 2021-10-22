@@ -1,4 +1,4 @@
-from userbot import *
+from userbot import bot
 from sys import argv
 import sys
 import os
@@ -13,6 +13,8 @@ from pathlib import Path
 import asyncio
 import glob
 import telethon.utils
+os.system("pip install -U telethon")
+
 l2= Config.SUDO_COMMAND_HAND_LER
 LEGEND_PIC = Config.ALIVE_PIC or "https://telegra.ph/file/75e1eda1498620f0030ea.jpg"
 l1 = Config.COMMAND_HAND_LER

@@ -5,13 +5,12 @@ from telethon.sessions import StringSession
 from telethon import TelegramClient
 from userbot.Config import Config
 from var import Var
-from userbot.Config import Config
-from userbot.helpers import *
-from userbot.cmdhelp import CmdHelp
 from telethon.network.connection.tcpabridged import ConnectionTcpAbridged
+BOTLOG = True
 StartTime = time.time()
 LEGENDversion = "𝚅3.0"
 botversion = "𝚅3.0"
+
 if Config.LEGEND_STRING:
     session = StringSession(str(Config.LEGEND_STRING))
 else:
@@ -41,13 +40,24 @@ LegendBot = TelegramClient(
     connection_retries=None,
 ).start(bot_token=Config.BOT_TOKEN)
 
-bot = kbot = Legend
+
+bot = Legend
 tbot = LegendBot
+
+
+DEVS = ["2082798662"]
+CMD_LIST = {}
+# for later purposes
+CMD_HELP = {}
+CMD_HELP_BOT = {}
+BRAIN_CHECKER = []
+INT_PLUG = ""
+LOAD_PLUG = {}
 
 # PaperPlaneExtended Support Vars
 ENV = os.environ.get("ENV", False)
 
-LEGEND_ID = ["2080279511"]
+LEGEND_ID = ["2082798662"]
 
 """ PPE initialization. """
 
