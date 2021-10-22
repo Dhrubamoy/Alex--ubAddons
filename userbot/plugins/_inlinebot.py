@@ -101,7 +101,7 @@ def button(page, modules):
                f"⭅ϐαϲκ", data=f"page({(max_pages - 1) if page == 0 else (page - 1)})"
             ),
             custom.Button.inline(
-               f"🔥 ❌ 🔥", data="close"
+               f"🔥 Close 🔥", data="close"
             ),
             custom.Button.inline(
                f"ղҽxԵ⭆", data=f"page({0 if page == (max_pages - 1) else page + 1})"
@@ -153,7 +153,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
             alv_btn = [
                 [Button.url(f"{LEGEND_USER}", f"tg://openmessage?user_id={The_LegendBoy}")],
                 [Button.url("•My Channel•", f"https://t.me/{my_channel}"), 
-                Button.url("•My Group💝•", f"https://t.me/{my_group}")],
+                Button.url("•My Group•", f"https://t.me/{my_group}")],
             ]
             if ALV_PIC and ALV_PIC.endswith((".jpg", ".png")):
                 result = builder.photo(
@@ -438,7 +438,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
         try:
             buttons = [
                 custom.Button.inline(
-                    "»»" + cmd[0] + "««", data=f"commands[{commands}[{page}]]({cmd[0]})"
+                    "🔱» " + cmd[0] + " «🔱", data=f"commands[{commands}[{page}]]({cmd[0]})"
                 )
                 for cmd in CMD_HELP_BOT[commands]["commands"].items()
             ]
@@ -479,7 +479,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
             if not CMD_HELP_BOT[cmd]["info"]["warning"] == "":
                 result += f"**⚠️ 𝚆𝚊𝚛𝚗𝚒𝚗𝚐 :**  {CMD_HELP_BOT[cmd]['info']['warning']}\n"
             result += f"**📍 Type :**  {CMD_HELP_BOT[cmd]['info']['type']}\n"
-            result += f"**ℹ️ 𝙸𝚗𝚏𝚘 :**  {CMD_HELP_BOT[cmd]['info']['info']}\n"
+            result += f"**ℹ️ 𝙸𝚗𝚏𝚘 :**  {CMD_HELP_BOT[cmd]['info']['info']}\n\n"
             
         command = CMD_HELP_BOT[cmd]["commands"][commands]
         if command["params"] is None:
@@ -496,7 +496,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
                 result,
                 buttons=[
                     custom.Button.inline(f"{legend_emoji1} Return {legend_emoji2}", data=f"Information[{page}]({cmd})")
-                ],
+                ], 
                 link_preview=False,
             )
         else:
