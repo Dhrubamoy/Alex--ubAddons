@@ -76,11 +76,11 @@ if ENV:
         API_HASH = os.environ.get("API_HASH", None)
         LEGEND_STRING = os.environ.get("LEGEND_STRING", None)
         BOT_MODE = os.environ.get("BOT_MODE", "ON")
-        BOTLOG = False
+        BOTLOG = True
         EXTRA_PLUGIN = os.environ.get("EXTRA_PLUGIN", None)
         ASSISTANT = os.environ.get("ASSISTANT", None)
         ABUSE = os.environ.get("ABUSE", None)
-        BOTLOG_CHATID = os.environ.get("PM_LOGGR_BOT_API_ID", None)
+        BOTLOG_CHATID = os.environ.get("LOGGER_ID", None)
         ALIVE_NAME = os.environ.get("ALIVE_NAME", None)
         BOY_OR_GIRL = os.environ.get("BOY_OR_GIRL", "BOY")
         BOT_TRIGGER = os.environ.get("BOT_TRIGGER", "^/")
@@ -135,7 +135,7 @@ if ENV:
         # set blacklist_chats where you do not want userbot's features
         UB_BLACK_LIST_CHAT = set(int(x) for x in os.environ.get("UB_BLACK_LIST_CHAT", "").split())
         # maximum number of messages for antiflood
-        MAX_ANTI_FLOOD_MESSAGES = 7
+        MAX_ANTI_FLOOD_MESSAGES = 5
         # warn mode for anti flood
         ANTI_FLOOD_WARN_MODE = ChatBannedRights(
             until_date=None,
