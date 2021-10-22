@@ -44,15 +44,15 @@ async def set_not_afk(event):
     if ".afk" not in current_message and "yes" in USER_AFK:  # pylint:disable=E0602
         LEGENDBOT = await borg.send_message(
             event.chat_id,
-            "⚜I αм bαϲκ αℓινє !\nN𝔬 𝔏οиgєя more 𝔞ƒκ.\n⏱️`wαs αƒk fοя:``"
+            "⚜My Pro Master bαϲκ αℓινe !\n⏱️`wαs αƒk fοя:``"
             + total_afk_time
             + "`", file=LEGENDpic
         )
         try:
             await borg.send_message(  # pylint:disable=E0602
                 Config.LOGGER_ID,  # pylint:disable=E0602
-                "#AFKFALSE \nSet AFK mode to False\nReply to pic and use .afk reason"
-                + "⚜I αм bαϲκ αℓινє !\nN𝔬 𝔏οиgєя more 𝔞ƒκ.\n⏱️`wαs αƒk fοя:``"
+                "#AFKFALSE \nSet AFK mode to False"
+                + "⚜My Pro Master bαϲκ αℓινe !\n⏱️`wαs αƒk fοя:``"
                 + total_afk_time
             )
         except Exception as e:  # pylint:disable=C0103,W0703
@@ -154,6 +154,10 @@ async def _(event):
 
 CmdHelp("afk").add_command(
   'afk', '<reply to media>/<or type a reson>', 'Marks you AFK(Away from Keyboard) with reason(if given) also shows afk time. Media also supported.'
+).add_info(
+  "When U Go Offline Use this Command"
+).add_warning(
+  "Harmless Module✅"
 ).add_type(
   "Official"
 ).add()
