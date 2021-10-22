@@ -21,5 +21,11 @@ async def _(event):
         await event.reply(mentions)
     await event.delete()
 CmdHelp("calladmin").add_command(
-  'admins', None, 'it Help u to call admin'
+  "admins", None, "it Help u to call admin"
+).add_info(
+  "This Command Used in Group To Call Admin"
+).add_warning(
+  "Harmless Module✅"
+).add_type(
+  "Official"
 ).add()
