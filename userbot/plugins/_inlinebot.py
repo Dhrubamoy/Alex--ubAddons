@@ -400,7 +400,7 @@ async def yes_ucan(legend):
     await bot.send_message(
         LOGGER_ID,
         message=f"Hello, Master  [Nibba](tg://user?id={legend_id}). Has Been Blocked Bcoz Of Spam",
-        buttons=[Button.url("Contact Him", f"tg://user?id=legend_id}")],
+        buttons=[Button.url("Contact Him", f"tg://user?id=legend_id")],
     )
 
 
