@@ -25,7 +25,7 @@ cstm_pmp = Config.PM_MSG
 ALV_PIC = Config.ALIVE_PIC
 help_pic = Config.HELP_PIC 
 VAR_PIC = Config.ALIVE_PIC
-
+logger_id = Config.LOGGER_ID
 PREV_REPLY_MESSAGE = {}
 mybot = Config.BOT_USERNAME
 if mybot.startswith("@"):
@@ -366,7 +366,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
 
         await bot.send_message(legend.query.user_id, reqws)
         await bot.send_message(
-            LOGGER_ID,
+            logger_id,
             message=f"Hello, Master  [Nibba](tg://user?id={legend_id}). Wants To Request Something.",
             buttons=[Button.url("Contact Him", f"tg://user?id=legend_id")],
         )
@@ -393,12 +393,12 @@ async def yes_ucan(legend):
     await legend.get_chat()
     await asyncio.sleep(2)
     await legend.edit("Get Lost Retard")
-    ban = "Get Lost Goin To Block You" 
+    ban = f"Pahli Fursat Me Nikal\n U Are Blocked.\n Use {botname} " 
     await bot.send_message(
          legend.query.user_id, ban)
     await bot(functions.contacts.BlockRequest(legend.query.user_id))
     await bot.send_message(
-        LOGGER_ID,
+        logger_id,
         message=f"Hello, Master  [Nibba](tg://user?id={legend_id}). Has Been Blocked Bcoz Of Spam",
         buttons=[Button.url("Contact Him", f"tg://user?id=legend_id")],
     )
