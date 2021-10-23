@@ -17,10 +17,10 @@ from . import *
 from userbot.Config import Config
 DEFAULTUSER = ALIVE_NAME or "LEGEND"
 legend_row = Config.BUTTONS_IN_HELP
-legend_emoji1 = Config.EMOJI_IN_HELP1
-legend_emoji2 = Config.EMOJI_IN_HELP2
-alive_emoji = Config.ALIVE_EMOJI
-legend_pic = Config.PM_PIC
+legend_emoji1 = Config.EMOJI_IN_HELP1 or "♦️"
+legend_emoji2 = Config.EMOJI_IN_HELP2 or "♦️"
+alive_emoji = Config.ALIVE_EMOJI or "⚜"
+legend_pic = Config.PM_PIC or "https://te.legra.ph/file/0c605739ddaa472cad75f.jpg"
 cstm_pmp = Config.PM_MSG
 ALV_PIC = Config.ALIVE_PIC
 help_pic = Config.HELP_PIC 
