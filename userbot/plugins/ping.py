@@ -7,7 +7,7 @@ from ..cmdhelp import CmdHelp
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "LEGEND User"
 legend = borg.uid
-LEGEND_IMG = os.environ.get("PING_PIC", "https://telegra.ph/file/af51de2749a4506d3eb43.jpg")
+LEGEND_IMG = os.environ.get("PING_PIC", "https://te.legra.ph/file/a59da36828333262c9848.jpg")
 
 @bot.on(admin_cmd(pattern=f"hbping$", outgoing=True))
 @bot.on(sudo_cmd(pattern=f"hbping$", allow_sudo=True))
