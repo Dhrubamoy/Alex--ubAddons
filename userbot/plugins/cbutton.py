@@ -62,7 +62,15 @@ async def _(event):
     await event.delete()
     if tgbot_reply_message:
         os.remove(tgbot_reply_message)
-        
+
+def build_keyboard(buttons):
+    keyb = []
+    for btn in buttons:
+        if btn[2] and keyb:
+            keyb[-1].append(custom.Button.url(btn[0], btn[1]))
+        else:
+            keyb.append([custom.Button.url(btn[0], btn[1])])
+    return keyb        
        
 CmdHelp("cbutton").add_command(
    'cbutton', None, 'Use And See', '.cbutton Test [Google]<buttonurl:https://www.google.com> [Support]<buttonurl:https://t.me/Legend_Userbot:same> [Channel]<buttonurl:https://t.me/Its_LegendBot>'
