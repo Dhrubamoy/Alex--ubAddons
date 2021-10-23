@@ -23,7 +23,7 @@ alive_emoji = Config.ALIVE_EMOJI
 legend_pic = Config.PM_PIC
 cstm_pmp = Config.PM_MSG
 ALV_PIC = Config.ALIVE_PIC
-help_pic = Config.HELP_PIC or "https://telegra.ph/file/6a08bc3d83b51923f47b2.jpg"
+help_pic = Config.HELP_PIC 
 VAR_PIC = Config.ALIVE_PIC
 
 PREV_REPLY_MESSAGE = {}
