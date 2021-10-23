@@ -55,10 +55,10 @@ if ENV:
         MONGO_URI = os.environ.get("MONGO_URI", None)
         #alive
         ALIVE_PIC = os.environ.get("ALIVE_PIC", "https://telegra.ph/file/af51de2749a4506d3eb43.jpg")
-        PM_PIC = os.environ.get("PM_PIC", None)
+        PM_PIC = os.environ.get("PM_PIC", ")
         AWAKE_PIC = os.environ.get("AWAKE_PIC", "https://telegra.ph/file/4f03f6d4e9521902eb57f.jpg")
         HELP_PIC = os.environ.get("OP_PIC", "https://te.legra.ph/file/b5d01ceea49ee0a822661.mp4")
-        PING_PIC = os.environ.get("PING_PIC", None)
+        PING_PIC = os.environ.get("PING_PIC", "https://te.legra.ph/file/ace5feae5b1ac8ea262ed.jpg")
         ALIVE_MSG = os.environ.get("ALIVE_MSG", None)
         PM_MSG = os.environ.get("PM_MSG", None)
         INSTANT_BLOCK = os.environ.get("INSTANT_BLOCK", "DISABLE")
@@ -94,7 +94,7 @@ if ENV:
         LOGGER_ID = os.environ.get("LOGGER_ID", None)
         if LOGGER_ID:
             LOGGER_ID = int(LOGGER_ID)
-        PRIVATE_GROUP_ID = os.environ.get("PRIVATE_GROUP_ID", None)
+        PRIVATE_GROUP_ID = os.environ.get("LOGGER_ID", None)
         HEROKU_API_KEY = os.environ.get("HEROKU_API_KEY", None)
         HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME", None)
         BOT_TOKEN = os.environ.get("BOT_TOKEN", None)
@@ -159,14 +159,14 @@ if ENV:
         NO_SONGS = bool(os.environ.get("NO_SONGS", False))
         MAX_FLOOD_IN_PM = int(os.environ.get("MAX_FLOOD_IN_PM", 7))
         #pm log
-        PM_LOG_GRP_ID = os.environ.get("PM_LOG_GRP_ID", None)
+        PM_LOG_GRP_ID = os.environ.get("LOGGER_ID", None)
         # set to True if you want to log PMs to your PM_LOGGR_BOT_API_ID
         NC_LOG_P_M_S = bool(os.environ.get("NC_LOG_P_M_S", True))
         #heroku 
         HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME", None)
         HEROKU_API_KEY = os.environ.get("HEROKU_API_KEY", None)
         # send .get_id in any channel to forward all your NEW PMs to this group
-        PRIVATE_GROUP_BOT_API_ID = os.environ.get("PRIVATE_GROUP_BOT_API_ID", None)
+        PRIVATE_GROUP_BOT_API_ID = os.environ.get("LOGGER_ID", None)
         if PRIVATE_GROUP_BOT_API_ID:
             PRIVATE_GROUP_BOT_API_ID = int(PRIVATE_GROUP_BOT_API_ID)
         # send .get_id in your private channel to forward all your Private messages
@@ -176,7 +176,7 @@ if ENV:
 
         #Tag LOGGER
 
-        PM_LOGGR_BOT_API_ID = os.environ.get("PM_LOGGR_BOT_API_ID", None)
+        PM_LOGGR_BOT_API_ID = os.environ.get("LOGGER_ID", None)
         if PM_LOGGR_BOT_API_ID: PM_LOGGR_BOT_API_ID = int(PM_LOGGR_BOT_API_ID)
         # For Databases
         # can be None in which case plugins requiring
