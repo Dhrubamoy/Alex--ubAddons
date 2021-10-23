@@ -367,7 +367,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
         message = f"Hello, Master  [Nibba](tg://user?id={legend_id}). Wants To Request Something.",
         buttons = [Button.url("Contact Him", f"tg://user?id=legend_id")],
         await bot.send_message(LOG_GP, message, buttons)
-            logger_id,
+    
             
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"hmm")))
