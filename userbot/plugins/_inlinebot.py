@@ -40,7 +40,7 @@ mssge = (
     else "**You Have Trespassed To My Master's PM!\nThis Is Illegal And Regarded As Crime.**"
 )
 
-.eval from userbot.plugins.pmpermit import PM_WARNS
+from userbot.plugins.pmpermit import PM_WARNS
 tm = event.chat_id
 PM_TOY = PM_WARNS[{tm}]
 
