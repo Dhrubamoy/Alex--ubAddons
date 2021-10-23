@@ -54,11 +54,11 @@ if ENV:
         #MongoDB
         MONGO_URI = os.environ.get("MONGO_URI", None)
         #alive
-        ALIVE_PIC = os.environ.get("ALIVE_PIC", None) or https://telegra.ph/file/af51de2749a4506d3eb43.jpg
-        PM_PIC = os.environ.get("PM_PIC", None) or https://te.legra.ph/file/0c605739ddaa472cad75f.jpg
-        AWAKE_PIC = os.environ.get("AWAKE_PIC", None) or https://telegra.ph/file/47ffec836544b371408ab.mp4
-        HELP_PIC = os.environ.get("OP_PIC", None) or https://te.legra.ph/file/b5d01ceea49ee0a822661.mp4
-        PING_PIC = os.environ.get("PING_PIC", None) or https://te.legra.ph/file/ace5feae5b1ac8ea262ed.jpg
+        ALIVE_PIC = os.environ.get("ALIVE_PIC", None) or "https://telegra.ph/file/af51de2749a4506d3eb43.jpg"
+        PM_PIC = os.environ.get("PM_PIC", None) or "https://te.legra.ph/file/0c605739ddaa472cad75f.jpg"
+        AWAKE_PIC = os.environ.get("AWAKE_PIC", None) or "https://telegra.ph/file/47ffec836544b371408ab.mp4"
+        HELP_PIC = os.environ.get("OP_PIC", None) or "https://te.legra.ph/file/b5d01ceea49ee0a822661.mp4"
+        PING_PIC = os.environ.get("PING_PIC", None) or "https://te.legra.ph/file/ace5feae5b1ac8ea262ed.jpg"
         ALIVE_MSG = os.environ.get("ALIVE_MSG", None)
         PM_MSG = os.environ.get("PM_MSG", None)
         INSTANT_BLOCK = os.environ.get("INSTANT_BLOCK", "DISABLE")
