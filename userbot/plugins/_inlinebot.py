@@ -102,13 +102,13 @@ def button(page, modules):
     buttons.append(
         [
             custom.Button.inline(
-               f"⭅ϐαϲκ", data=f"page({(max_pages - 1) if page == 0 else (page - 1)})"
+               f"ɮǟƈӄ", data=f"page({(max_pages - 1) if page == 0 else (page - 1)})"
             ),
             custom.Button.inline(
                f"🔥 Close 🔥", data="close"
             ),
             custom.Button.inline(
-               f"ղҽxԵ⭆", data=f"page({0 if page == (max_pages - 1) else page + 1})"
+               f"ռɛӼȶ⭆", data=f"page({0 if page == (max_pages - 1) else page + 1})"
             ),
         ]
     )
@@ -156,8 +156,8 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
             leg_end = alive_txt.format(Config.ALIVE_MSG, alive_emoji, legend_mention, alive_emoji, LEGENDversion, alive_emoji, version.__version__, alive_emoji, abuse_m, alive_emoji, is_sudo, alive_emoji, Config.BOY_OR_GIRL)
             alv_btn = [
                 [Button.url(f"{LEGEND_USER}", f"tg://openmessage?user_id={The_LegendBoy}")],
-                [Button.url("•My Channel•", f"https://t.me/{my_channel}"), 
-                Button.url("•My Group•", f"https://t.me/{my_group}")],
+                [Button.url("❣My Channel❣", f"https://t.me/{my_channel}"), 
+                Button.url("💝My Group💝", f"https://t.me/{my_group}")],
             ]
             if ALV_PIC and ALV_PIC.endswith((".jpg", ".png")):
                 result = builder.photo(
