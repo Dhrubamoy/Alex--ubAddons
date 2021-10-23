@@ -37,7 +37,7 @@ if Config.LOGGER_ID is not None:
         chat = await event.get_chat()
         if event.is_private:
             if not pm_sql.is_approved(chat.id):
-                if not chat.id in WARNS:
+                if not chat.id in PM_WARNS:
                     pm_sql.approve(chat.id, "outgoing")
                     bruh = "Auto-approved bcuz outgoing 😄😄"
                     rko = await borg.send_message(event.chat_id, bruh)
