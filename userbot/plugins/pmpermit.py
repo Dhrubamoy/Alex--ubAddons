@@ -40,7 +40,7 @@ if Config.LOGGER_ID is not None:
                 if not chat.id in PM_WARNS:
                     pm_sql.approve(chat.id, "outgoing")
                     bruh = "αυтσ αρρяσνє∂ в¢σz σƒ συтgσιηg"
-                    rko = await borg.send_message(event.chat_id, bruh)
+                    rko = await bot.send_message(event.chat_id, bruh)
                     await asyncio.sleep(3)
                     await rko.delete()
 
@@ -240,11 +240,11 @@ if PM_ON_OFF != "DISABLE":
             await bot.send_message(bot.uid, "Please Set `LOGGER_ID` For Working Of Pm Permit")
             return
         message_text = event.message.raw_text
-        chat_id = event.sender_id
+        chat_ids = event.sender_id
         if LEGEND_FIRST == message_text:
             return
-        sender = await bot.get_entity(event.sender_id)
-        if chat_id == bot.uid:
+        sender = await bot.get_entity(await event.get_input_chat())
+        if chat_ids == bot.uid:
             return
         if sender.bot:
             return
@@ -252,20 +252,20 @@ if PM_ON_OFF != "DISABLE":
             return
         if PM_ON_OFF == "DISABLE":
             return
-        if pm_sql.is_approved(chat_id):
+        if pm_sql.is_approved(chat_ids):
             return
-        if not pm_sql.is_approved(chat_id):
-            await do_pm_permit_action(chat_id, event)
+        if not pm_sql.is_approved(chat_ids):
+            await do_pm_permit_action(chat_ids, event)
                                        
-    async def do_pm_permit_action(chat_id, event):
-        if chat_id not in PM_WARNS:
-            PM_WARNS.update({chat_id: 0})
-        if PM_WARNS[chat_id] == Config.MAX_FLOOD_IN_PM:
+    async def do_pm_permit_action(chat_ids, event):
+        if chat_ids not in PM_WARNS:
+            PM_WARNS.update({chat_ids: 0})
+        if PM_WARNS[chat_ids] == Config.MAX_FLOOD_IN_PM:
             r = await event.reply(LEGEND_ZERO)
             await asyncio.sleep(3)
             await event.client(functions.contacts.BlockRequest(chat_id))
-            if chat_id in PREV_REPLY_MESSAGE:
-                await PREV_REPLY_MESSAGE[chat_id].delete()
+            if chat_ids in PREV_REPLY_MESSAGE:
+                await PREV_REPLY_MESSAGE[chat_ids].delete()
             PREV_REPLY_MESSAGE[chat_id] = r
             the_message = ""
             the_message += "#BLOCKED_PM\n\n"
@@ -288,11 +288,11 @@ if PM_ON_OFF != "DISABLE":
         botusername = Config.BOT_USERNAME
         tap = await bot.inline_query(botusername, "pm_warn")
         legend_ = await tap[0].click(event.chat_id)
-        PM_WARNS[chat_id] += 1
-        chat_id = chat_id
-        if chat_id in PREV_REPLY_MESSAGE:
-            await PREV_REPLY_MESSAGE[chat_id].delete()
-        PREV_REPLY_MESSAGE[chat_id] = legend_
+        PM_WARNS[chat_ids] += 1
+        chat_ids = chat_ids
+        if chat_ids in PREV_REPLY_MESSAGE:
+            await PREV_REPLY_MESSAGE[chat_ids].delete()
+        PREV_REPLY_MESSAGE[chat_ids] = legend_
 
 NEEDIT = Config.INSTANT_BLOCK
 if NEEDIT == "ENABLE":
@@ -302,7 +302,7 @@ if NEEDIT == "ENABLE":
         event.message.media
         event.message.id
         event.message.to_id
-        chat_id = event.chat_id
+        chat_ids = event.chat_ids
         sender = await bot.get_entity(chat_id)
         if chat_id == bot.uid:
             return
