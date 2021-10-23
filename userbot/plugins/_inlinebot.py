@@ -41,13 +41,13 @@ mssge = (
 )
 
 from userbot.plugins.pmpermit import PM_WARNS
-
-PM_TOY = PM_WARNS
-
+chat_id = bot.uid
+PM_TOY = PM_WARNS[chat_id]
+TOTAL_WARN = Config.MAX_FLOOD_IN_PM
 USER_BOT_WARN_ZERO = "Enough Of Your Flooding In My Master's PM!! \n\n**🚫 Blocked and Reported**"
 
 LEGEND_FIRST = (
-    "**{}**\n{}Please Choose Why u Are Here♥️!!"
+    "**{}**\n{}/{}Please Choose Why u Are Here♥️!!"
 )
 
 var_txt = """
@@ -206,7 +206,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
                                          
                             
         elif event.query.user_id == bot.uid and query == "pm_warn":
-            lege_nd = LEGEND_FIRST.format(mssge, PM_TOY)
+            lege_nd = LEGEND_FIRST.format(mssge, PM_TOY, TOTAL_WARN)
             result = builder.photo(
                 file=legend_pic,
                 text=lege_nd,
