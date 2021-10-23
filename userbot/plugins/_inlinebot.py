@@ -342,25 +342,61 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
 
 
     @tgbot.on(callbackquery.CallbackQuery(data=compile(b"heheboi")))
-    async def on_pm_click(event):
-        if event.query.user_id == bot.uid:
-            reply_pop_up_alert = "This is for other users!"
-            await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
-        else:
-            await event.edit(
-                f"🥴 **Nikal lawde\nPehli fursat me nikal**"
-            )
-            await event.client(functions.contacts.BlockRequest(event.query.user_id))
-            target = await event.client(GetFullUserRequest(event.query.user_id))
-            ok = event.query.user_id
-            first_name = html.escape(target.user.first_name)
-            if first_name is not None:
-                first_name = first_name.replace("\u2060", "")
-            first_name = html.escape(target.user.first_name)
-            await bot.send_message(
-                LOG_GP,
-                f"**Blocked**  [{first_name}](tg://user?id={ok}) \n\nReason:- Spam",
-            )
+    async def lightning_is_better(lightning):
+    if lightning.query.user_id == bot.uid:
+        fck_bit = f"Oh! C'mon Master {LIGHTNINGUSER} Im Try To Get Rid Of This Nigga Pls Dont Touch"
+        await lightning.answer(fck_bit, cache_time=0, alert=True)
+        return
+    await lightning.get_chat()
+    lightning_id = lightning.query.user_id
+    await lightning.edit("Okay let Me Think🤫")
+    await asyncio.sleep(2)
+    await lightning.edit("Okay Giving You A Chance🤨")
+    await asyncio.sleep(2)
+    await lightning.edit(
+        "You Will Spam?", buttons= [
+        [Button.inline("Yes", data="lemme_ban")],
+        [Button.inline("No", data="hmm")],
+        ],
+    )
+
+    
+    reqws = "`Warning`- ❗️⚠️Don't send any message now wait kindly!!!❗️⚠️"
+
+
+    await bot.send_message(lightning.query.user_id, reqws)
+    await bot.send_message(
+        LIGHT_LOGS,
+        message=f"Hello, Master  [Nibba](tg://user?id={lightning_id}). Wants To Request Something.",
+        buttons=[Button.url("Contact Him", f"tg://user?id={lightning_id}")],
+    )
+
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"hmm")))
+async def yes_ucan(lightning):
+    if lightning.query.user_id == bot.uid:
+           lmaoo = "You Are Not Requesting , Lol."
+           await lightning.answer(lmaoo, cache_time=0, alert=True)
+           return          
+    await lightning.get_chat()
+    await asyncio.sleep(2)
+    await lightning.edit("Okay You Can Wait Till Wait")
+    hmmmmm = "Okay Kindly wait  i will inform you"
+    await bot.send_message(
+              lightning.query.user_id, hmmmmm)
+          
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"lemme_ban")))
+async def yes_ucan(lightning):
+    if lightning.query.user_id == bot.uid:
+           lmaoo = "You Are Not Requesting , Lol."
+           await lightning.answer(lmaoo, cache_time=0, alert=True)
+           return    
+    await lightning.get_chat()
+    await asyncio.sleep(2)
+    await lightning.edit("Get Lost Retard")
+    ban = "Get Lost Goin To Block You" 
+    await bot.send_message(
+         lightning.query.user_id, ban)
+    await bot(functions.contacts.BlockRequest(lightning.query.user_id))
 
 
     @tgbot.on(callbackquery.CallbackQuery(data=compile(b"unmute")))
