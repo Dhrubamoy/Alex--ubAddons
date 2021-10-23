@@ -30,6 +30,20 @@ LEGEND_FIRST = (
         
         
 if Config.LOGGER_ID is not None:
+    @bot.on(events.NewMessage(outgoing=True))
+    async def auto_approve_for_out_going(event):
+        if event.fwd_from:
+            return
+        chat = await event.get_chat()
+        if event.is_private:
+            if not pm_sql.is_approved(chat.id):
+                if not chat.id in WARNS:
+                    pm_sql.approve(chat.id, "outgoing")
+                    bruh = "Auto-approved bcuz outgoing 😄😄"
+                    rko = await borg.send_message(event.chat_id, bruh)
+                    await asyncio.sleep(3)
+                    await rko.delete()
+
     @bot.on(admin_cmd(pattern="block|.blk ?(.*)"))
     async def approve_p_m(event):
         if event.fwd_from:
@@ -82,10 +96,10 @@ if PM_ON_OFF != "DISABLE":
             return
         if not event.is_private:
             return
-        chat_ids = event.chat_id
+        chat_id = event.chat_id
         sender = await event.client(GetFullUserRequest(await event.get_input_chat()))
         first_name = sender.user.first_name
-        if chat_ids == bot.uid:
+        if chat_id == bot.uid:
             return
         if sender.user.bot:
             return
