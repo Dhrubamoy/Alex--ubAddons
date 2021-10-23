@@ -74,7 +74,7 @@ async def amireallyalive(event):
         await event.delete()
     else:
         await edit_or_reply(
-            alive,
+            awake,
             f"**{CUSTOM_ALIVE_TEXT}**\n\n"
             f"~~~~~~~~~~~~~~~~~~~~~~~ \n"
             f"         𝕭𝖔𝖙 𝕾𝖙𝖆𝖙𝖚𝖘\n"
