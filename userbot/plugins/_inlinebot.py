@@ -40,7 +40,6 @@ mssge = (
     else "**You Have Trespassed To My Master's PM!\nThis Is Illegal And Regarded As Crime.**"
 )
 from userbot.plugins.pmpermit import PM_WARNS
-PM_WARN = PM_WARNS[2082798662]
 PM_TOY = PM_WARN
 
 TOTAL_WARN = Config.MAX_FLOOD_IN_PM
@@ -206,7 +205,8 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
                                          
                             
         elif event.query.user_id == bot.uid and query == "pm_warn":
-            lege_nd = LEGEND_FIRST.format(mssge, PM_TOY, TOTAL_WARN)
+            chat_id = bot.uid,
+            lege_nd = LEGEND_FIRST.format(mssge, PM_WARNS(event.[chat_id]), TOTAL_WARN)
             result = builder.photo(
                 file=legend_pic,
                 text=lege_nd,
