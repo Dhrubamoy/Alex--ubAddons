@@ -2,6 +2,7 @@ import re
 from telethon import custom
 from userbot.Config import Config
 import os
+from userbot.cmdhelp import CmdHelp
 from telethon import Button, events
 from userbot.utils import admin_cmd, eor
 BOT_USERNAME = Config.BOT_USERNAME
