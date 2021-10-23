@@ -395,12 +395,10 @@ async def yes_ucan(legend):
     await asyncio.sleep(2)
     legend_id = legend.query.user_id
     await legend.edit("Get Lost Retard")
-    ban = f"Pamessage = f"Hello, Master  [Nibba](tg://user?id={legend_id}). Has Been Blocked Bcoz Of Spam",
-hli Fursat Me Nikal\n U Are Blocked.\n Use {botname} " 
+    ban = f"Pahli Fursat Me Nikal\n U Are Blocked" 
     await bot.send_message(
          legend.query.user_id, ban)
     await bot(functions.contacts.BlockRequest(legend.query.user_id))
-    message = f"Hello, Master  [Nibba](tg://user?id={legend_id}). Has Been Blocked Bcoz Of Spam",
     await bot.send_message(
             LOG_GP,
             message = f"Hello, Master  [Nibba](tg://user?id={legend_id}). Wants To Request Something.",
