@@ -132,37 +132,38 @@ async def legendbott(event):
         await eor(event, "Please Specify A Module Name Of Which You Want Info" + "\n\n" + string)
 
 
-
+assist = os.environ.get("ASSISTANT", None)
 
 @bot.on(admin_cmd("on ?(.*)"))
 @bot.on(sudo_cmd("on ?(.*)", allow_sudo=True))
 async def _(event):
-    if event.fwd_from:
-        return
-    async with event.client.conversation(bot_father) as conv:
-        try:
-            first = await conv.send_message("/setcommands")
-            second = await conv.get_response()
-            third = await conv.send_message(botname)
-            fourth = await conv.get_response()
-            fifth = await conv.send_message(onbot)
-            sixth = await conv.get_response()
-            seventh = await conv.send_message("/setname")
-            eighth = await conv.get_response()
-            nineth = await conv.send_message(botname)
-            tenth = await conv.get_response()
-            eleventh = await conv.send_message(name)
-            twelveth = await conv.get_response()
-            thirdteen = await conv.send_message("/setdescription")
-            fourthteen = await conv.get_response()
-            fiveteen = await conv.send_message(botname)
-            sixteen = await conv.get_response()
-            seventeen = await conv.send_message(description)
-            eightteen = await conv.get_response()
-            await bot.send_read_acknowledge(conv.chat_id)
-        except YouBlockedUserError:
-            return await legend.edit("Unblock @Botfather first.")
-        await event.edit(f"**Turned On Assistance Successfully.\nClick Here 👉{botname} & Add To Any Group**")
-        await bot.delete_messages(
-            conv.chat_id, [first.id, second.id, third.id, fourth.id, fifth.id, sixth.id, seventh.id, eighth.id, nineth.id, tenth.id, eleventh.id, twelveth.id, thirdteen.id, fourteen.id, fiveteen.id, sixteen.id, seventeen.id, eightteen.id]
-            )
+    if assist = "ON":
+        if event.fwd_from:
+            return
+        async with event.client.conversation(bot_father) as conv:
+            try:
+                first = await conv.send_message("/setcommands")
+                second = await conv.get_response()
+                third = await conv.send_message(botname)
+                fourth = await conv.get_response()
+                fifth = await conv.send_message(onbot)
+                sixth = await conv.get_response()
+                seventh = await conv.send_message("/setname")
+                eighth = await conv.get_response()
+                nineth = await conv.send_message(botname)
+                tenth = await conv.get_response()
+                eleventh = await conv.send_message(name)
+                twelveth = await conv.get_response()
+                thirdteen = await conv.send_message("/setdescription")
+                fourthteen = await conv.get_response()
+                fiveteen = await conv.send_message(botname)
+                sixteen = await conv.get_response()
+                seventeen = await conv.send_message(description)
+                eightteen = await conv.get_response()
+                await bot.send_read_acknowledge(conv.chat_id)
+            except YouBlockedUserError:
+                return await legend.edit("Unblock @Botfather first.")
+            await event.edit(f"**Turned On Assistance Successfully.\nClick Here 👉{botname} & Add To Any Group**")
+            await bot.delete_messages(
+                conv.chat_id, [first.id, second.id, third.id, fourth.id, fifth.id, sixth.id, seventh.id, eighth.id, nineth.id, tenth.id, eleventh.id, twelveth.id, thirdteen.id, fourteen.id, fiveteen.id, sixteen.id, seventeen.id, eightteen.id]
+                )
