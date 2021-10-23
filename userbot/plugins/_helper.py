@@ -137,7 +137,7 @@ assist = os.environ.get("ASSISTANT", None)
 @bot.on(admin_cmd("on ?(.*)"))
 @bot.on(sudo_cmd("on ?(.*)", allow_sudo=True))
 async def _(event):
-    if assist = "ON":
+    if assist == "ON":
         if event.fwd_from:
             return
         async with event.client.conversation(bot_father) as conv:
