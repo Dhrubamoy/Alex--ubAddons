@@ -352,24 +352,24 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
         await legend.edit("Okay let Me Think🤫")
         await asyncio.sleep(2)
         await legend.edit("Okay Giving You A Chance🤨")
-    await asyncio.sleep(2)
-    await legend.edit(
-        "You Will Spam?", buttons= [
-        [Button.inline("Yes", data="lemme_ban")],
-        [Button.inline("No", data="hmm")],
-        ],
-    )
+        await asyncio.sleep(2)
+        await legend.edit(
+            "You Will Spam?", buttons= [
+            [Button.inline("Yes", data="lemme_ban")],
+            [Button.inline("No", data="hmm")],
+            ],
+        )
 
     
-    reqws = "`Warning`- ❗️⚠️Don't send any message now wait kindly!!!❗️⚠️"
+        reqws = "`Warning`- ❗️⚠️Don't send any message now wait kindly!!!❗️⚠️"
 
 
-    await bot.send_message(legend.query.user_id, reqws)
-    await bot.send_message(
-        LOGGER_ID,
-        message=f"Hello, Master  [Nibba](tg://user?id={legend_id}). Wants To Request Something.",
-        buttons=[Button.url("Contact Him", f"tg://user?id=legend_id}")],
-    )
+        await bot.send_message(legend.query.user_id, reqws)
+        await bot.send_message(
+            LOGGER_ID,
+            message=f"Hello, Master  [Nibba](tg://user?id={legend_id}). Wants To Request Something.",
+            buttons=[Button.url("Contact Him", f"tg://user?id=legend_id}")],
+        )
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"hmm")))
 async def yes_ucan(legend):
