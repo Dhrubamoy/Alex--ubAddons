@@ -37,24 +37,43 @@ async def await_read(chat, message):
     await fut
 
 
-@bot.on(admin_cmd(pattern="(del)(?:ete)?$"))
-@bot.on(admin_cmd(pattern="(edit)(?:\s+(.*))?$"))
-async def delete(event):
-    await event.delete()
-    command = event.pattern_match.group(1)
-    if command == "edit":
-        text = event.pattern_match.group(2)
-        if not text:
-            return
-    target = await get_target_message(event)
-    if target:
-        chat = await event.get_input_chat()
-        await await_read(chat, target)
-        await asyncio.sleep(0.5)
-        if command == "edit":
-            await borg.edit_message(chat, target, text)
-        else:
-            await borg.delete_messages(chat, target, revoke=True)
+@borg.on(admin_cmd(pattern=r"edit"))
+@errors_handler
+async def editer(edit):
+    """ For .editme command, edit your last message. """
+    message = edit.text
+    chat = await edit.get_input_chat()
+    self_id = await edit.client.get_peer_id('me')
+    string = str(message[6:])
+    i = 1
+    async for message in edit.client.iter_messages(chat, self_id):
+        if i == 2:
+            await message.edit(string)
+            await edit.delete()
+            break
+        i = i + 1
+    if BOTLOG:
+        await edit.client.send_message(BOTLOG_CHATID,
+                                       "Edit query was executed successfully")
+
+
+@borg.on(admin_cmd(pattern=r"del"))
+@errors_handler
+async def delete_it(delme):
+    """ For .del command, delete the replied message. """
+    msg_src = await delme.get_reply_message()
+    if delme.reply_to_msg_id:
+        try:
+            await msg_src.delete()
+            await delme.delete()
+            if BOTLOG:
+                await delme.client.send_message(
+                    BOTLOG_CHATID, "Deletion of message was successful")
+        except rpcbaseerrors.BadRequestError:
+            if BOTLOG:
+                await delme.client.send_message(
+                    BOTLOG_CHATID, "Well, I can't delete a message")
+
 
 
 
