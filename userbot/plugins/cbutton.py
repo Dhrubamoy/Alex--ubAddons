@@ -1,6 +1,6 @@
 import re
 from telethon import custom
-from userbot import *
+from userbot.Config import Config
 import os
 from telethon import Button, events
 from userbot.utils import admin_cmd, eor
