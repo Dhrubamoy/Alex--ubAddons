@@ -167,6 +167,6 @@ async def _(event):
             await bot.delete_messages(
                 conv.chat_id, [first.id, second.id, third.id, fourth.id, fifth.id, sixth.id, seventh.id, eighth.id, nineth.id, tenth.id, eleventh.id, twelveth.id, thirdteen.id, fourteen.id, fiveteen.id, sixteen.id, seventeen.id, eightteen.id]
                 )
-     else:
+    else:
         "U Have To Turn Set var Assistant on `.set var ASSISTANT ON`"
       
