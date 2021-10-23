@@ -25,7 +25,7 @@ cstm_pmp = Config.PM_MSG
 ALV_PIC = Config.ALIVE_PIC
 help_pic = Config.HELP_PIC or "https://telegra.ph/file/6a08bc3d83b51923f47b2.jpg"
 VAR_PIC = Config.ALIVE_PIC
-PM_WARNS = {}
+
 PREV_REPLY_MESSAGE = {}
 mybot = Config.BOT_USERNAME
 if mybot.startswith("@"):
@@ -40,10 +40,14 @@ mssge = (
     else "**You Have Trespassed To My Master's PM!\nThis Is Illegal And Regarded As Crime.**"
 )
 
+from userbot.plugins.pmpermit import PM_WARNS
+
+PM_TOY = PM_WARNS
+
 USER_BOT_WARN_ZERO = "Enough Of Your Flooding In My Master's PM!! \n\n**🚫 Blocked and Reported**"
 
 LEGEND_FIRST = (
-    "**{}**\nPlease Choose Why u Are Here♥️!!"
+    "**{}**\n{}Please Choose Why u Are Here♥️!!"
 )
 
 var_txt = """
@@ -202,7 +206,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
                                          
                             
         elif event.query.user_id == bot.uid and query == "pm_warn":
-            lege_nd = LEGEND_FIRST.format(mssge)
+            lege_nd = LEGEND_FIRST.format(mssge, PM_TOY)
             result = builder.photo(
                 file=legend_pic,
                 text=lege_nd,
