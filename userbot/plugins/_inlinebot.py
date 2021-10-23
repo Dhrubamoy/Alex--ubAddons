@@ -39,6 +39,7 @@ mssge = (
     if cstm_pmp
     else "**You Have Trespassed To My Master's PM!\nThis Is Illegal And Regarded As Crime.**"
 )
+from userbot.plugins.pm_permit import PM_WARN
 chat_id = bot.uid
 PM_WARN = PM_WARN[chat_id]
 PM_TOY = PM_WARN
