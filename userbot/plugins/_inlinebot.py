@@ -42,7 +42,7 @@ mssge = (
 
 from userbot.plugins.pmpermit import PM_WARNS
 
-PM_TOY = PM_WARNS
+PM_TOY = PM_WARNS - 1
 
 TOTAL_WARN = Config.MAX_FLOOD_IN_PM
 USER_BOT_WARN_ZERO = "Enough Of Your Flooding In My Master's PM!! \n\n**🚫 Blocked and Reported**"
