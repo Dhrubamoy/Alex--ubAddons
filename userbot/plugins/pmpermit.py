@@ -229,7 +229,7 @@ if PM_ON_OFF != "DISABLE":
         chat_id = event.sender_id
         if LEGEND_FIRST == message_text:
             return
-        sender = await bot.get_entity(chat_id)
+        sender = await bot.get_entity(event.sender_id)
         if chat_id == bot.uid:
             return
         if sender.bot:
