@@ -363,13 +363,12 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
     
         reqws = "`Warning`- ❗️⚠️Don't send any message now wait kindly!!!❗️⚠️"
 
-
         await bot.send_message(legend.query.user_id, reqws)
-        await bot.send_message(
-            legend.query.user_id, logger_id,
-            message=f"Hello, Master  [Nibba](tg://user?id={legend_id}). Wants To Request Something.",
-            buttons=[Button.url("Contact Him", f"tg://user?id=legend_id")],
-        )
+        message = f"Hello, Master  [Nibba](tg://user?id={legend_id}). Wants To Request Something.",
+        buttons = [Button.url("Contact Him", f"tg://user?id=legend_id")],
+        await bot.send_message(LOG_GP, message, buttons)
+            logger_id,
+            
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"hmm")))
 async def yes_ucan(legend):
@@ -399,11 +398,9 @@ async def yes_ucan(legend):
     await bot.send_message(
          legend.query.user_id, ban)
     await bot(functions.contacts.BlockRequest(legend.query.user_id))
-    await bot.send_message(
-        logger_id,
-        message=f"Hello, Master  [Nibba](tg://user?id={legend_id}). Has Been Blocked Bcoz Of Spam",
-        buttons=[Button.url("Contact Him", f"tg://user?id=legend_id")],
-    )
+    message = f"Hello, Master  [Nibba](tg://user?id={legend_id}). Has Been Blocked Bcoz Of Spam",
+    buttons = [Button.url("Contact Him", f"tg://user?id=legend_id")],
+    await bot.send_message(LOG_GP, message, buttons)
 
 
     @tgbot.on(callbackquery.CallbackQuery(data=compile(b"unmute")))
