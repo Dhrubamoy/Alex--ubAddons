@@ -368,7 +368,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
         await bot.send_message(
             logger_id,
             message=f"Hello, Master  [Nibba](tg://user?id={legend_id}). Wants To Request Something.",
-            buttons=[Button.url("Contact Him", f"tg://user?id=legend_id")],
+            buttons = [Button.url("Contact Him", f"tg://user?id=legend_id")],
         )
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"hmm")))
@@ -379,6 +379,7 @@ async def yes_ucan(legend):
            return          
     await legend.get_chat()
     await asyncio.sleep(2)
+    legend_id = legend.query.user_id
     await legend.edit("Okay You Can Wait Till Wait")
     hmmmmm = "Okay Kindly wait  i will inform you"
     await bot.send_message(
@@ -392,6 +393,7 @@ async def yes_ucan(legend):
            return    
     await legend.get_chat()
     await asyncio.sleep(2)
+    legend_id = legend.query.user_id
     await legend.edit("Get Lost Retard")
     ban = f"Pahli Fursat Me Nikal\n U Are Blocked.\n Use {botname} " 
     await bot.send_message(
