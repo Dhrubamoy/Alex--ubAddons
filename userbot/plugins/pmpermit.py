@@ -45,8 +45,8 @@ if Config.LOGGER_ID is not None:
                 )
                 time.sleep(100)
             else:
-                if pmpermit_sql.is_approved(chat.id):
-                    pmpermit_sql.disapprove(chat.id)
+                if pm_sql.is_approved(chat.id):
+                    pm_sql.disapprove(chat.id)
                     await event.edit(
                         "gєτ ℓοѕτ мγ мαѕτєя нαѕ ϐℓοϲκє∂ υ!!.\nϐℓοϲκє∂ [{}](tg://user?id={})".format(
                             firstname, chat.id
@@ -67,8 +67,8 @@ if Config.LOGGER_ID is not None:
                     return
                 replied_user = await event.client(GetFullUserRequest(reply_s.sender_id))
                 firstname = replied_user.user.first_name
-                if pmpermit_sql.is_approved(event.chat_id):
-                    pmpermit_sql.disapprove(event.chat_id)
+                if pm_sql.is_approved(event.chat_id):
+                    pm_sql.disapprove(event.chat_id)
                 await event.edit("ϐℓοϲκє∂ [{}](tg://user?id={})".format(firstname, reply_s.sender_id))
                 await event.client(functions.contacts.BlockRequest(reply_s.sender_id))
                 await asyncio.sleep(3)
