@@ -137,9 +137,9 @@ assist = os.environ.get("ASSISTANT", None)
 @bot.on(admin_cmd("on ?(.*)"))
 @bot.on(sudo_cmd("on ?(.*)", allow_sudo=True))
 async def _(event):
-    if assist == "ON":
-        if event.fwd_from:
-            return
+    if event.fwd_from:
+        return
+    if Config.ASSISTANT == "ON":
         async with event.client.conversation(bot_father) as conv:
             try:
                 first = await conv.send_message("/setcommands")
@@ -168,5 +168,5 @@ async def _(event):
                 conv.chat_id, [first.id, second.id, third.id, fourth.id, fifth.id, sixth.id, seventh.id, eighth.id, nineth.id, tenth.id, eleventh.id, twelveth.id, thirdteen.id, fourteen.id, fiveteen.id, sixteen.id, seventeen.id, eightteen.id]
                 )
     else:
-        await.eod(event, "U Have To Turn Set var Assistant on `.set var ASSISTANT ON`")
-      
+        return await event.edit("`[HEROKU]:" "\nPlease setup your` **HEROKU_APP_NAME**")
+    
