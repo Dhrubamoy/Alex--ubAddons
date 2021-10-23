@@ -40,7 +40,7 @@ mssge = (
     else "**You Have Trespassed To My Master's PM!\nThis Is Illegal And Regarded As Crime.**"
 )
 from userbot.plugins.pmpermit import PM_WARNS
-PM_TOY = PM_WARN
+PM_TOY = PM_WARNS
 
 TOTAL_WARN = Config.MAX_FLOOD_IN_PM
 USER_BOT_WARN_ZERO = "Enough Of Your Flooding In My Master's PM!! \n\n**🚫 Blocked and Reported**"
@@ -206,7 +206,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
                             
         elif event.query.user_id == bot.uid and query == "pm_warn":
             chat_id = bot.uid,
-            lege_nd = LEGEND_FIRST.format(mssge, PM_WARNS(event.[chat_id]), TOTAL_WARN)
+            lege_nd = LEGEND_FIRST.format(mssge, PM_TOY, TOTAL_WARN)
             result = builder.photo(
                 file=legend_pic,
                 text=lege_nd,
@@ -342,18 +342,18 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
 
 
     @tgbot.on(callbackquery.CallbackQuery(data=compile(b"heheboi")))
-    async def lightning_is_better(lightning):
-    if lightning.query.user_id == bot.uid:
-        fck_bit = f"Oh! C'mon Master {LIGHTNINGUSER} Im Try To Get Rid Of This Nigga Pls Dont Touch"
-        await lightning.answer(fck_bit, cache_time=0, alert=True)
+    async def on_pm_click(legend):
+    if legend.query.user_id == bot.uid:
+        fck_bit = f"Oh! C'mon Master{legend_mention} Im Try To Get Rid Of This Nigga Pls Dont Touch"
+        await legend.answer(fck_bit, cache_time=0, alert=True)
         return
-    await lightning.get_chat()
-    lightning_id = lightning.query.user_id
-    await lightning.edit("Okay let Me Think🤫")
+    await legend.get_chat()
+    legend_id = legend.query.user_id
+    await legend.edit("Okay let Me Think🤫")
     await asyncio.sleep(2)
-    await lightning.edit("Okay Giving You A Chance🤨")
+    await legend.edit("Okay Giving You A Chance🤨")
     await asyncio.sleep(2)
-    await lightning.edit(
+    await legend.edit(
         "You Will Spam?", buttons= [
         [Button.inline("Yes", data="lemme_ban")],
         [Button.inline("No", data="hmm")],
@@ -364,39 +364,44 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
     reqws = "`Warning`- ❗️⚠️Don't send any message now wait kindly!!!❗️⚠️"
 
 
-    await bot.send_message(lightning.query.user_id, reqws)
+    await bot.send_message(legend.query.user_id, reqws)
     await bot.send_message(
-        LIGHT_LOGS,
-        message=f"Hello, Master  [Nibba](tg://user?id={lightning_id}). Wants To Request Something.",
-        buttons=[Button.url("Contact Him", f"tg://user?id={lightning_id}")],
+        LOGGER_ID,
+        message=f"Hello, Master  [Nibba](tg://user?id={legend_id}). Wants To Request Something.",
+        buttons=[Button.url("Contact Him", f"tg://user?id=legend_id}")],
     )
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"hmm")))
-async def yes_ucan(lightning):
-    if lightning.query.user_id == bot.uid:
+async def yes_ucan(legend):
+    if legend.query.user_id == bot.uid:
            lmaoo = "You Are Not Requesting , Lol."
-           await lightning.answer(lmaoo, cache_time=0, alert=True)
+           await legend.answer(lmaoo, cache_time=0, alert=True)
            return          
-    await lightning.get_chat()
+    await legend.get_chat()
     await asyncio.sleep(2)
-    await lightning.edit("Okay You Can Wait Till Wait")
+    await legend.edit("Okay You Can Wait Till Wait")
     hmmmmm = "Okay Kindly wait  i will inform you"
     await bot.send_message(
-              lightning.query.user_id, hmmmmm)
+              legend.query.user_id, hmmmmm)
           
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"lemme_ban")))
-async def yes_ucan(lightning):
-    if lightning.query.user_id == bot.uid:
+async def yes_ucan(legend):
+    if legend.query.user_id == bot.uid:
            lmaoo = "You Are Not Requesting , Lol."
-           await lightning.answer(lmaoo, cache_time=0, alert=True)
+           await legend.answer(lmaoo, cache_time=0, alert=True)
            return    
-    await lightning.get_chat()
+    await legend.get_chat()
     await asyncio.sleep(2)
-    await lightning.edit("Get Lost Retard")
+    await legend.edit("Get Lost Retard")
     ban = "Get Lost Goin To Block You" 
     await bot.send_message(
-         lightning.query.user_id, ban)
-    await bot(functions.contacts.BlockRequest(lightning.query.user_id))
+         legend.query.user_id, ban)
+    await bot(functions.contacts.BlockRequest(legend.query.user_id))
+    await bot.send_message(
+        LOGGER_ID,
+        message=f"Hello, Master  [Nibba](tg://user?id={legend_id}). Has Been Blocked Bcoz Of Spam",
+        buttons=[Button.url("Contact Him", f"tg://user?id=legend_id}")],
+    )
 
 
     @tgbot.on(callbackquery.CallbackQuery(data=compile(b"unmute")))
