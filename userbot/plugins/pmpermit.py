@@ -30,7 +30,7 @@ LEGEND_FIRST = (
         
         
 if Config.LOGGER_ID is not None:
-    @borg.on(admin_cmd(pattern="block|.blk ?(.*)"))
+    @bot.on(admin_cmd(pattern="block|.blk ?(.*)"))
     async def approve_p_m(event):
         if event.fwd_from:
             return
