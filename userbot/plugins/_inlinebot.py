@@ -343,15 +343,15 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
 
     @tgbot.on(callbackquery.CallbackQuery(data=compile(b"heheboi")))
     async def on_pm_click(legend):
-    if legend.query.user_id == bot.uid:
-        fck_bit = f"Oh! C'mon Master{legend_mention} Im Try To Get Rid Of This Nigga Pls Dont Touch"
-        await legend.answer(fck_bit, cache_time=0, alert=True)
-        return
-    await legend.get_chat()
-    legend_id = legend.query.user_id
-    await legend.edit("Okay let Me Think🤫")
-    await asyncio.sleep(2)
-    await legend.edit("Okay Giving You A Chance🤨")
+        if legend.query.user_id == bot.uid:
+            fck_bit = f"Oh! C'mon Master{legend_mention} Im Try To Get Rid Of This Nigga Pls Dont Touch"
+            await legend.answer(fck_bit, cache_time=0, alert=True)
+            return
+        await legend.get_chat()
+        legend_id = legend.query.user_id
+        await legend.edit("Okay let Me Think🤫")
+        await asyncio.sleep(2)
+        await legend.edit("Okay Giving You A Chance🤨")
     await asyncio.sleep(2)
     await legend.edit(
         "You Will Spam?", buttons= [
