@@ -43,7 +43,7 @@ TOTAL_WARN = Config.MAX_FLOOD_IN_PM
 USER_BOT_WARN_ZERO = "Enough Of Your Flooding In My Master's PM!! \n\n**🚫 Blocked and Reported**"
 
 LEGEND_FIRST = (
-    "**{}**\n{}/{}Please Choose Why u Are Here♥️!!"
+    "__{}__\n**Warning** ~ {}/{}\nPlease choose why u are here.♥️!!"
 )
 
 var_txt = """
