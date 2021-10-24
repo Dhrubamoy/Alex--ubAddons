@@ -57,7 +57,7 @@ if PM_ON_OFF != "DISABLE":
        
     
    
-    @borg.on(admin_cmd(pattern="block|.blk ?(.*)"))
+    @bot.on(admin_cmd(pattern="block|.blk ?(.*)"))
     async def approve_p_m(event):
         if event.fwd_from:
             return
