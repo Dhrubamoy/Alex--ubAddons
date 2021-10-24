@@ -253,18 +253,18 @@ if PM_ON_OFF != "DISABLE":
                                        
     async def do_pm_permit_action(chat_ids, event):
         if chat_ids not in PM_WARNS:
-            PM_WARNS.update({chat.ids: 0})
+            PM_WARNS.update({chat_ids: 0})
         if PM_WARNS[chat_ids] == Config.MAX_FLOOD_IN_PM:
             r = await event.reply(LEGEND_ZERO)
             await asyncio.sleep(3)
             await event.client(functions.contacts.BlockRequest(chat_ids))
             if chat_ids in PREV_REPLY_MESSAGE:
                 await PREV_REPLY_MESSAGE[chat.ids].delete()
-            PREV_REPLY_MESSAGE[chat.ids] = r
+            PREV_REPLY_MESSAGE[chat_ids] = r
             the_message = ""
             the_message += "#BLOCKED_PM\n\n"
-            the_message += f"[User](tg://user?id={chat_id}): {chat_id}\n"
-            the_message += f"Message Counts: {PM_WARNS[chat_id]}\n"
+            the_message += f"[User](tg://user?id={chat_ids}): {chat_ids}\n"
+            the_message += f"Message Counts: {PM_WARNS[chat_ids]}\n"
             try:
                 await event.client.send_message(
                     entity=Config.LOGGER_ID,
