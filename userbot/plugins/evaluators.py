@@ -37,7 +37,7 @@ async def _(event):
         cresult = f"`{curruser}:~$` `{cmd}`\n`{result}`"
     await eor(event, "**Terminal Command Was Executed Successfully. Check LOGGER for Output.**")
     await borg.send_message(
-        Config.PRIVATE_GROUP_BOT_API_ID,
+        Config.LOGGER_ID,
         f"#EXEC \n\nTerminal command was executed sucessfully.\n\n**Command :**  `{cmd}`\n**Result :** \n{cresult}",
     )
 
@@ -76,7 +76,7 @@ async def _(event):
     final_output = f"•  Eval : \n`{cmd}` \n\n•  Result : \n`{evaluation}` \n"
     await eor(LEGENDevent, "**Eval Command Executed. Check out LOGGER_ID Group[Private Group Where All Message Forward]for result.**")
     await borg.send_message(
-        Config.PRIVATE_GROUP_BOT_API_ID,
+        Config.LOGGER_ID,
         f"#EVAL \n\nEval command was executed sucessfully. \n\n{final_output}",
     )
 
@@ -132,7 +132,7 @@ async def _(event):
             await event.delete()
     await eor(event, "**Check out logger for result..**")
     await borg.send_message(
-        Config.PRIVATE_GROUP_BOT_API_ID, 
+        Config.LOGGER_ID, 
         f"#BASH \n\n{output}"
     )
     
