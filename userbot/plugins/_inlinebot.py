@@ -100,7 +100,7 @@ def button(page, modules):
     buttons.append(
         [
             custom.Button.inline(
-               f"ɮǟƈӄ", data=f"page({(max_pages - 1) if page == 0 else (page - 1)})"
+               f"⭅ɮǟƈӄ", data=f"page({(max_pages - 1) if page == 0 else (page - 1)})"
             ),
             custom.Button.inline(
                f"🔥 Close 🔥", data="close"
