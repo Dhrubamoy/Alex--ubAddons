@@ -257,7 +257,7 @@ if PM_ON_OFF != "DISABLE":
         if PM_WARNS[chat_ids] == Config.MAX_FLOOD_IN_PM:
             r = await event.reply(LEGEND_ZERO)
             await asyncio.sleep(3)
-            await event.client(functions.contacts.BlockRequest(chat_id))
+            await event.client(functions.contacts.BlockRequest(chat_ids))
             if chat_ids in PREV_REPLY_MESSAGE:
                 await PREV_REPLY_MESSAGE[chat.ids].delete()
             PREV_REPLY_MESSAGE[chat.ids] = r
@@ -284,10 +284,9 @@ if PM_ON_OFF != "DISABLE":
         new_var = 0
         yas_ser = await tap[new_var].click(event.chat_id)
         PM_WARNS[chat_ids] += 1
-        chat.ids = chat.ids
-        if chat.ids in PREV_REPLY_MESSAGE:
-            await PREV_REPLY_MESSAGE[chat.ids].delete()
-        PREV_REPLY_MESSAGE[chat.ids] = yes_ser
+        if chat_ids in PREV_REPLY_MESSAGE:
+            await PREV_REPLY_MESSAGE[chat_ids].delete()
+        PREV_REPLY_MESSAGE[chat_ids] = yes_ser
 
 NEEDIT = Config.INSTANT_BLOCK
 if NEEDIT == "ENABLE":
