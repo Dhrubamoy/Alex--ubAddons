@@ -157,7 +157,7 @@ def load_module(shortname):
         mod.sudo_cmd = sudo_cmd
         # support for LEGENDBOT originals
         sys.modules["LEGENDBOT.utils"] = userbot.utils
-        sys.modules["userbot"] = userbot
+        sys.modules["LEGENDBOT"] = userbot
         # support for paperplaneextended
         sys.modules["userbot.events"] = userbot.utils
         spec.loader.exec_module(mod)
