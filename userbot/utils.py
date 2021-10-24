@@ -147,8 +147,8 @@ def load_module(shortname):
         # support for uniborg
         sys.modules["uniborg.util"] = userbot.utils
         mod.Config = Config
-        mod.borg = bot
-        mod.LEGENDBOT = bot
+        mod.borg = Legend
+        mod.LEGENDBOT = Legend
         mod.edit_or_reply = edit_or_reply
         mod.delete_LEGEND = delete_LEGEND
         mod.eod = delete_LEGEND
