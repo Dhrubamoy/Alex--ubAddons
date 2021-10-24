@@ -58,7 +58,7 @@ if PM_ON_OFF != "DISABLE":
                 await rko.delete()
        
         
-    @borg.on(admin_cmd(pattern="block|.blk ?(.*)"))
+    @bot.on(admin_cmd(pattern="block|.blk ?(.*)"))
     async def approve_p_m(event):
         if event.fwd_from:
             return
@@ -104,7 +104,7 @@ if PM_ON_OFF != "DISABLE":
         
        
                 
-    @borg.on(admin_cmd(pattern="(a|approve|allow)$"))
+    @bot.on(admin_cmd(pattern="(a|approve|allow)$"))
     async def approve_p_m(event):
         if event.fwd_from:
             return
