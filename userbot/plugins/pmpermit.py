@@ -167,7 +167,7 @@ if PM_ON_OFF != "DISABLE":
                 )
                 await asyncio.sleep(3)
                 await event.delete()
-            elif not pm_sql.is_approved(chat_id):
+            elif not pm_sql.is_approved(chat.id):
                 led = await event.edit("I don't think he was approved !!")
                 await asyncio.sleep(3)
                 await led.delete()
