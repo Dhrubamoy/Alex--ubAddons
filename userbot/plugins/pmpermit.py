@@ -57,7 +57,7 @@ if PM_ON_OFF != "DISABLE":
                 await rko.delete()
        
         
-    @bot.on(admin_cmd(pattern="block|.blk ?(.*)"))
+    @borg.on(admin_cmd(pattern="block|.blk ?(.*)"))
     async def approve_p_m(event):
         if event.fwd_from:
             return
@@ -103,26 +103,27 @@ if PM_ON_OFF != "DISABLE":
         
        
                 
-    @bot.on(admin_cmd(pattern="(a|approve|allow)$"))
+    @borg.on(admin_cmd(pattern="(a|approve|allow)$"))
     async def approve_p_m(event):
         if event.fwd_from:
             return
         if event.is_private:
-            replied_user = await event.client(GetFullUserRequest(await event.get_input_chat()))
+            replied_user = await event.client(GetFullUserRequest(event.chat_id))
             firstname = replied_user.user.first_name
-            if not pm_sql.is_approved(event.chat_id):
-                if event.chat_id in PM_WARNS:
-                    del PM_WARNS[event.chat_id]
-                if event.chat_id in PREV_REPLY_MESSAGE:
-                    await PREV_REPLY_MESSAGE[event.chat_id].delete()
-                    del PREV_REPLY_MESSAGE[event.chat_id]
-                pm_sql.approve(event.chat_id, "Approved")
+            chats = await event.get_chat()
+            if not pm_sql.is_approved(chats.id):
+                if chats.id in PM_WARNS:
+                    del PM_WARNS[chats.id]
+                if chats.id in PREV_REPLY_MESSAGE:
+                    await PREV_REPLY_MESSAGE[chats.id].delete()
+                    del PREV_REPLY_MESSAGE[chats.id]
+                pm_sql.approve(chats.id, "Approved")
                 await event.edit(
                     "Approved to pm [{}](tg://user?id={})".format(firstname, event.chat_id)
                 )
                 await asyncio.sleep(3)
                 await event.delete()
-            elif pm_sql.is_approved(event.chat_id):
+            elif pm_sql.is_approved(chats.id):
                 hel_ = await event.edit('Already In Approved List!!')
                 await asyncio.sleep(3)
                 await hel_.delete()
@@ -143,7 +144,11 @@ if PM_ON_OFF != "DISABLE":
             elif pm_sql.is_approved(reply_s.sender_id):
                 await event.edit('User Already Approved !')
                 await event.delete()
-@bot.on(admin_cmd(pattern="(da|disapprove|disallow)$"))
+    
+                
+          
+        
+    @bot.on(admin_cmd(pattern="(da|disapprove|disallow)$"))
     async def dapprove(event):
         if event.fwd_from:
             return
@@ -154,8 +159,8 @@ if PM_ON_OFF != "DISABLE":
             if str(event.chat_id) in DEVLIST:
                 await event.edit("**Unable to disapprove this user. Seems like God !!**")
                 return
-            if pm_sql.is_approved(chat_id):
-                pm_sql.disapprove(chat_id)
+            if pm_sql.is_approved(chat.id):
+                pm_sql.disapprove(chat.id)
                 await event.edit(
                     "Disapproved User [{}](tg://user?id={})".format(firstname, event.chat_id)
                 )
@@ -185,7 +190,6 @@ if PM_ON_OFF != "DISABLE":
             elif not pm_sql.is_approved(reply_s.sender_id):
                 await event.edit('Not even in my approved list.')
                 await event.delete()    
-                
                 
     @bot.on(admin_cmd(pattern="listapproved$"))
     async def approve_p_m(event):
