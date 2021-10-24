@@ -27,23 +27,36 @@ LEGEND_FIRST = (
     "{} is currently unavailable.\nThis is an automated message.\n\n"
     "{}\n\n**{}Please Choose Why You Are Here!!**".format(legend_mention, CSTM_PMP, max_flood)
 )
-        
-        
-if Config.LOGGER_ID is not None:
+ 
+if PM_ON_OFF != "DISABLE":
     @bot.on(events.NewMessage(outgoing=True))
     async def auto_approve_for_out_going(event):
         if event.fwd_from:
             return
-        chat = await event.get_chat()
-        if event.is_private:
-            if not pm_sql.is_approved(chat.id):
-                if not chat.id in PM_WARNS:
-                    pm_sql.approve(chat.id, "outgoing")
-                    bruh = "αυтσ αρρяσνє∂ в¢σz σƒ συтgσιηg"
-                    rko = await bot.send_message(event.chat_id, bruh)
-                    await asyncio.sleep(3)
-                    await rko.delete()
-
+        if not event.is_private:
+            return
+        chat_ids = event.chat_id
+        sender = await event.client(GetFullUserRequest(await event.get_input_chat()))
+        first_name = sender.user.first_name
+        if chat_ids == bot.uid:
+            return
+        if sender.user.bot:
+            return
+        if sender.user.verified:
+            return
+        if PM_ON_OFF == "DISABLE":
+            return
+        if str(event.chat_id) in DEVLIST:
+            return
+        if not pm_sql.is_approved(event.chat_id):
+            if not event.chat_id in PM_WARNS:
+                pm_sql.approve(event.chat_id, "outgoing")
+                bruh = "αυтσ αρρяσνє∂ в¢σz σƒ συтgσιηg"
+                rko = await bot.send_message(event.chat_id, bruh)
+                await asyncio.sleep(3)
+                await rko.delete()
+       
+        
     @bot.on(admin_cmd(pattern="block|.blk ?(.*)"))
     async def approve_p_m(event):
         if event.fwd_from:
