@@ -200,8 +200,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
                     link_preview=False,
                 )
         
-                                         
-                            
+                                          
 
         elif event.query.user_id == bot.uid and query == "varboy":
             le_gend = var_txt.format(Config.ALIVE_NAME, Config.ALIVE_MSG, Config.ABUSE, Config.ASSISTANT, Config.AWAKE_PIC, Config.BOT_USERNAME, Config.BOT_TOKEN, Config.EXTRA_PLUGIN, Config.HELP_PIC, Config.PM_DATA, Config.PM_PIC, Config.LOGGER_ID)
@@ -324,7 +323,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"tg_okay")))
     async def yeahbaba(legend):
             if legend.query.user_id == bot.uid:
-                fck_bit = f"Oh! C'mon Master {legend_mention} "
+                fck_bit = f"Oh! C'mon Master.This Is for other users"
                 await legend.answer(fck_bit, cache_time=0, alert=True)
                 return
             leg_text = "**So You  Are Here To As usual Request** Okay wait"
@@ -340,7 +339,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
                 )
 
 
-    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"School")))
+    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"school")))
     async def yeahbaba(legend):
             if legend.query.user_id == bot.uid:
                 fck_bit = f"This Is For Other user"
