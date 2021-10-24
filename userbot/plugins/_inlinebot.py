@@ -304,7 +304,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
 
     @tgbot.on(callbackquery.CallbackQuery(data=compile(b"req")))
     async def on_pm_click(legend):
-    if lightning.query.user_id == bot.uid:
+    if legend.query.user_id == bot.uid:
         fck_bit = f"Oh! C'mon Master {legend_mention} Im Try To Get Rid Of This Nigga Pls Dont Touch"
         await legend.answer(fck_bit, cache_time=0, alert=True)
         return
