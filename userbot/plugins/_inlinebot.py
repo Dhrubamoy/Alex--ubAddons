@@ -115,7 +115,7 @@ def button(page, modules):
     modules = CMD_HELP
 if Config.BOT_USERNAME is not None and tgbot is not None:
     @tgbot.on(InlineQuery)  # pylint:disable=E0602
-    async def inline_handler(event):
+    async def inline_handler(chat_ids, event):
         builder = event.builder
         result = None
         query = event.text
@@ -204,7 +204,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
                             
         elif event.query.user_id == bot.uid and query == "pm_warn":
             chat_id = bot.uid,
-            lege_nd = LEGEND_FIRST.format(mssge, PM_WARNS[event.chat_id], TOTAL_WARN)
+            lege_nd = LEGEND_FIRST.format(mssge, PM_WARNS[event.chats_id], TOTAL_WARN)
             result = builder.photo(
                 file=legend_pic,
                 text=lege_nd,
@@ -520,19 +520,19 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
                 alert=True,
             )
 
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"hmm")))
-async def yes_ucan(legend):
-    if legend.query.user_id == bot.uid:
-           lmaoo = "You Are Not Requesting , Lol."
-           await legend.answer(lmaoo, cache_time=0, alert=True)
-           return          
-    await legend.get_chat()
-    await asyncio.sleep(2)
-    legend_id = legend.query.user_id
-    await legend.edit("Okay You Can Wait Till Wait")
-    hmmmmm = "Okay Kindly wait  i will inform you"
-    await bot.send_message(
-              legend.query.user_id, hmmmmm)
+    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"hmm")))
+    async def yes_ucan(legend):
+        if legend.query.user_id == bot.uid:
+               lmaoo = "You Are Not Requesting , Lol."
+               await legend.answer(lmaoo, cache_time=0, alert=True)
+               return          
+        await legend.get_chat()
+        await asyncio.sleep(2)
+        legend_id = legend.query.user_id
+        await legend.edit("Okay You Can Wait Till Wait")
+        hmmmmm = "Okay Kindly wait  i will inform you"
+        await bot.send_message(
+                  legend.query.user_id, hmmmmm)
           
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"lemme_ban")))
 async def yes_ucan(legend):
@@ -563,7 +563,7 @@ async def yeahbaba(legend):
             fck_bit = f"Oh! C'mon Master {legend_mention} "
             await legend.answer(fck_bit, cache_time=0, alert=True)
             return
-        leg_text = "**So You  Are Here To As usual Request* Okay wait"
+        leg_text = "**So You  Are Here To As usual Request** Okay wait"
         legend_id = legend.query.user_id
         await asyncio.sleep(2)
         await legend.edit(f"`Informing To Master {legend_mention}`")
