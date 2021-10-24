@@ -10,7 +10,7 @@ from userbot.Config import Config
 from . import *
 from userbot import ALIVE_NAME, PM_MSG, LEGEND_ID
 from ..config.vars import Config
-from LEGENDBOT.utils import admin_cmd
+from userbot.utils import admin_cmd
 from userbot.cmdhelp import CmdHelp
 from userbot.plugins.sql_helper import pmpermit_sql as pm_sql
 
@@ -35,10 +35,10 @@ if PM_ON_OFF != "DISABLE":
             return
         if not event.is_private:
             return
-        chat_ids = event.chat_id
-        sender = await event.client(GetFullUserRequest(await event.get_input_chat()))
+        chat_id = event.chat_id
+        sender = await event.client(GetFullUserRequest(event.chat_id))
         first_name = sender.user.first_name
-        if chat_ids == bot.uid:
+        if chat_id == bot.uid:
             return
         if sender.user.bot:
             return
@@ -48,7 +48,8 @@ if PM_ON_OFF != "DISABLE":
             return
         if str(event.chat_id) in DEVLIST:
             return
-        if not pm_sql.is_approved(event.chat_id):
+        chat = await event.get_chat()
+        if not pm_sql.is_approved(chat.id):
             if not event.chat_id in PM_WARNS:
                 pm_sql.approve(event.chat_id, "outgoing")
                 bruh = "αυтσ αρρяσνє∂ в¢σz σƒ συтgσιηg"
