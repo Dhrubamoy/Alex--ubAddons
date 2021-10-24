@@ -143,28 +143,23 @@ if PM_ON_OFF != "DISABLE":
             elif pm_sql.is_approved(reply_s.sender_id):
                 await event.edit('User Already Approved !')
                 await event.delete()
-
-    @bot.on(admin_cmd(pattern="(da|disapprove|disallow)$"))
+@bot.on(admin_cmd(pattern="(da|disapprove|disallow)$"))
     async def dapprove(event):
         if event.fwd_from:
             return
         if event.is_private:
-            replied_user = await event.client(GetFullUserRequest(await event.get_input_chat()))
-            firstname = replied_user.user.first_name
-            if str(event.chat_id) in DEVLIST:
-                await event.edit("**Unable to disapprove this user. Seems like God !!**")
-                return
             replied_user = await event.client(GetFullUserRequest(event.chat_id))
             firstname = replied_user.user.first_name
             chat = await event.get_chat()
-            if event.is_private:
-                if pm_sql.is_approved(chat.id):
-                    pm_sql.disapprove(chat.id)
-                await event.edit("Disapproved [{}](tg://user?id={})".format(firstname, chat.id))
-                await asyncio.sleep(2)
+            if str(event.chat_id) in DEVLIST:
+                await event.edit("**Unable to disapprove this user. Seems like God !!**")
+                return
+            if pm_sql.is_approved(chat_id):
+                pm_sql.disapprove(chat_id)
                 await event.edit(
-                        "Disapproved User [{}](tg://user?id={})".format(firstname, chat.id)
-                    )
+                    "Disapproved User [{}](tg://user?id={})".format(firstname, event.chat_id)
+                )
+                await asyncio.sleep(3)
                 await event.delete()
             elif not pm_sql.is_approved(event.chat_id):
                 led = await event.edit("I don't think he was approved !!")
