@@ -311,7 +311,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
         await asyncio.sleep(2)
         await legend.edit(
             "Which Type Of Request U Want?", buttons= [
-            [Button.inline("Emergency", data="school")],
+            [Button.inline("Register", data="school")],
             [Button.inline("As Usual", data="tg_okay")],
             ], 
         )
@@ -325,18 +325,18 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
             if legend.query.user_id == bot.uid:
                 fck_bit = f"Oh! C'mon Master.This Is for other users"
                 await legend.answer(fck_bit, cache_time=0, alert=True)
-                return
-            leg_text = "**So You  Are Here To As usual Request** Okay wait"
-            legend_id = legend.query.user_id
-            await asyncio.sleep(2)
-            await legend.edit(f"`Informing To Master {legend_mention}`")
-            await asyncio.sleep(2)
-            await legend.edit("`Done Informed`")
-            await bot.send_message(legend.query.user_id, leg_text)
-            await bot.send_message(
-                LOG_GP,
-                message=f"Hello, Master Anyone [Requesting](tg://user?id={legend_id}). You To Solve As Usual Problem. He is Waiting.",
-                )
+            else:
+            await event.edit(
+                f"✅ **Request Registered** \n\n{legend_mention} will now decide to talk with u or not\n😐 Till then wait patiently and don't spam!!"
+            )
+            target = await event.client(GetFullUserRequest(event.query.user_id))
+            first_name = html.escape(target.user.first_name)
+            ok = event.query.user_id
+            if first_name is not None:
+                first_name = first_name.replace("\u2060", "")
+            tosend = f"**👀 Hey {legend_mention} !!** \n\n⚜️ You Got A Request From [{first_name}](tg://user?id={ok}) In PM!!"
+            await bot.send_message(LOG_GP, tosend)
+
 
 
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"school")))
@@ -344,18 +344,18 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
             if legend.query.user_id == bot.uid:
                 fck_bit = f"This Is For Other user"
                 await legend.answer(fck_bit, cache_time=0, alert=True)
-                return
-            leg_text = "**So You  Are  Friend** Okay wait"
-            legend_id = legend.query.user_id
-            await asyncio.sleep(2)
-            await legend.edit(f"`Informing To Master {legend_mention}`")
-            await asyncio.sleep(2)
-            await legend.edit("`Done Informed`")
-            await bot.send_message(legend.query.user_id, leg_text)
-            await bot.send_message(
-                LOG_GP,
-                message=f"Hello, Master Anyone [Requesting](tg://user?id={legend_id}). Its an Emergency May be Click Here 👉[Tg Friend](tg://user?id={legend_id}). He Is Waiting.",
-                )
+            else:
+            await event.edit(
+                f"✅ **Request Registered** \n\n{legend_mention} will now decide to look for your request or not.\n😐 Till then wait patiently and don't spam!!"
+            )
+            target = await event.client(GetFullUserRequest(event.query.user_id))
+            first_name = html.escape(target.user.first_name)
+            ok = event.query.user_id
+            if first_name is not None:
+                first_name = first_name.replace("\u2060", "")
+            tosend = f"**👀 Hey {legend_mention} !!** \n\n⚜️ You Got A Request From [{first_name}](tg://user?id={ok}) In PM!!"
+            await bot.send_message(LOG_GP, tosend)
+
 
     @tgbot.on(callbackquery.CallbackQuery(data=compile(b"chat")))
     async def on_pm_click(event):
@@ -388,7 +388,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
         await legend.edit("Okay Giving You A Chance🤨")
         await asyncio.sleep(2)
         await legend.edit(
-            "You Will Spam?", buttons= [
+            "Will You Spam?", buttons= [
             [Button.inline("Yes", data="lemme_ban")],
             [Button.inline("No", data="hmm")],
             ],
@@ -403,8 +403,6 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
             message = f"Hello, Master  [Nibba](tg://user?id={legend_id}). Wants To Request Something.",
             buttons = [Button.url("Contact Him", f"tg://user?id=legend_id")],
         )
-
-
 
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"hmm")))
     async def yes_ucan(legend):
