@@ -5,13 +5,13 @@ from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import MessageEntityMentionName
 
 from userbot import ALIVE_NAME, BIO_MSG, CMD_HELP
-from LEGENDBOT.utils import admin_cmd
+from userbot.utils import admin_cmd
 from userbot.cmdhelp import CmdHelp
 
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "LEGEND User"
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Lêɠêɳ̃dẞøy"
 
-DEFAULTUSERBIO = str(BIO_MSG) if BIO_MSG else "Legendary LEGENDBOY"
-BOTLOG_CHATID = Config.PRIVATE_GROUP_BOT_API_ID
+DEFAULTUSERBIO = str(BIO_MSG) if BIO_MSG else "I am User Of LegendBot @Legend_Userbot"
+BOTLOG_CHATID = Config.LOGGER_ID
 BOTLOG = True
 
 
@@ -60,7 +60,7 @@ async def _(event):
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
-            f"#CLONED\nSuccesfulley cloned [{first_name}](tg://user?id={user_id })",
+            f"#CLONED\nSuccesfulley cloned [{first_name}](tg://user?id={user_id})",
         )
 
 
@@ -143,4 +143,10 @@ CmdHelp("clone").add_command(
   'clone', 'username/reply to user', 'Steals others profile including dp, name, bio.'
 ).add_command(
   'revert', None, 'To get back to your profile but it will show ALIVE_NAME instead of your current name and DEFAULT_BIO instead of your current bio'
+).add_info(
+  "This Command Used To Steal Name, Bio, Profile Pic"
+).add_warning(
+  "Harmless Module✅"
+).add_type(
+  "Official"
 ).add()
