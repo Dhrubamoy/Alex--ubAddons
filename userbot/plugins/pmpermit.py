@@ -88,30 +88,7 @@ if Config.LOGGER_ID is not None:
                 await asyncio.sleep(3)
                 await event.delete()
         
-        
-if PM_ON_OFF != "DISABLE":
-    @bot.on(events.NewMessage(outgoing=True))
-    async def auto_approve_for_out_going(event):
-        if event.fwd_from:
-            return
-        if not event.is_private:
-            return
-        chat_id = event.chat_id
-        sender = await event.client(GetFullUserRequest(await event.get_input_chat()))
-        first_name = sender.user.first_name
-        if chat_id == bot.uid:
-            return
-        if sender.user.bot:
-            return
-        if sender.user.verified:
-            return
-        if PM_ON_OFF == "DISABLE":
-            return
-        if str(event.chat_id) in DEVLIST:
-            return
-        if not pm_sql.is_approved(event.chat_id):
-            if not event.chat_id in PM_WARNS:
-                pm_sql.approve(event.chat_id, "outgoing")
+       
                 
     @bot.on(admin_cmd(pattern="(a|approve|allow)$"))
     async def approve_p_m(event):
