@@ -137,6 +137,8 @@ def load_module(shortname):
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
         mod.bot = Legend
+        mod.borg = bot
+        mod.LEGENDBOT = Legend
         mod.LegendBot = LegendBot
         mod.tbot = LegendBot
         mod.Legend = Legend
@@ -147,8 +149,6 @@ def load_module(shortname):
         # support for uniborg
         sys.modules["uniborg.util"] = userbot.utils
         mod.Config = Config
-        mod.borg = Legend
-        mod.LEGENDBOT = Legend
         mod.edit_or_reply = edit_or_reply
         mod.delete_LEGEND = delete_LEGEND
         mod.eod = delete_LEGEND
