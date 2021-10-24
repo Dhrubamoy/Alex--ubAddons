@@ -316,7 +316,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
             [Button.inline("As Usual", data="tg_okay")],
             ], 
         )
-        yup_text = "`Warning`- ❗️⚠️Don't send any message now wait kindly!!!❗️⚠️"
+        yup_text = "`Warning`-❗️⚠️Don't send any message now wait kindly!!!❗️⚠️"
         await bot.send_message(legend.query.user_id, yup_text)
     
     
@@ -337,6 +337,25 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
             await bot.send_message(
                 LOG_GP,
                 message=f"Hello, Master Anyone [Requesting](tg://user?id={legend_id}). You To Solve As Usual Problem. He is Waiting.",
+                )
+
+
+    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"School")))
+    async def yeahbaba(legend):
+            if legend.query.user_id == bot.uid:
+                fck_bit = f"This Is For Other user"
+                await legend.answer(fck_bit, cache_time=0, alert=True)
+                return
+            leg_text = "**So You  Are  Friend** Okay wait"
+            legend_id = legend.query.user_id
+            await asyncio.sleep(2)
+            await legend.edit(f"`Informing To Master {legend_mention}`")
+            await asyncio.sleep(2)
+            await legend.edit("`Done Informed`")
+            await bot.send_message(legend.query.user_id, leg_text)
+            await bot.send_message(
+                LOG_GP,
+                message=f"Hello, Master Anyone [Requesting](tg://user?id={legend_id}). Its an Emergency May be Click Here 👉[Tg Friend](tg://user?id={legend_id}). He Is Waiting.",
                 )
 
     @tgbot.on(callbackquery.CallbackQuery(data=compile(b"chat")))
@@ -385,6 +404,9 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
             message = f"Hello, Master  [Nibba](tg://user?id={legend_id}). Wants To Request Something.",
             buttons = [Button.url("Contact Him", f"tg://user?id=legend_id")],
         )
+
+
+
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"hmm")))
     async def yes_ucan(legend):
         if legend.query.user_id == bot.uid:
@@ -409,49 +431,16 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
         await asyncio.sleep(2)
         legend_id = legend.query.user_id
         await legend.edit("Get Lost Retard")
-        ban = f"Pahli Fursat Me Nikal\n U Are Blocked" 
+        ban = f"Pahli Fursat Me Nikal\nU Are Blocked" 
         await bot.send_message(
              legend.query.user_id, ban)
         await bot(functions.contacts.BlockRequest(legend.query.user_id))
         await bot.send_message(
                 LOG_GP,
-                message = f"Hello, Master  [Nibba](tg://user?id={legend_id}). Wants To Request Something.",
+                message = f"Hello, Master  [Nibba](tg://user?id={legend_id}). Has Been Blocked Due to Choose Spam",
                 buttons = [Button.url("Contact Him", f"tg://user?id=legend_id")],
             )
-
-    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"School")))
-    async def yeahbaba(legend):
-            if legend.query.user_id == bot.uid:
-                await legend.answer(fck_bit, cache_time=0, alert=True)
-                return
-            leg_text = "**So You  Are  Friend** Okay wait"
-            legend_id = legend.query.user_id
-            await asyncio.sleep(2)
-            await legend.edit(f"`Informing To Master {legend_mention}`")
-            await asyncio.sleep(2)
-            await legend.edit("`Done Informed`")
-            await bot.send_    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"School")))
-    async def yeahbaba(legend):
-            if legend.query.user_id == bot.uid:
-                await legend.answer(fck_bit, cache_time=0, alert=True)
-                return
-            leg_text = "**So You  Are  Friend** Okay wait"
-            legend_id = legend.query.user_id
-            await asyncio.sleep(2)
-            await legend.edit(f"`Informing To Master {legend_mention}`")
-            await asyncio.sleep(2)
-            await legend.edit("`Done Informed`")
-            await bot.send_message(legend.query.user_id, leg_text)
-            await bot.send_message(
-                LOG_GP,
-                message=f"Hello, Master Anyone [Requesting](tg://user?id={legend_id}). Its an Emergency May be Click Here 👉[Tg Friend](tg://user?id={legend_id}). He Is Waiting.",
-message(legend.query.user_id, leg_text)
-            await bot.send_message(
-                LOG_GP,
-                message=f"Hello, Master Anyone [Requesting](tg://user?id={legend_id}). Its an Emergency May be Click Here 👉[Tg Friend](tg://user?id={legend_id}). He Is Waiting.",
-                )
-
-        
+       
     @tgbot.on(callbackquery.CallbackQuery(data=compile(b"unmute")))
     async def on_pm_click(event):
         hunter = (event.data_match.group(2)).decode("UTF-8")
