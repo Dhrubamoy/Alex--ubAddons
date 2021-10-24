@@ -166,7 +166,7 @@ if PM_ON_OFF != "DISABLE":
                 )
                 await asyncio.sleep(3)
                 await event.delete()
-            elif not pm_sql.is_approved(event.chat_id):
+            elif not pm_sql.is_approved(chats.id):
                 led = await event.edit("I don't think he was approved !!")
                 await asyncio.sleep(3)
                 await led.delete()
@@ -253,14 +253,14 @@ if PM_ON_OFF != "DISABLE":
                                        
     async def do_pm_permit_action(chat_ids, event):
         if chat_ids not in PM_WARNS:
-            PM_WARNS.update({chat_ids: 0})
+            PM_WARNS.update({chat.ids: 0})
         if PM_WARNS[chat_ids] == Config.MAX_FLOOD_IN_PM:
             r = await event.reply(LEGEND_ZERO)
             await asyncio.sleep(3)
             await event.client(functions.contacts.BlockRequest(chat_id))
             if chat_ids in PREV_REPLY_MESSAGE:
-                await PREV_REPLY_MESSAGE[chat_ids].delete()
-            PREV_REPLY_MESSAGE[chat_id] = r
+                await PREV_REPLY_MESSAGE[chat.ids].delete()
+            PREV_REPLY_MESSAGE[chat.ids] = r
             the_message = ""
             the_message += "#BLOCKED_PM\n\n"
             the_message += f"[User](tg://user?id={chat_id}): {chat_id}\n"
@@ -284,10 +284,10 @@ if PM_ON_OFF != "DISABLE":
         new_var = 0
         yas_ser = await tap[new_var].click(event.chat_id)
         PM_WARNS[chat_ids] += 1
-        chat_ids = chat_ids
-        if chat_ids in PREV_REPLY_MESSAGE:
-            await PREV_REPLY_MESSAGE[chat_ids].delete()
-        PREV_REPLY_MESSAGE[chat_ids] = yes_ser
+        chat.ids = chat.ids
+        if chat.ids in PREV_REPLY_MESSAGE:
+            await PREV_REPLY_MESSAGE[chat.ids].delete()
+        PREV_REPLY_MESSAGE[chat.ids] = yes_ser
 
 NEEDIT = Config.INSTANT_BLOCK
 if NEEDIT == "ENABLE":
