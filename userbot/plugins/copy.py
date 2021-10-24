@@ -2,7 +2,7 @@ from userbot.utils import admin_cmd
 from userbot import CmdHelp
 
 
-@borg.on(admin_cmd(pattern="cop"))
+@borg.on(admin_cmd(pattern="copy"))
 async def _(event):
     if event.fwd_from:
         return
@@ -14,9 +14,15 @@ async def _(event):
         the_real_message = the_real_message.replace("_", "_")
         await event.edit(the_real_message)
     else:
-        await event.edit("Reply to a  message .cop to copy nd paste ")
+        await event.edit(".copy Reply to a  message to copy and paste")
 
 
 CmdHelp("copy").add_command(
-   'cop', None, 'Use and See'
+   "copy", "<Reply To User>", " To Copy Message"
+).add_info
+   "Its Help U to Copy Message"
+).add_warning(
+   "Harmless Module✅"
+).add_type(
+   "Official"
 ).add()
