@@ -281,12 +281,12 @@ if PM_ON_OFF != "DISABLE":
         
         botusername = Config.BOT_USERNAME
         tap = await bot.inline_query(botusername, "pm_warn")
-        new_var = 0
-        yas_ser = await tap[new_var].click(event.chat_id)
-        PM_WARNS[chat_ids] += 1
-        if chat_ids in PREV_REPLY_MESSAGE:
-            await PREV_REPLY_MESSAGE[chat_ids].delete()
-        PREV_REPLY_MESSAGE[chat_ids] = yes_ser
+        legend_ = await tap[0].click(event.chat_id)
+        PM_WARNS[chat_id] += 1
+        chat_id = chat_id
+        if chat_id in PREV_REPLY_MESSAGE:
+            await PREV_REPLY_MESSAGE[chat_id].delete()
+        PREV_REPLY_MESSAGE[chat_id] = legend_
 
 NEEDIT = Config.INSTANT_BLOCK
 if NEEDIT == "ENABLE":
