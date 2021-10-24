@@ -404,6 +404,42 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
                 buttons = [Button.url("Contact Him", f"tg://user?id=legend_id")],
             )
 
+    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"tg_okay")))
+    async def yeahbaba(legend):
+            if legend.query.user_id == bot.uid:
+                fck_bit = f"Oh! C'mon Master {legend_mention} "
+                await legend.answer(fck_bit, cache_time=0, alert=True)
+                return
+            leg_text = "**So You  Are Here To As usual Request** Okay wait"
+            legend_id = legend.query.user_id
+            await asyncio.sleep(2)
+            await legend.edit(f"`Informing To Master {legend_mention}`")
+            await asyncio.sleep(2)
+            await legend.edit("`Done Informed`")
+            await bot.send_message(legend.query.user_id, leg_text)
+            await bot.send_message(
+                LOG_GP,
+                message=f"Hello, Master Anyone [Requesting](tg://user?id={legend_id}). You To Solve As Usual Problem. He is Waiting.",
+                )
+
+    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"School")))
+    async def yeahbaba(legend):
+            if legend.query.user_id == bot.uid:
+                await legend.answer(fck_bit, cache_time=0, alert=True)
+                return
+            leg_text = "**So You  Are  Friend** Okay wait"
+            legend_id = legend.query.user_id
+            await asyncio.sleep(2)
+            await legend.edit(f"`Informing To Master {legend_mention}`")
+            await asyncio.sleep(2)
+            await legend.edit("`Done Informed`")
+            await bot.send_message(legend.query.user_id, leg_text)
+            await bot.send_message(
+                LOG_GP,
+                message=f"Hello, Master Anyone [Requesting](tg://user?id={legend_id}). Its an Emergency May be Click Here 👉[Tg Friend](tg://user?id={legend_id}). He Is Waiting.",
+                )
+
+        
     @tgbot.on(callbackquery.CallbackQuery(data=compile(b"unmute")))
     async def on_pm_click(event):
         hunter = (event.data_match.group(2)).decode("UTF-8")
@@ -551,45 +587,5 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
                 cache_time=0,
                 alert=True,
             )
-
-        
-
-
-    
-    
-    
-    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"tg_okay")))
-    async def yeahbaba(legend):
-            if legend.query.user_id == bot.uid:
-                fck_bit = f"Oh! C'mon Master {legend_mention} "
-                await legend.answer(fck_bit, cache_time=0, alert=True)
-                return
-            leg_text = "**So You  Are Here To As usual Request** Okay wait"
-            legend_id = legend.query.user_id
-            await asyncio.sleep(2)
-            await legend.edit(f"`Informing To Master {legend_mention}`")
-            await asyncio.sleep(2)
-            await legend.edit("`Done Informed`")
-            await bot.send_message(legend.query.user_id, leg_text)
-            await bot.send_message(
-                LOG_GP,
-                message=f"Hello, Master Anyone [Requesting](tg://user?id={legend_id}). You To Solve As Usual Problem. He is Waiting.",
-                )
-    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"School")))
-    async def yeahbaba(legend):
-            if legend.query.user_id == bot.uid:
-                await legend.answer(fck_bit, cache_time=0, alert=True)
-                return
-            leg_text = "**So You  Are  Friend** Okay wait"
-            legend_id = legend.query.user_id
-            await asyncio.sleep(2)
-            await legend.edit(f"`Informing To Master {legend_mention}`")
-            await asyncio.sleep(2)
-            await legend.edit("`Done Informed`")
-            await bot.send_message(legend.query.user_id, leg_text)
-            await bot.send_message(
-                LOG_GP,
-                message=f"Hello, Master Anyone [Requesting](tg://user?id={legend_id}). Its an Emergency May be Click Here 👉[Tg Friend](tg://user?id={legend_id}). He Is Waiting.",
-                )
 
         
