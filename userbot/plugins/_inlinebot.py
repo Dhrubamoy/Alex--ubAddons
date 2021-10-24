@@ -303,22 +303,61 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
             )
 
     @tgbot.on(callbackquery.CallbackQuery(data=compile(b"req")))
-    async def on_pm_click(event):
-        if event.query.user_id == bot.uid:
-            reply_pop_up_alert = "This is for other users!"
-            await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
-        else:
-            await event.edit(
-                f"✅ **𝒟𝑒𝒶𝓇 𝒴𝑜𝓊𝓇 𝑅𝑒𝓆𝓊𝑒𝓈𝓉 𝑅𝑒𝑔𝒾𝓈𝓉𝑒𝓇𝑒𝒹 𝒮𝓊𝒸𝒸𝑒𝓈𝓈𝒻𝓊𝓁**.\n😐 Till then wait patiently and don't spam!!"
-            )
-            target = await event.client(GetFullUserRequest(event.query.user_id))
-            first_name = html.escape(target.user.first_name)
-            ok = event.query.user_id
-            if first_name is not None:
-                first_name = first_name.replace("\u2060", "")
-            tosend = f"**👀 Hey {legend_mention} !!** \n\n⚜️ You Got A Request From [{first_name}](tg://user?id={ok}) In PM!!"
-            await bot.send_message(LOG_GP, tosend)
-
+    async def on_pm_click(legend):
+    if lightning.query.user_id == bot.uid:
+        fck_bit = f"Oh! C'mon Master {legend_mention} Im Try To Get Rid Of This Nigga Pls Dont Touch"
+        await legend.answer(fck_bit, cache_time=0, alert=True)
+        return
+    await legend.get_chat()
+    legend_id = legend.query.user_id
+    await legend.edit("Oh You Wanna Talk With My Master\n\nPls Wait Dear \n\n**Btw** **You Can Wait For My Master**")
+    await asyncio.sleep(2)
+    await legend.edit(
+        "Which Type Of Request U Want?", buttons= [
+        [Button.inline("Emergency", data="school")],
+        [Button.inline("As Usual", data="tg_okay")],
+        ], 
+    )
+    yup_text = "`Warning`- ❗️⚠️Don't send any message now wait kindly!!!❗️⚠️"
+    await bot.send_message(legend.query.user_id, yup_text)
+    
+    
+    
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"tg_okay")))
+async def yeahbaba(legend):
+        if legend.query.user_id == bot.uid:
+            fck_bit = f"Oh! C'mon Master {legend_mention} "
+            await legend.answer(fck_bit, cache_time=0, alert=True)
+            return
+        leg_text = "**So You  Are Here To As usual Request* Okay wait"
+        legend_id = legend.query.user_id
+        await asyncio.sleep(2)
+        await legend.edit(f"`Informing To Master {legend_mention}`")
+        await asyncio.sleep(2)
+        await legend.edit("`Done Informed`")
+        await bot.send_message(legend.query.user_id, leg_text)
+        await bot.send_message(
+        LOG_GP,
+        message=f"Hello, Master Anyone [Requesting](tg://user?id={legend_id}). You To Solve As Usual Problem. He is Waiting.",
+    
+    )
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"School")))
+async def yeahbaba(legend):
+        if legend.query.user_id == bot.uid:
+            fck_bit = f"Oh! C'mon Master {legend_mention}"
+            await legend.answer(fck_bit, cache_time=0, alert=True)
+            return
+        leg_text = "**So You  Are  Friend** Okay wait"
+        legend_id = legend.query.user_id
+        await asyncio.sleep(2)
+        await legend.edit(f"`Informing To Master {legend_mention}`")
+        await asyncio.sleep(2)
+        await legend.edit("`Done Informed`")
+        await bot.send_message(legend.query.user_id, leg_text)
+        await bot.send_message(
+        LOG_GP,
+        message=f"Hello, Master Anyone [Requesting](tg://user?id={legend_id}). Its an Emergency May be Click Here 👉[Tg Friend](tg://user?id={legend_id}). He Is Waiting.",
+        )
 
     @tgbot.on(callbackquery.CallbackQuery(data=compile(b"chat")))
     async def on_pm_click(event):
