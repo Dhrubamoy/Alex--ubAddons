@@ -259,7 +259,7 @@ if PM_ON_OFF != "DISABLE":
             await asyncio.sleep(3)
             await event.client(functions.contacts.BlockRequest(chat_ids))
             if chat_ids in PREV_REPLY_MESSAGE:
-                await PREV_REPLY_MESSAGE[chat.ids].delete()
+                await PREV_REPLY_MESSAGE[chat_ids].delete()
             PREV_REPLY_MESSAGE[chat_ids] = r
             the_message = ""
             the_message += "#BLOCKED_PM\n\n"
