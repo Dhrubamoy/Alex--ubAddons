@@ -8,7 +8,6 @@ from telethon import events, functions, Button, custom
 from telethon.tl.functions.users import GetFullUserRequest
 from userbot.Config import Config
 from userbot import ALIVE_NAME, PM_MSG, LEGEND_ID
-from ..config.vars import Config
 from userbot.utils import admin_cmd
 from userbot.cmdhelp import CmdHelp
 from userbot.plugins.sql_helper import pmpermit_sql as pm_sql
@@ -57,8 +56,7 @@ if PM_ON_OFF != "DISABLE":
                 await rko.delete()
        
     
-    
-if Config.LOGGER_ID is not None:
+   
     @borg.on(admin_cmd(pattern="block|.blk ?(.*)"))
     async def approve_p_m(event):
         if event.fwd_from:
