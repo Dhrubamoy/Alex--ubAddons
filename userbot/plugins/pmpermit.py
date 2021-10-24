@@ -154,6 +154,9 @@ if PM_ON_OFF != "DISABLE":
             if str(event.chat_id) in DEVLIST:
                 await event.edit("**Unable to disapprove this user. Seems like God !!**")
                 return
+            replied_user = await event.client(GetFullUserRequest(event.chat_id))
+            firstname = replied_user.user.first_name
+            chat = await event.get_chat()
             if event.is_private:
                 if pm_sql.is_approved(chat.id):
                     pm_sql.disapprove(chat.id)
