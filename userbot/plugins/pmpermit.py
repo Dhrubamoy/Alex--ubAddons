@@ -154,13 +154,15 @@ if PM_ON_OFF != "DISABLE":
             if str(event.chat_id) in DEVLIST:
                 await event.edit("**Unable to disapprove this user. Seems like God !!**")
                 return
-            if pm_sql.is_approved(event.chat_id):
-                pm_sql.disapprove(event.chat_id)
-                await event.edit(
-                    "Disapproved User [{}](tg://user?id={})".format(firstname, event.chat_id)
+            if event.is_private:
+            if pm_sql.is_approved(chat.id):
+                pm_sql.disapprove(chat.id)
+            await event.edit("Disapproved [{}](tg://user?id={})".format(firstname, chat.id))
+            await asyncio.sleep(2)
+            await event.edit(
+                    "Disapproved User [{}](tg://user?id={})".format(firstname, chat.id)
                 )
-                await asyncio.sleep(3)
-                await event.delete()
+            await event.delete()
             elif not pm_sql.is_approved(event.chat_id):
                 led = await event.edit("I don't think he was approved !!")
                 await asyncio.sleep(3)
