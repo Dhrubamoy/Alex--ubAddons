@@ -155,14 +155,14 @@ if PM_ON_OFF != "DISABLE":
                 await event.edit("**Unable to disapprove this user. Seems like God !!**")
                 return
             if event.is_private:
-            if pm_sql.is_approved(chat.id):
-                pm_sql.disapprove(chat.id)
-            await event.edit("Disapproved [{}](tg://user?id={})".format(firstname, chat.id))
-            await asyncio.sleep(2)
-            await event.edit(
-                    "Disapproved User [{}](tg://user?id={})".format(firstname, chat.id)
-                )
-            await event.delete()
+                if pm_sql.is_approved(chat.id):
+                    pm_sql.disapprove(chat.id)
+                await event.edit("Disapproved [{}](tg://user?id={})".format(firstname, chat.id))
+                await asyncio.sleep(2)
+                await event.edit(
+                        "Disapproved User [{}](tg://user?id={})".format(firstname, chat.id)
+                    )
+                await event.delete()
             elif not pm_sql.is_approved(event.chat_id):
                 led = await event.edit("I don't think he was approved !!")
                 await asyncio.sleep(3)
@@ -235,7 +235,7 @@ if PM_ON_OFF != "DISABLE":
         chat_ids = event.sender_id
         if LEGEND_FIRST == message_text:
             return
-        sender = await bot.get_entity(await event.get_input_chat())
+        sender = await bot.get_entity(event.sender_id)
         if chat_ids == bot.uid:
             return
         if sender.bot:
@@ -279,12 +279,13 @@ if PM_ON_OFF != "DISABLE":
         
         botusername = Config.BOT_USERNAME
         tap = await bot.inline_query(botusername, "pm_warn")
-        legend_ = await tap[0].click(event.chat_id)
+        new_var = 0
+        yas_ser = await tap[new_var].click(event.chat_id)
         PM_WARNS[chat_ids] += 1
         chat_ids = chat_ids
         if chat_ids in PREV_REPLY_MESSAGE:
             await PREV_REPLY_MESSAGE[chat_ids].delete()
-        PREV_REPLY_MESSAGE[chat_ids] = legend_
+        PREV_REPLY_MESSAGE[chat_ids] = yes_ser
 
 NEEDIT = Config.INSTANT_BLOCK
 if NEEDIT == "ENABLE":
