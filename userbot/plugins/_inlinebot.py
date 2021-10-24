@@ -491,6 +491,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
         else:
             result += f"**💬 𝙴𝚡𝚙𝚕𝚊𝚗𝚊𝚝𝚒𝚘𝚗 :**  `{command['usage']}`\n"
             result += f"**⌨️ 𝙵𝚘𝚛 𝙴𝚡𝚊𝚖𝚙𝚕𝚎 :**  `{COMMAND_HAND_LER[:1]}{command['example']}`\n\n"
+            
         if event.query.user_id == bot.uid or event.query.user_id in Config.SUDO_USERS:
             await event.edit(
                 result,
@@ -507,7 +508,10 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
             )
 if Config.BOT_USERNAME is not None and tgbot is not None:
     @tgbot.on(InlineQuery)  # pylint:disable=E0602
-    async def do_pm_permit_action(chat_id, event):
+    async def dapprove(event):
+        replied_user = await event.client(GetFullUserRequest(event.chat_id))
+        firstname = replied_user.user.first_name
+        chat = await event.get_chat()
         builder = event.builder
         result = None
         query = event.text
