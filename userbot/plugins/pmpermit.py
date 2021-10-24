@@ -12,7 +12,7 @@ from ..config.vars import Config
 from userbot.utils import admin_cmd
 from userbot.cmdhelp import CmdHelp
 from userbot.plugins.sql_helper import pmpermit_sql as pm_sql
-
+from . import *
 
 WARN_PIC = Config.PM_PIC or "https://te.legra.ph/file/0c605739ddaa472cad75f.jpg"
 max_flood = Config.MAX_FLOOD_IN_PM
