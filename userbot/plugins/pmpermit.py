@@ -35,7 +35,7 @@ if PM_ON_OFF != "DISABLE":
         if not event.is_private:
             return
         chat_id = event.chat_id
-        sender = await event.client(GetFullUserRequest(event.chat_id))
+        sender = await event.client(GetFullUserRequest(await event.get_input_chat()))
         first_name = sender.user.first_name
         if chat_id == bot.uid:
             return
@@ -56,8 +56,10 @@ if PM_ON_OFF != "DISABLE":
                 await asyncio.sleep(3)
                 await rko.delete()
        
-        
-    @bot.on(admin_cmd(pattern="block|.blk ?(.*)"))
+    
+    
+if Var.LOGGER_ID is not None:
+    @borg.on(admin_cmd(pattern="block|.blk ?(.*)"))
     async def approve_p_m(event):
         if event.fwd_from:
             return
@@ -66,14 +68,14 @@ if PM_ON_OFF != "DISABLE":
         event.pattern_match.group(1)
         chat = await event.get_chat()
         if event.is_private:
-            if chat.id == 2082798662:
+            if chat.id == 2080279511:
                 await event.edit(
                     "You tried to block my master😡. GoodBye for 100 seconds!🥱😴😪💤"
                 )
                 time.sleep(100)
             else:
-                if pm_sql.is_approved(chat.id):
-                    pm_sql.disapprove(chat.id)
+                if pmpermit_sql.is_approved(chat.id):
+                    pmpermit_sql.disapprove(chat.id)
                     await event.edit(
                         "gєτ ℓοѕτ мγ мαѕτєя нαѕ ϐℓοϲκє∂ υ!!.\nϐℓοϲκє∂ [{}](tg://user?id={})".format(
                             firstname, chat.id
@@ -82,7 +84,7 @@ if PM_ON_OFF != "DISABLE":
                     await asyncio.sleep(3)
                     await event.client(functions.contacts.BlockRequest(chat.id))
         elif event.is_group:
-            if chat.id == 2082798662:
+            if chat.id == 2080279511:
                 await event.edit(
                     "You tried to block my master😡. GoodBye for 100 seconds!🥱😴😪💤"
                 )
@@ -94,13 +96,12 @@ if PM_ON_OFF != "DISABLE":
                     return
                 replied_user = await event.client(GetFullUserRequest(reply_s.sender_id))
                 firstname = replied_user.user.first_name
-                if pm_sql.is_approved(event.chat_id):
-                    pm_sql.disapprove(event.chat_id)
+                if pmpermit_sql.is_approved(event.chat_id):
+                    pmpermit_sql.disapprove(event.chat_id)
                 await event.edit("ϐℓοϲκє∂ [{}](tg://user?id={})".format(firstname, reply_s.sender_id))
                 await event.client(functions.contacts.BlockRequest(reply_s.sender_id))
                 await asyncio.sleep(3)
                 await event.delete()
-        
        
                 
     @bot.on(admin_cmd(pattern="(a|approve|allow)$"))
