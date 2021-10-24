@@ -242,7 +242,20 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
                     [Button.url("💞 Deploy 💞", "https://dashboard.heroku.com/new?button-url=https%3A%2F%2Fgithub.com%2FLEGEND-OS%2FLEGENDBOT&template=https%3A%2F%2Fgithub.com%2FLEGEND-OS%2FLEGENDBOT")],
                 ],
             )
-
+        elif event.query.user_id == bot.uid and query == "pm_warn":
+            lege_nd = LEGEND_FIRST.format(mssge, PM_TOY, TOTAL_WARN)
+            result = builder.photo(
+                file=legend_pic,
+                text=lege_nd,
+                buttons=[
+                    [
+                        custom.Button.inline("📝 Request 📝", data="req"),
+                        custom.Button.inline("💬 Chat 💬", data="chat"),
+                    ],
+                    [custom.Button.inline("🚫 Spam 🚫", data="heheboi")],
+                    [custom.Button.inline("Curious ❓", data="pmclick")],
+                ],
+            )
         elif query.startswith("http"):
             part = query.split(" ")
             result = builder.article(
@@ -357,7 +370,39 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
             message = f"Hello, Master  [Nibba](tg://user?id={legend_id}). Wants To Request Something.",
             buttons = [Button.url("Contact Him", f"tg://user?id=legend_id")],
         )
-     
+    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"hmm")))
+    async def yes_ucan(legend):
+        if legend.query.user_id == bot.uid:
+               lmaoo = "You Are Not Requesting , Lol."
+               await legend.answer(lmaoo, cache_time=0, alert=True)
+               return          
+        await legend.get_chat()
+        await asyncio.sleep(2)
+        legend_id = legend.query.user_id
+        await legend.edit("Okay You Can Wait Till Wait")
+        hmmmmm = "Okay Kindly wait  i will inform you"
+        await bot.send_message(
+                  legend.query.user_id, hmmmmm)
+          
+    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"lemme_ban")))
+    async def yes_ucan(legend):
+        if legend.query.user_id == bot.uid:
+               lmaoo = "You Are Not Requesting , Lol."
+               await legend.answer(lmaoo, cache_time=0, alert=True)
+               return    
+        await legend.get_chat()
+        await asyncio.sleep(2)
+        legend_id = legend.query.user_id
+        await legend.edit("Get Lost Retard")
+        ban = f"Pahli Fursat Me Nikal\n U Are Blocked" 
+        await bot.send_message(
+             legend.query.user_id, ban)
+        await bot(functions.contacts.BlockRequest(legend.query.user_id))
+        await bot.send_message(
+                LOG_GP,
+                message = f"Hello, Master  [Nibba](tg://user?id={legend_id}). Wants To Request Something.",
+                buttons = [Button.url("Contact Him", f"tg://user?id=legend_id")],
+            )
 
     @tgbot.on(callbackquery.CallbackQuery(data=compile(b"unmute")))
     async def on_pm_click(event):
@@ -506,63 +551,9 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
                 cache_time=0,
                 alert=True,
             )
-if Config.BOT_USERNAME is not None and tgbot is not None:
-    @tgbot.on(InlineQuery)  # pylint:disable=E0602
-    async def dapprove(event):
-        replied_user = await event.client(GetFullUserRequest(event.chat_id))
-        firstname = replied_user.user.first_name
-        chat = await event.get_chat()
-        builder = event.builder
-        result = None
-        query = event.text
-        PM_TOY = PM_WARNS
-        if event.query.user_id == bot.uid and query == "pm_warn":
-            lege_nd = LEGEND_FIRST.format(mssge, PM_TOY, TOTAL_WARN)
-            result = builder.photo(
-                file=legend_pic,
-                text=lege_nd,
-                buttons=[
-                    [
-                        custom.Button.inline("📝 Request 📝", data="req"),
-                        custom.Button.inline("💬 Chat 💬", data="chat"),
-                    ],
-                    [custom.Button.inline("🚫 Spam 🚫", data="heheboi")],
-                    [custom.Button.inline("Curious ❓", data="pmclick")],
-                ],
-            )
-    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"hmm")))
-    async def yes_ucan(legend):
-        if legend.query.user_id == bot.uid:
-               lmaoo = "You Are Not Requesting , Lol."
-               await legend.answer(lmaoo, cache_time=0, alert=True)
-               return          
-        await legend.get_chat()
-        await asyncio.sleep(2)
-        legend_id = legend.query.user_id
-        await legend.edit("Okay You Can Wait Till Wait")
-        hmmmmm = "Okay Kindly wait  i will inform you"
-        await bot.send_message(
-                  legend.query.user_id, hmmmmm)
-          
-    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"lemme_ban")))
-    async def yes_ucan(legend):
-        if legend.query.user_id == bot.uid:
-               lmaoo = "You Are Not Requesting , Lol."
-               await legend.answer(lmaoo, cache_time=0, alert=True)
-               return    
-        await legend.get_chat()
-        await asyncio.sleep(2)
-        legend_id = legend.query.user_id
-        await legend.edit("Get Lost Retard")
-        ban = f"Pahli Fursat Me Nikal\n U Are Blocked" 
-        await bot.send_message(
-             legend.query.user_id, ban)
-        await bot(functions.contacts.BlockRequest(legend.query.user_id))
-        await bot.send_message(
-                LOG_GP,
-                message = f"Hello, Master  [Nibba](tg://user?id={legend_id}). Wants To Request Something.",
-                buttons = [Button.url("Contact Him", f"tg://user?id=legend_id")],
-            )
+
+        
+
 
     
     
@@ -587,7 +578,6 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"School")))
     async def yeahbaba(legend):
             if legend.query.user_id == bot.uid:
-                fck_bit = f"Oh! C'mon Master {legend_mention}"
                 await legend.answer(fck_bit, cache_time=0, alert=True)
                 return
             leg_text = "**So You  Are  Friend** Okay wait"
