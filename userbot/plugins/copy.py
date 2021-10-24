@@ -19,7 +19,7 @@ async def _(event):
 
 CmdHelp("copy").add_command(
    "copy", "<Reply To User>", " To Copy Message"
-).add_info
+).add_info(
    "Its Help U to Copy Message"
 ).add_warning(
    "Harmless Module✅"
