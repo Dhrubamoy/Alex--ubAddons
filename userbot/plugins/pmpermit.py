@@ -34,7 +34,7 @@ if PM_ON_OFF != "DISABLE":
         if not event.is_private:
             return
         chat_id = event.chat_id
-        sender = await event.client(GetFullUserRequest(await event.get_input_chat()))
+        sender = await event.client(GetFullUserRequest(event.chat_id))
         first_name = sender.user.first_name
         if chat_id == bot.uid:
             return
