@@ -515,7 +515,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
         builder = event.builder
         result = None
         query = event.text
-        PM_TOY = PM_WARNS[event.chat_id]
+        PM_TOY = PM_WARNS
         if event.query.user_id == bot.uid and query == "pm_warn":
             lege_nd = LEGEND_FIRST.format(mssge, PM_TOY, TOTAL_WARN)
             result = builder.photo(
