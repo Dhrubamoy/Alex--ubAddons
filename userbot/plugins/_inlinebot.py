@@ -202,21 +202,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
         
                                          
                             
-        elif event.query.user_id == bot.uid and query == "pm_warn":
-            chat_id = bot.uid,
-            lege_nd = LEGEND_FIRST.format(mssge, PM_WARNS[event.chats_id], TOTAL_WARN)
-            result = builder.photo(
-                file=legend_pic,
-                text=lege_nd,
-                buttons=[
-                    [
-                        custom.Button.inline("📝 Request 📝", data="req"),
-                        custom.Button.inline("💬 Chat 💬", data="chat"),
-                    ],
-                    [custom.Button.inline("🚫 Spam 🚫", data="heheboi")],
-                    [custom.Button.inline("Curious ❓", data="pmclick")],
-                ],
-            )
+
         elif event.query.user_id == bot.uid and query == "varboy":
             le_gend = var_txt.format(Config.ALIVE_NAME, Config.ALIVE_MSG, Config.ABUSE, Config.ASSISTANT, Config.AWAKE_PIC, Config.BOT_USERNAME, Config.BOT_TOKEN, Config.EXTRA_PLUGIN, Config.HELP_PIC, Config.PM_DATA, Config.PM_PIC, Config.LOGGER_ID)
             var_btn = [
@@ -519,7 +505,27 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
                 cache_time=0,
                 alert=True,
             )
-
+if Config.BOT_USERNAME is not None and tgbot is not None:
+    @tgbot.on(InlineQuery)  # pylint:disable=E0602
+    async def do_pm_permit_action(chat_id, event):
+        builder = event.builder
+        result = None
+        query = event.text
+        PM_TOY = PM_WARNS[event.chat_id]
+        if event.query.user_id == bot.uid and query == "pm_warn":
+            lege_nd = LEGEND_FIRST.format(mssge, PM_TOY, TOTAL_WARN)
+            result = builder.photo(
+                file=legend_pic,
+                text=lege_nd,
+                buttons=[
+                    [
+                        custom.Button.inline("📝 Request 📝", data="req"),
+                        custom.Button.inline("💬 Chat 💬", data="chat"),
+                    ],
+                    [custom.Button.inline("🚫 Spam 🚫", data="heheboi")],
+                    [custom.Button.inline("Curious ❓", data="pmclick")],
+                ],
+            )
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"hmm")))
     async def yes_ucan(legend):
         if legend.query.user_id == bot.uid:
@@ -592,3 +598,5 @@ async def yeahbaba(legend):
         LOG_GP,
         message=f"Hello, Master Anyone [Requesting](tg://user?id={legend_id}). Its an Emergency May be Click Here 👉[Tg Friend](tg://user?id={legend_id}). He Is Waiting.",
         )
+
+        
