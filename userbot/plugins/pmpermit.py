@@ -220,7 +220,7 @@ if PM_ON_OFF != "DISABLE":
                 await event.delete()
         else:
             await event.edit(APPROVED_PMs)
-
+            
     @bot.on(events.NewMessage(incoming=True))
     async def on_new_private_message(event):
         if not event.is_private:
@@ -233,11 +233,11 @@ if PM_ON_OFF != "DISABLE":
             await bot.send_message(bot.uid, "Please Set `LOGGER_ID` For Working Of Pm Permit")
             return
         message_text = event.message.raw_text
-        chat_ids = event.sender_id
+        chat_id = event.sender_id
         if LEGEND_FIRST == message_text:
             return
-        sender = await bot.get_entity(event.sender_id)
-        if chat_ids == bot.uid:
+        sender = await bot.get_entity(chat_id)
+        if chat_id == bot.uid:
             return
         if sender.bot:
             return
@@ -245,28 +245,28 @@ if PM_ON_OFF != "DISABLE":
             return
         if PM_ON_OFF == "DISABLE":
             return
-        if pm_sql.is_approved(chat_ids):
+        if pm_sql.is_approved(chat_id):
             return
-        if not pm_sql.is_approved(chat_ids):
-            await do_pm_permit_action(chat_ids, event)
+        if not pm_sql.is_approved(chat_id):
+            await do_pm_permit_action(chat_id, event)
                                        
-    async def do_pm_permit_action(chat_ids, event):
-        if chat_ids not in PM_WARNS:
-            PM_WARNS.update({chat_ids: 0})
-        if PM_WARNS[chat_ids] == Config.MAX_FLOOD_IN_PM:
+    async def do_pm_permit_action(chat_id, event):
+        if chat_id not in PM_WARNS:
+            PM_WARNS.update({chat_id: 0})
+        if PM_WARNS[chat_id] == Config.MAX_FLOOD_IN_PM:
             r = await event.reply(LEGEND_ZERO)
             await asyncio.sleep(3)
-            await event.client(functions.contacts.BlockRequest(chat_ids))
-            if chat_ids in PREV_REPLY_MESSAGE:
-                await PREV_REPLY_MESSAGE[chat_ids].delete()
-            PREV_REPLY_MESSAGE[chat_ids] = r
+            await event.client(functions.contacts.BlockRequest(chat_id))
+            if chat_id in PREV_REPLY_MESSAGE:
+                await PREV_REPLY_MESSAGE[chat_id].delete()
+            PREV_REPLY_MESSAGE[chat_id] = r
             the_message = ""
             the_message += "#BLOCKED_PM\n\n"
-            the_message += f"[User](tg://user?id={chat_ids}): {chat_ids}\n"
-            the_message += f"Message Counts: {PM_WARNS[chat_ids]}\n"
+            the_message += f"[User](tg://user?id={chat_id}): {chat_id}\n"
+            the_message += f"Message Counts: {PM_WARNS[chat_id]}\n"
             try:
                 await event.client.send_message(
-                    entity=Config.LOGGER_ID,
+                    entity=Var.PRIVATE_GROUP_ID,
                     message=the_message,
                     # reply_to=,
                     # parse_mode="html",
