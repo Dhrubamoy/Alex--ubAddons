@@ -1,4 +1,4 @@
-from userbot import bot
+from userbot import bot, udb
 from sys import argv
 import sys
 import os
