@@ -1,4 +1,4 @@
-from userbot import dB
+from userbot.startup import udb
 import os
 from telethon.tl.types import ChatBannedRights
 ENV = bool(os.environ.get("ENV", False))
