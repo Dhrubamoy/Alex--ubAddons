@@ -74,9 +74,9 @@ if ENV:
         UPSTREAM_REPO = os.environ.get(
             "UPSTREAM_REPO", "https://github.com/LEGEND-OS/LEGENDBOT"
         )
-        APP_ID = os.environ.get("APP_ID", None)
-        API_HASH = os.environ.get("API_HASH", None)
-        LEGEND_STRING = os.environ.get("LEGEND_STRING", None)
+        APP_ID = dB.get("APP_ID", None)
+        API_HASH = dB.get("API_HASH", None)
+        LEGEND_STRING = dB.get("LEGEND_STRING", None)
         BOT_MODE = os.environ.get("BOT_MODE", "ON")
         BOTLOG = True
         EXTRA_PLUGIN = os.environ.get("EXTRA_PLUGIN", None)
