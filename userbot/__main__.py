@@ -1,148 +1,189 @@
-from userbot import bot, dB
+from userbot import bot
 from sys import argv
 import sys
-from telethon.errors.rpcerrorlist import PhoneNumberInvalidError
 import os
 from telethon import TelegramClient
 from var import Var
-from userbot.config.Config import Config
+from userbot.Config import Config
 from telethon.tl.functions.channels import InviteToChannelRequest, JoinChannelRequest
-from userbot.utils import load_module, start_assistant, load_addons
+from userbot.utils import load_module, start_assistant, load_addons, load_abuse 
+from userbot.utils import *
 from userbot import LOAD_PLUG, LOGS, LEGENDversion
 from pathlib import Path
-from .startup.start import *
 import asyncio
+import glob
 import telethon.utils
 os.system("pip install -U telethon")
 
-ld= dB.get("SUDO_COMMAND_HAND_LER")
-lds = dB.get("COMMAND_HAND_LER")
+l2= Config.SUDO_COMMAND_HAND_LER
+LEGEND_PIC = "https://te.legra.ph/file/a3e358b1331d6ef9a6299.mp4"
+l1 = Config.COMMAND_HAND_LER
 
-   
 
-import glob
-import os
-import sys
-from pathlib import Path
+LOAD_USERBOT = os.environ.get("LOAD_USERBOT", True)
+LOAD_ASSISTANT = os.environ.get("LOAD_ASSISTANT", True)    
 
-import telethon.utils
-from telethon import TelegramClient
-from telethon.tl.functions.channels import InviteToChannelRequest, JoinChannelRequest
-
-from . import LOGS, bot, tbot
-from .startup.session import Legend, L2, L3, L4, L5
-# let's get the bot ready
-async def l1(bot_token):
+async def add_bot(bot_token):
     try:
         await bot.start(bot_token)
         bot.me = await bot.get_me()
         bot.uid = telethon.utils.get_peer_id(bot.me)
     except Exception as e:
-        LOGS.error(f"LEGEND_STRING - {str(e)}")
+        print(f"LEGEND_STRING - {str(e)}")
         sys.exit()
-
-
-# Multi-Client helper
-async def legend_client(client):
-    client.me = await client.get_me()
-    client.uid = telethon.utils.get_peer_id(client.me)
-
-
-SESSION_2 = os.environ.get("SESSION_2", None)
-SESSION_3 = os.environ.get("SESSION_3", None)
-SESSION_4 = os.environ.get("SESSION_4", None)
-SESSION_5 = os.environ.get("SESSION_5", None)
-
-# Multi-Client Starter
-def legends():
-    failed = 0
-    if SESSION_2:
-        LOGS.info("SESSION_2 detected! Starting 2nd Client.")
-        try:
-            L2.start()
-            L2.loop.run_until_complete(legend_client(L2))
-        except:
-            LOGS.info("SESSION_2 failed. Please Check Your String session.")
-            failed += 1
-
-    if SESSION_3:
-        LOGS.info("SESSION_3 detected! Starting 3rd Client.")
-        try:
-            L3.start()
-            L3.loop.run_until_complete(legend_client(L3))
-        except:
-            LOGS.info("SESSION_3 failed. Please Check Your String session.")
-            failed += 1
-
-    if SESSION_4:
-        LOGS.info("SESSION_4 detected! Starting 4th Client.")
-        try:
-            L4.start()
-            L4.loop.run_until_complete(legend_client(L4))
-        except:
-            LOGS.info("SESSION_4 failed. Please Check Your String session.")
-            failed += 1
-
-    if SESSION_5:
-        LOGS.info("SESSION_5 detected! Starting 5th Client.")
-        try:
-            L5.start()
-            L5.loop.run_until_complete(legend_client(H5))
-        except:
-            LOGS.info("SESSION_5 failed. Please Check Your String session.")
-            failed += 1
-
-    if not SESSION_2:
-        failed += 1
-    if not SESSION_3:
-        failed += 1
-    if not SESSION_4:
-        failed += 1
-    if not SESSION_5:
-        failed += 1
-    return failed
-
-
-# legendbot starter...
+        
+        
 if len(sys.argv) not in (1, 3, 4):
     bot.disconnect()
 else:
     bot.tgbot = None
     try:
-        if Config.BOT_USERNAME is not None:
+        if Var.BOT_USERNAME is not None:
             LOGS.info("Checking Telegram Bot Username...")
-            bot.tgbot = tbot
+            bot.tgbot = TelegramClient(
+                "BOT_TOKEN", api_id=Var.APP_ID, api_hash=Var.API_HASH
+            ).start(bot_token=Var.BOT_TOKEN)
             LOGS.info("Checking Completed. Proceeding to next step...")
-            LOGS.info("🔰 Starting LegendBot 🔰")
-            bot.loop.run_until_complete(l1(Config.BOT_USERNAME))
-            failed_client = legends()
-            total = 5 - failed_client
-            LOGS.info("🔥 LegendBot Startup Completed 🔥")
-            LOGS.info(f"» Total Clients = {total} «")
+            LOGS.info("♥️ Starting LegendBot ♥️")
+            bot.loop.run_until_complete(add_bot(Config.BOT_USERNAME))
+            LOGS.info("🥇🔥 LegendBot Startup Completed 🔥🥇")
         else:
             bot.start()
-            failed_client = legends()
-            total = 5 - failed_client
-            LOGS.info(f"» Total Clients = {total} «")
     except Exception as e:
         LOGS.error(f"BOT_TOKEN - {str(e)}")
         sys.exit()
-print("Loading Modules / Plugins")
+
+print("📍⚜Loading Modules / Plugins⚜✔")
+
+
+async def module():
+  import glob
+  path = 'userbot/plugins/*.py'
+  files = glob.glob(path)
+  for name in files:
+    with open(name) as f:
+      path1 = Path(f.name)
+      shortname = path1.stem
+      load_module(shortname.replace(".py", ""))
+    
+assistant = os.environ.get("ASSISTANT", None)
+async def assistants():
+    if assistant == "ON":
+        path = "userbot/plugins/assistant/*.py"
+        files = glob.glob(path)
+        for name in files:
+            with open(name) as f:
+                path1 = Path(f.name)
+                shortname = path1.stem
+                start_assistant(shortname.replace(".py", ""))
+
+addon = os.environ.get("EXTRA_PLUGIN", None)             
+async def addons():
+    if addon == "ON":
+        extra_repo = "https://github.com/LEGEND-OS/LegendBot-Addons"
+        try:
+            os.system(f"git clone {extra_repo}")  
+        except BaseException:
+            pass
+        import glob
+        LOGS.info("🔱🏆Loading Extra Plugin🏆🔱")
+        path = "LegendBot-Addons/*.py"
+        files = glob.glob(path)
+        for name in files:
+            with open(name) as ex:
+                path2 = Path(ex.name)
+                shortname = path2.stem
+                try:
+                    load_addons(shortname.replace(".py", ""))
+                    if not shortname.startswith("__") or shortname.startswith("_"):
+                        LOGS.info(f"[LEGEND-BOT 2.1] - Addons -  ✅Installed✅ - {shortname}")
+                except Exception as e:
+                    LOGS.warning(f"[LEGEND-BOT 2.1] - Addons - ⚠️⚡ERROR⚡⚠️ - {shortname}")
+                    LOGS.warning(str(e))
+    else:
+        print("Addons Not Loading")
+        
+abuse = os.environ.get("ABUSE", None) 
+async def abuses():
+    if abuse == "ON":
+        abuse_repo = "https://github.com/LEGEND-OS/ABUSE"
+        try:
+            os.system(f"git clone {abuse_repo}")  
+        except BaseException:
+            pass
+        import glob
+        LOGS.info("🤬🤪 Loding Abuse 🤪🤬")
+        path = "ABUSE/*.py"
+        files = glob.glob(path)
+        for name in files:
+            with open(name) as ex:
+                path2 = Path(ex.name)
+                shortname = path2.stem
+                try:
+                    load_abuse(shortname.replace(".py", ""))
+                    if not shortname.startswith("__") or shortname.startswith("_"):
+                        LOGS.info(f"[LEGEND-BOT 2.1] - Abuse -  🔥📍Installed✔ - {shortname}")
+                except Exception as e:
+                    LOGS.warning(f"[LEGEND-BOT 2.1] - Abuse - ⚠️⚡ERROR⚡⚠️ - {shortname}")
+                    LOGS.warning(str(e))
+    else:
+        print("Abuse Not Loading")
+
+async def fetch_plugins_from_channel():
+    """Fetch Plugins From Channel"""
+    try:
+        async for message in bot.search_messages(
+            Config.PLUGIN_CHANNEL, filter="document", query=".py"
+        ):
+            hmm = message.document.file_name
+            if not os.path.exists(os.path.join("./userbot/plugins/", hmm)):
+                await bot.download_media(message, file_name="./userbot/plugins/")
+    except BaseException as e:
+        LOGS.warning(f"Failed! To Install Plugins From Plugin Channel Due To {e}!")
+        return
+    LOGS.info("All Plugins From Plugin Channel Loaded!")
+
 
 bot.loop.run_until_complete(module())
 bot.loop.run_until_complete(addons())
-
-print(f"""『🔱🇱 🇪 🇬 🇪 🇳 🇩 B O T 🔱』➙𖤍࿐ IS ON!!! LEGEND VERSION :- {LEGENDversion}
-TYPE :-  .legend OR .ping CHECK IF I'M ON!
+bot.loop.run_until_complete(abuses())
+bot.loop.run_until_complete(assistants())
+bot.loop.run_until_complete(fetch_plugins_from_channel())
+print(f"""🔥DONE DEPLOYED SUCCESSFULLY🔥
 ╔════❰LEGENDBOT❱═❍⊱❁۪۪
-║┣⪼ Version - 3.0
-║┣⪼ TELETHON - 1.23.0
-║┣⪼ Redis Status - Working Fine
+║┣⪼ OWNER - LEGEND
+║┣⪼ Group - @Legend_Userbot
+║┣⪼ CREATOR - @The_LegendBoy
+║┣⪼ TELETHON - 1.2.0
 ║┣⪼ ✨ 『🔱🇱 🇪 🇬 🇪 🇳 🇩 🔱』𝐔𝐬𝐞𝐫𝐛𝐨𝐭✨
 ║╰━━━━━━━━━━━━━━━➣
 ╚══════════════════❍⊱""")
+async def legend_is_on():
+    try:
+        if Config.LOGGER_ID != 0:
+            await bot.send_file(
+                Config.LOGGER_ID,
+                LEGEND_PIC,
+                caption=f"#START \nDeployed LEGENDBOT Successfully\n\n**LEGENDBOT- {LEGENDversion}**\n\nType `{l1}help` or `{l1}ping` to check! \n\nJoin [LegendBot Channel](t.me/Official_LegendBot) for Updates & [LegendBot Chat](t.me/Legend_Userbot) for any query regarding LegendBot",
+            )
+    except Exception as e:
+        print(str(e))
 
+# Join LegndBot Channel after deploying 🤐😅
+    try:
+        await bot(JoinChannelRequest("@Official_LegendBot"))
+    except BaseException:
+        pass
+
+    try:
+        await bot(JoinChannelRequest("@Legend_Userbot"))
+    except BaseException:
+         pass
+
+bot.loop.create_task(legend_is_on())
 if len(sys.argv) not in (1, 3, 4):
     bot.disconnect()
 else:
+    bot.tgbot = None
     bot.run_until_disconnected()
+
