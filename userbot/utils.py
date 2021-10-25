@@ -18,7 +18,7 @@ from telethon.tl.types import ChannelParticipantAdmin, ChannelParticipantCreator
 from var import Var
 from userbot.helpers.exceptions import CancelProcess
 from userbot.Config import Config
-from userbot import bot, Legend, LegendBot, kbot
+from userbot import bot, Legend, LegendBot
 from telethon import events
 from pathlib import Path
 from var import Var
