@@ -61,7 +61,7 @@ else:
     print("Could Not Connnect To Redis Check Your Redis Key And Pass if facing issue come to support group @Legend_userbot Quitting!")
     sys.exit(1)
 
-udb = db
+udb = dB
 
 DEVS = ["2082798662"]
 CMD_LIST = {}
