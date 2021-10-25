@@ -3,7 +3,7 @@ import re
 from . import *
 Redis = dB.get
 
-@bot.on(admin_cmd(pattern="setredis ?(.*)",)
+@bot.on(admin_cmd(pattern="setredis")
 async def _(event):
     ok = await eor(event, "`...`")
     delim = " " if re.search("[|]", event.pattern_match.group(1)) is None else " | "
@@ -31,7 +31,7 @@ async def _(event):
 
 
 @bot.on(admin_cmd(
-    pattern="delredis ?(.*)",
+    pattern="delredis ?(.*)"
 )
 async def _(event):
     ok = await eor(event, "`Deleting data from Redis ...`")
