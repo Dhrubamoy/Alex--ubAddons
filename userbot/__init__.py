@@ -4,6 +4,7 @@ import time
 from telethon.sessions import StringSession
 from telethon import TelegramClient
 from userbot.Config import Config
+from .startup import *
 from var import Var
 from telethon.network.connection.tcpabridged import ConnectionTcpAbridged
 BOTLOG = True
