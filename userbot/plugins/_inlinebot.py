@@ -27,6 +27,7 @@ help_pic = Config.HELP_PIC
 VAR_PIC = Config.ALIVE_PIC
 PREV_REPLY_MESSAGE = {}
 mybot = Config.BOT_USERNAME
+COMMAND_HAND_LER = os.environ.get("COMMAND_HAND_LER", r".")
 if mybot.startswith("@"):
     botname = mybot
 else:
