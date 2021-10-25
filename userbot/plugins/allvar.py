@@ -67,6 +67,10 @@ async def legend_a(event):
 
 CmdHelp("allvar").add_command(
     'allvar', None, 'υѕє αи∂ ѕєє'
+).add_info(
+     "U can See All Var Except LEGEND_STRING"
+).add_warning(
+     "Harm Module"
 ).add_type(
      "Official"
 ).add()
