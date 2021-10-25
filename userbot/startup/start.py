@@ -1,7 +1,25 @@
+from .. import *
+from ..utils import *
+from userbot import bot, dB
+from sys import argv
+import sys
+from telethon.errors.rpcerrorlist import PhoneNumberInvalidError
+import os
+from telethon import TelegramClient
+ALIVE_PIC = dB.get("ALIVE_PIC")
+LEGEND_PIC = ALIVE_PIC or "https://telegra.ph/file/75e1eda1498620f0030ea.jpg"
+from var import Var
+from userbot.config.Config import Config
+from telethon.tl.functions.channels import InviteToChannelRequest, JoinChannelRequest
+from userbot.utils import load_module, start_assistant, load_addons
+from userbot import LOAD_PLUG, LOGS, LEGENDversion
 from pathlib import Path
+import asyncio
+import telethon.utils
 import glob
-from userbot import *
-from userbot.utils import load_module, start_assistant, load_addons, load_abuse 
+LOAD_USERBOT = dB.get("LOAD_USERBOT") or False
+LOAD_ASSISTANT = dB.get("LOAD_ASSISTANT")
+
 async def module():
   import glob
   path = 'userbot/plugins/*.py'
@@ -11,28 +29,26 @@ async def module():
       path1 = Path(f.name)
       shortname = path1.stem
       load_module(shortname.replace(".py", ""))
-    
-assistant = dB.get("ASSISTANT", None)
-async def assistants():
-    if assistant == "ON":
-        path = "userbot/plugins/assistant/*.py"
-        files = glob.glob(path)
-        for name in files:
-            with open(name) as f:
-                path1 = Path(f.name)
-                shortname = path1.stem
-                start_assistant(shortname.replace(".py", ""))
 
-addon = os.environ.get("EXTRA_PLUGIN", None)             
+async def assistant():
+    path = "userbot/plugins/Assistant/*.py"
+    files = glob.glob(path)
+    for name in files:
+      with open(name) as f:
+        path1 = Path(f.name)
+        shortname = path1.stem
+        start_assistant(shortname.replace(".py", ""))
+
+addon = dB.get("ADDONS") or False                
 async def addons():
-    if addon == "ON":
+    if addon == "True":
         extra_repo = "https://github.com/LEGEND-OS/LegendBot-Addons"
         try:
             os.system(f"git clone {extra_repo}")  
         except BaseException:
             pass
         import glob
-        LOGS.info("🔱🏆Loading Extra Plugin🏆🔱")
+        LOGS.info("Loading Addons")
         path = "LegendBot-Addons/*.py"
         files = glob.glob(path)
         for name in files:
@@ -42,49 +58,31 @@ async def addons():
                 try:
                     load_addons(shortname.replace(".py", ""))
                     if not shortname.startswith("__") or shortname.startswith("_"):
-                        LOGS.info(f"[LEGEND-BOT 2.1] - Addons -  ✅Installed✅ - {shortname}")
+                        LOGS.info(f"LEGEND-BOT 3.0 - Addons -  Installed - {shortname}")
                 except Exception as e:
-                    LOGS.warning(f"[LEGEND-BOT 2.1] - Addons - ⚠️⚡ERROR⚡⚠️ - {shortname}")
+                    LOGS.warning(f"LEGEND-BOT 3.0 - Addons - ERROR - {shortname}")
                     LOGS.warning(str(e))
     else:
         print("Addons Not Loading")
-        
-abuse = os.environ.get("ABUSE", None) 
-async def abuses():
-    if abuse == "ON":
-        abuse_repo = "https://github.com/LEGEND-OS/ABUSE"
-        try:
-            os.system(f"git clone {abuse_repo}")  
-        except BaseException:
-            pass
-        import glob
-        LOGS.info("🤬🤪 Loding Abuse 🤪🤬")
-        path = "ABUSE/*.py"
-        files = glob.glob(path)
-        for name in files:
-            with open(name) as ex:
-                path2 = Path(ex.name)
-                shortname = path2.stem
-                try:
-                    load_abuse(shortname.replace(".py", ""))
-                    if not shortname.startswith("__") or shortname.startswith("_"):
-                        LOGS.info(f"[LEGEND-BOT 2.1] - Abuse -  🔥📍Installed✔ - {shortname}")
-                except Exception as e:
-                    LOGS.warning(f"[LEGEND-BOT 2.1] - Abuse - ⚠️⚡ERROR⚡⚠️ - {shortname}")
-                    LOGS.warning(str(e))
-    else:
-        print("Abuse Not Loading")
 
-async def fetch_plugins_from_channel():
-    """Fetch Plugins From Channel"""
+async def legend_is_on():
     try:
-        async for message in bot.search_messages(
-            Config.PLUGIN_CHANNEL, filter="document", query=".py"
-        ):
-            hmm = message.document.file_name
-            if not os.path.exists(os.path.join("./userbot/plugins/", hmm)):
-                await bot.download_media(message, file_name="./userbot/plugins/")
-    except BaseException as e:
-        LOGS.warning(f"Failed! To Install Plugins From Plugin Channel Due To {e}!")
-        return
-    LOGS.info("All Plugins From Plugin Channel Loaded!")
+        if dB.get('LOGGER_ID') != 0:
+            await bot.send_file(
+                dB.get('LOGGER_ID'),
+                LEGEND_PIC,
+                caption=f"#START \n\nDeployed LEGENDBOT Successfully\n\n**LEGENDBOT- {LEGENDversion}**\n\nType `{ll}op` or `{ll}alive` to check! \n\nJoin [LegendBot Channel](t.me/Its_LegendBot) for Updates & [LegendBot Chat](t.me/Legend_Userbot) for any query regarding LegendBot",
+            )
+    except Exception as e:
+        print(str(e))
+
+# Join LegndBot Channel after deploying 🤐😅
+    try:
+        await bot(JoinChannelRequest("@Its_LegendBot"))
+    except BaseException:
+        pass
+
+    try:
+        await bot(JoinChannelRequest("@Legend_Userbot"))
+    except BaseException:
+         pass

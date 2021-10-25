@@ -1,3 +1,4 @@
+import os
 REDIS_KEY = os.environ.get("REDIS_KEY", None)
 REDIS_PASSWORD = os.environ.get("REDIS_PASSWORD", None)
 if REDIS_KEY and REDIS_PASSWORD:
@@ -13,3 +14,4 @@ if REDIS_KEY and REDIS_PASSWORD:
     print("Connected To Redis")
 else:
     print("Could Not Connnect To Redis Check Your Redis Key And Pass if facing issue come to support group @Legend_userbot Quitting!")
+    sys.exit(1)
