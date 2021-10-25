@@ -1,5 +1,6 @@
 from pathlib import Path
 import glob
+from . import *
 from userbot.utils import load_module, start_assistant, load_addons, load_abuse 
 async def module():
   import glob
@@ -11,7 +12,7 @@ async def module():
       shortname = path1.stem
       load_module(shortname.replace(".py", ""))
     
-assistant = os.environ.get("ASSISTANT", None)
+assistant = dB.get("ASSISTANT", None)
 async def assistants():
     if assistant == "ON":
         path = "userbot/plugins/assistant/*.py"
