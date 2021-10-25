@@ -83,7 +83,7 @@ class CmdHelp:
                 if not self.WARNING == "":
                     result += f"**⚠️ 𝚆𝚊𝚛𝚗𝚒𝚗𝚐 :** {self.WARNING}\n"
                     result += f"**📍 Type:** {self.TYPE}\n"
-                    result += f"**ℹ️ Info:** {self.INFO}\n\n"
+                    result += f"**ℹ️ Info:** {self.INFO}\n"
                 
                             
         for command in self.COMMANDS:
