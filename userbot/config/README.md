@@ -1,1 +1,1 @@
-#OFFICIAL LEGENDBOT
+Main Config
