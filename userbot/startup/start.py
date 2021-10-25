@@ -1,6 +1,6 @@
 from pathlib import Path
 import glob
-from . import *
+from userbot import *
 from userbot.utils import load_module, start_assistant, load_addons, load_abuse 
 async def module():
   import glob
