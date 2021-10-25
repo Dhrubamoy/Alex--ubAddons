@@ -242,20 +242,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
                     [Button.url("💞 Deploy 💞", "https://dashboard.heroku.com/new?button-url=https%3A%2F%2Fgithub.com%2FLEGEND-OS%2FLEGENDBOT&template=https%3A%2F%2Fgithub.com%2FLEGEND-OS%2FLEGENDBOT")],
                 ],
             )
-        elif event.query.user_id == bot.uid and query == "pm_warn":
-            lege_nd = LEGEND_FIRST.format(mssge, PM_TOY, TOTAL_WARN)
-            result = builder.photo(
-                file=legend_pic,
-                text=lege_nd,
-                buttons=[
-                    [
-                        custom.Button.inline("📝 Request 📝", data="req"),
-                        custom.Button.inline("💬 Chat 💬", data="chat"),
-                    ],
-                    [custom.Button.inline("🚫 Spam 🚫", data="heheboi")],
-                    [custom.Button.inline("Curious ❓", data="pmclick")],
-                ],
-            )
+
         elif query.startswith("http"):
             part = query.split(" ")
             result = builder.article(
@@ -588,3 +575,30 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
             )
 
         
+if Config.BOT_USERNAME is not None and tgbot is not None:
+    @tgbot.on(InlineQuery)  # pylint:disable=E0602
+    async def do_pm_permit_action(chat_id, event):
+        if chat_id not in PM_WARNS:
+            PM_WARNS.update({chat_id: 0})
+        if PM_WARNS[chat_id] == Config.MAX_FLOOD_IN_PM:
+            r = await event.reply(LEGEND_ZERO)
+            await asyncio.sleep(3)
+            await event.client(functions.contacts.BlockRequest(chat_id))
+            if chat_id in PREV_REPLY_MESSAGE:
+                await PREV_REPLY_MESSAGE[chat_id].delete()
+            PREV_REPLY_MESSAGE[chat_id] = r
+            PM_TOY = {PM_WARNS[chat_id]}
+        if event.query.user_id == bot.uid and query == "pm_warn":
+            lege_nd = LEGEND_FIRST.format(mssge, PM_TOY, TOTAL_WARN)
+            result = builder.photo(
+                file=legend_pic,
+                text=lege_nd,
+                buttons=[
+                    [
+                        custom.Button.inline("📝 Request 📝", data="req"),
+                        custom.Button.inline("💬 Chat 💬", data="chat"),
+                    ],
+                    [custom.Button.inline("🚫 Spam 🚫", data="heheboi")],
+                    [custom.Button.inline("Curious ❓", data="pmclick")],
+                ],
+            )
