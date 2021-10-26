@@ -47,6 +47,19 @@ LEGEND_FIRST = (
     "__{}__\n**Warning** ~ {}/{}\nPlease choose why u are here.♥️!!"
 )
 
+    async def do_pm_permit_action(chat_id, event):
+        if chat_id not in PM_WARNS:
+            PM_WARNS.update({chat_id: 0})
+        if PM_WARNS[chat_id] == Config.MAX_FLOOD_IN_PM:
+            r = await event.reply(LEGEND_ZERO)
+            await asyncio.sleep(3)
+            await event.client(functions.contacts.BlockRequest(chat_id))
+            if chat_id in PREV_REPLY_MESSAGE:
+                await PREV_REPLY_MESSAGE[chat_id].delete()
+            PREV_REPLY_MESSAGE[chat_id] = r
+            PM_TOY += f"Message Counts: {PM_WARNS[chat_id]}"
+
+
 var_txt = """
      ♦️ALL VAR♦️
 •ALIVE_NAME = `{}`
@@ -116,7 +129,7 @@ def button(page, modules):
 if Config.BOT_USERNAME is not None and tgbot is not None:
     @tgbot.on(InlineQuery)  # pylint:disable=E0602
     async def inline_handler(event):
-        PM_TOY = PM_WARNS
+        PM_YO = do_pm_permit_action(PM_TOY)
         builder = event.builder
         result = None
         query = event.text
@@ -201,7 +214,20 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
                     link_preview=False,
                 )
         
-                                          
+        elif event.query.user_id == bot.uid and query == "pm_warn":
+            lege_nd = LEGEND_FIRST.format(mssge, PM_YO, TOTAL_WARN)
+            result = builder.photo(
+                file=legend_pic,
+                text=lege_nd,
+                buttons=[
+                    [
+                        custom.Button.inline("📝 Request 📝", data="req"),
+                        custom.Button.inline("💬 Chat 💬", data="chat"),
+                    ],
+                    [custom.Button.inline("🚫 Spam 🚫", data="heheboi")],
+                    [custom.Button.inline("Curious ❓", data="pmclick")],
+                ],
+            )
 
         elif event.query.user_id == bot.uid and query == "varboy":
             le_gend = var_txt.format(Config.ALIVE_NAME, Config.ALIVE_MSG, Config.ABUSE, Config.ASSISTANT, Config.AWAKE_PIC, Config.BOT_USERNAME, Config.BOT_TOKEN, Config.EXTRA_PLUGIN, Config.HELP_PIC, Config.PM_DATA, Config.PM_PIC, Config.LOGGER_ID)
@@ -587,18 +613,4 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
             if chat_id in PREV_REPLY_MESSAGE:
                 await PREV_REPLY_MESSAGE[chat_id].delete()
             PREV_REPLY_MESSAGE[chat_id] = r
-            the_message += f"Message Counts: {PM_WARNS[chat_id]}"
-        if event.query.user_id == bot.uid and query == "pm_warn":
-            lege_nd = LEGEND_FIRST.format(mssge, the_message, TOTAL_WARN)
-            result = builder.photo(
-                file=legend_pic,
-                text=lege_nd,
-                buttons=[
-                    [
-                        custom.Button.inline("📝 Request 📝", data="req"),
-                        custom.Button.inline("💬 Chat 💬", data="chat"),
-                    ],
-                    [custom.Button.inline("🚫 Spam 🚫", data="heheboi")],
-                    [custom.Button.inline("Curious ❓", data="pmclick")],
-                ],
-            )
+            
