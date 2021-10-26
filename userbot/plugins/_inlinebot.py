@@ -47,7 +47,7 @@ LEGEND_FIRST = (
     "__{}__\n**Warning** ~ {}/{}\nPlease choose why u are here.♥️!!"
 )
 from userbot.plugin.pmpermit import PM_WARNS
-PM_TOY = print(PM_WARNS[event.chat_id]
+PM_TOY = print(PM_WARNS[event.chat_id])
 
 
 var_txt = """
