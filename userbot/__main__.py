@@ -19,10 +19,6 @@ l2= Config.SUDO_COMMAND_HAND_LER
 LEGEND_PIC = "https://te.legra.ph/file/a3e358b1331d6ef9a6299.mp4"
 l1 = Config.COMMAND_HAND_LER
 
-
-LOAD_USERBOT = os.environ.get("LOAD_USERBOT", True)
-LOAD_ASSISTANT = os.environ.get("LOAD_ASSISTANT", True)    
-
 async def add_bot(bot_token):
     try:
         await bot.start(bot_token)
@@ -75,7 +71,7 @@ async def assistants():
         except BaseException:
             pass
         import glob
-        LOGS.info("🤖Loading Assistant Plugin🤖c)
+        LOGS.info("🤖Loading Assistant Plugin🤖")
         path = "assistant/*.py"
         files = glob.glob(path)
         for name in files:
@@ -162,8 +158,9 @@ bot.loop.run_until_complete(module())
 bot.loop.run_until_complete(addons())
 bot.loop.run_until_complete(abuses())
 bot.loop.run_until_complete(assistants())
-bot.loop.run_until_complete(fetch_plugins_from_channel())
-print(f"""🔥DONE DEPLOYED SUCCESSFULLY🔥
+
+
+print(f"""♥️🇮🇳♥️⚜♥️
 ╔════❰LEGENDBOT❱═❍⊱❁۪۪
 ║┣⪼ OWNER - LEGEND
 ║┣⪼ Group - @Legend_Userbot
@@ -200,4 +197,3 @@ if len(sys.argv) not in (1, 3, 4):
 else:
     bot.tgbot = None
     bot.run_until_disconnected()
-
