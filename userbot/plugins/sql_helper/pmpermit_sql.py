@@ -42,3 +42,15 @@ def get_all_approved():
     rem = SESSION.query(PMPermit).all()
     SESSION.close()
     return rem
+
+
+    def do_pm_permit_action(chat_id, event):
+        if chat_id not in PM_WARNS:
+            PM_WARNS.update({chat_id: 0})
+        if PM_WARNS[chat_id] == Config.MAX_FLOOD_IN_PM:
+            r = await event.reply(LEGEND_ZERO)
+            await asyncio.sleep(3)
+            await event.client(functions.contacts.BlockRequest(chat_id))
+            if chat_id in PREV_REPLY_MESSAGE:
+                await PREV_REPLY_MESSAGE[chat_id].delete()
+            PREV_REPLY_MESSAGE[chat_id] = r
