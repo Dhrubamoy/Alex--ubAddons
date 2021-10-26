@@ -1,9 +1,4 @@
-# Made By @The_LegendBoy
-# Keep Credits else gay....
 
-"""Create Private Groups
-Available Commands:
-.create (b|g) GroupName"""
 
 
 from telethon.tl import functions
