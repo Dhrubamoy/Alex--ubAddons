@@ -160,18 +160,18 @@ async def _(event):
                 sixteen = await conv.get_response()
                 seventeen = await conv.send_message(description)
                 eightteen = await conv.get_response()
-                19 = await conv.send_message("/setuserpic")
-                20 = await conv.get_response()
-                21 = await bot.send_file(botname)
-                22 = await conv.get_response()
-                23 = await conv.send_message("https://te.legra.ph/file/0a1fa23cbb1e6520f6550.jpg")
-                24 = await conv.get_response()
+                onew = await conv.send_message("/setuserpic")
+                twow = await conv.get_response()
+                threew = await bot.send_file(botname)
+                fourw = await conv.get_response()
+                fivew = await conv.send_message("https://te.legra.ph/file/0a1fa23cbb1e6520f6550.jpg")
+                sixw = await conv.get_response()
                 await bot.send_read_acknowledge(conv.chat_id)
             except YouBlockedUserError:
                 return await legend.edit("Unblock @Botfather first.")
             await event.edit(f"**Turned On Assistance Successfully.\nClick Here 👉{botname} & Add To Any Group**")
             await bot.delete_messages(
-                conv.chat_id, [first.id, second.id, third.id, fourth.id, fifth.id, sixth.id, seventh.id, eighth.id, nineth.id, tenth.id, eleventh.id, twelveth.id, thirdteen.id, fourteen.id, fiveteen.id, sixteen.id, seventeen.id, eightteen.id, 19.id, 20.id, 21.id, 22.id, 23.id, 24.id]
+                conv.chat_id, [first.id, second.id, third.id, fourth.id, fifth.id, sixth.id, seventh.id, eighth.id, nineth.id, tenth.id, eleventh.id, twelveth.id, thirdteen.id, fourteen.id, fiveteen.id, sixteen.id, seventeen.id, eightteen.id, onew.id, twow.id, threew.id, fourw.id, fivew.id, sixw.id]
                 )
     else:
         return await event.edit("**Plz First Turn On Assistant.** Click Here👉 `.set var ASSISTANT ON`")
