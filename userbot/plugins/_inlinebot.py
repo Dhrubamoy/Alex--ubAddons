@@ -587,9 +587,9 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
             if chat_id in PREV_REPLY_MESSAGE:
                 await PREV_REPLY_MESSAGE[chat_id].delete()
             PREV_REPLY_MESSAGE[chat_id] = r
-            PM_TOY = {PM_WARNS[chat_id]}
+            the_message += f"Message Counts: {PM_WARNS[chat_id]}"
         if event.query.user_id == bot.uid and query == "pm_warn":
-            lege_nd = LEGEND_FIRST.format(mssge, PM_TOY, TOTAL_WARN)
+            lege_nd = LEGEND_FIRST.format(mssge, the_message, TOTAL_WARN)
             result = builder.photo(
                 file=legend_pic,
                 text=lege_nd,
