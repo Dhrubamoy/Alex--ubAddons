@@ -47,7 +47,7 @@ LEGEND_FIRST = (
 )
 
 from userbot.plugins.pmpermit import PM_WARNS
-PM_TOY = print(PM_WARNS[chat_id])
+
 
 
 var_txt = """
@@ -118,8 +118,8 @@ def button(page, modules):
     modules = CMD_HELP
 if Config.BOT_USERNAME is not None and tgbot is not None:
     @tgbot.on(InlineQuery)  # pylint:disable=E0602
-    async def inline_handler(event):
-        PM_YO = do_pm_permit_action(PM_TOY)
+    async def _(event):
+        PM_TOY = print(PM_WARNS(event.echat_id])
         builder = event.builder
         result = None
         query = event.text
