@@ -118,8 +118,8 @@ def button(page, modules):
     modules = CMD_HELP
 if Config.BOT_USERNAME is not None and tgbot is not None:
     @tgbot.on(InlineQuery)  # pylint:disable=E0602
-    async def _(event):
-        PM_TOY = print(PM_WARNS[event.chat_id])
+    async def inline_handler(event):
+        PM_TOY = PM_WARNS[event.chat_id]
         builder = event.builder
         result = None
         query = event.text
