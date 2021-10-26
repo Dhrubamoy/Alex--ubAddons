@@ -46,18 +46,8 @@ USER_BOT_WARN_ZERO = "Enough Of Your Flooding In My Master's PM!! \n\n**🚫 Blo
 LEGEND_FIRST = (
     "__{}__\n**Warning** ~ {}/{}\nPlease choose why u are here.♥️!!"
 )
-
-    async def do_pm_permit_action(chat_id, event):
-        if chat_id not in PM_WARNS:
-            PM_WARNS.update({chat_id: 0})
-        if PM_WARNS[chat_id] == Config.MAX_FLOOD_IN_PM:
-            r = await event.reply(LEGEND_ZERO)
-            await asyncio.sleep(3)
-            await event.client(functions.contacts.BlockRequest(chat_id))
-            if chat_id in PREV_REPLY_MESSAGE:
-                await PREV_REPLY_MESSAGE[chat_id].delete()
-            PREV_REPLY_MESSAGE[chat_id] = r
-            PM_TOY += f"Message Counts: {PM_WARNS[chat_id]}"
+from userbot.plugin.pmpermit import PM_WARNS
+PM_TOY = print(PM_WARNS[event.chat_id]
 
 
 var_txt = """
@@ -215,7 +205,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
                 )
         
         elif event.query.user_id == bot.uid and query == "pm_warn":
-            lege_nd = LEGEND_FIRST.format(mssge, PM_YO, TOTAL_WARN)
+            lege_nd = LEGEND_FIRST.format(mssge, PM_TOY, TOTAL_WARN)
             result = builder.photo(
                 file=legend_pic,
                 text=lege_nd,
