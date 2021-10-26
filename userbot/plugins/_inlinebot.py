@@ -47,7 +47,7 @@ LEGEND_FIRST = (
 )
 
 from userbot.plugins.pmpermit import PM_WARNS
-PM_TOY = print(PM_WARNS[event.chat_id])
+PM_TOY = print(PM_WARNS[chat_id])
 
 
 var_txt = """
