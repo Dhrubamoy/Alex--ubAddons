@@ -46,7 +46,7 @@ LEGEND_FIRST = (
     "__{}__\n**Warning** ~ {}/{}\nPlease choose why u are here.♥️!!"
 )
 
-from userbot.plugins.pmpermit import PM_WARNS
+from userbot.plugins.pmpermit import *
 
 
 
