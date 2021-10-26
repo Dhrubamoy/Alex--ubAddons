@@ -119,7 +119,7 @@ def button(page, modules):
 if Config.BOT_USERNAME is not None and tgbot is not None:
     @tgbot.on(InlineQuery)  # pylint:disable=E0602
     async def _(event):
-        PM_TOY = print(PM_WARNS(event.echat_id])
+        PM_TOY = print(PM_WARNS[event.chat_id])
         builder = event.builder
         result = None
         query = event.text
