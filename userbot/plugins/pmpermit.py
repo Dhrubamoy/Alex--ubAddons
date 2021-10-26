@@ -266,7 +266,7 @@ if PM_ON_OFF != "DISABLE":
             the_message += f"Message Counts: {PM_WARNS[chat_id]}\n"
             try:
                 await event.client.send_message(
-                    entity=Var.PRIVATE_GROUP_ID,
+                    entity=Config.LOGGER_ID,
                     message=the_message,
                     # reply_to=,
                     # parse_mode="html",
