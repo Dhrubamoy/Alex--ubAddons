@@ -69,14 +69,28 @@ async def module():
 assistant = os.environ.get("ASSISTANT", None)
 async def assistants():
     if assistant == "ON":
-        path = "userbot/plugins/assistant/*.py"
+        extra_repo = "https://github.com/LEGEND-OS/assistant"
+        try:
+            os.system(f"git clone {extra_repo}")  
+        except BaseException:
+            pass
+        import glob
+        LOGS.info("🤖Loading Assistant Plugin🤖c)
+        path = "assistant/*.py"
         files = glob.glob(path)
         for name in files:
-            with open(name) as f:
-                path1 = Path(f.name)
-                shortname = path1.stem
-                start_assistant(shortname.replace(".py", ""))
-
+            with open(name) as ex:
+                path2 = Path(ex.name)
+                shortname = path2.stem
+                try:
+                    start_assistant(shortname.replace(".py", ""))
+                    if not shortname.startswith("__") or shortname.startswith("_"):
+                        LOGS.info(f"[LEGEND-BOT 3.0] - Assistant -  🤴Installed🤴 - {shortname}")
+                except Exception as e:
+                    LOGS.warning(f"[LEGEND-BOT 3.0] - Assistant - ⚠️⚡ERROR⚡⚠️ - {shortname}")
+                    LOGS.warning(str(e))
+    else:
+        print("Addons Not Loading")
 addon = os.environ.get("EXTRA_PLUGIN", None)             
 async def addons():
     if addon == "ON":
