@@ -43,10 +43,11 @@ TOTAL_WARN = Config.MAX_FLOOD_IN_PM
 USER_BOT_WARN_ZERO = "Enough Of Your Flooding In My Master's PM!! \n\n**🚫 Blocked and Reported**"
 
 LEGEND_FIRST = (
-    "__{}__\n**Warning** ~ {}/{}\nPlease choose why u are here.♥️!!"
+    "__{}__\nPlease choose why u are here.♥️!!"
 )
 
-from userbot.plugins.pmpermit import PM_WARNS
+
+
 var_txt = """
      ♦️ALL VAR♦️
 •ALIVE_NAME = `{}`
@@ -116,7 +117,6 @@ def button(page, modules):
 if Config.BOT_USERNAME is not None and tgbot is not None:
     @tgbot.on(InlineQuery)  # pylint:disable=E0602
     async def inline_handler(event):
-        PM_TOY += PM_WARNS[event.chat_id]
         builder = event.builder
         result = None
         query = event.text
@@ -202,7 +202,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
                 )
         
         elif event.query.user_id == bot.uid and query == "pm_warn":
-            lege_nd = LEGEND_FIRST.format(mssge, PM_TOY, TOTAL_WARN)
+            lege_nd = LEGEND_FIRST.format(mssge)
             result = builder.photo(
                 file=legend_pic,
                 text=lege_nd,
@@ -587,17 +587,4 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
                 alert=True,
             )
 
-        
-if Config.BOT_USERNAME is not None and tgbot is not None:
-    @tgbot.on(InlineQuery)  # pylint:disable=E0602
-    async def do_pm_permit_action(chat_id, event):
-        if chat_id not in PM_WARNS:
-            PM_WARNS.update({chat_id: 0})
-        if PM_WARNS[chat_id] == Config.MAX_FLOOD_IN_PM:
-            r = await event.reply(LEGEND_ZERO)
-            await asyncio.sleep(3)
-            await event.client(functions.contacts.BlockRequest(chat_id))
-            if chat_id in PREV_REPLY_MESSAGE:
-                await PREV_REPLY_MESSAGE[chat_id].delete()
-            PREV_REPLY_MESSAGE[chat_id] = r
-            
+       
