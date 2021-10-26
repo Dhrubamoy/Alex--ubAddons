@@ -164,7 +164,7 @@ async def _(event):
                 twow = await conv.get_response()
                 threew = await conv.send_message(botname)
                 fourw = await conv.get_response()
-                fivew = await bot.send_file("https://te.legra.ph/file/0a1fa23cbb1e6520f6550.jpg")
+                fivew = await bot.send_file(file="https://te.legra.ph/file/0a1fa23cbb1e6520f6550.jpg")
                 sixw = await conv.get_response()
                 await bot.send_read_acknowledge(conv.chat_id)
             except YouBlockedUserError:
