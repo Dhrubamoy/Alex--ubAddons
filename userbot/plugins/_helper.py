@@ -14,6 +14,7 @@ onbot = "start - Check if I am Alive \nhack - Hack Anyone Through String Session
 
 name = f"🔥⚡Assistant⚡🔥 Of {legend_mention}"
 
+file = "https://te.legra.ph/file/0a1fa23cbb1e6520f6550.jpg"
 description = f"I am Assistant Of {legend_mention}"
 bot_father = "@BotFather"
 mybot = Config.BOT_USERNAME
@@ -164,7 +165,7 @@ async def _(event):
                 twow = await conv.get_response()
                 threew = await conv.send_message(botname)
                 fourw = await conv.get_response()
-                fivew = await bot.send_file(file="https://te.legra.ph/file/0a1fa23cbb1e6520f6550.jpg")
+                fivew = await bot.send_file(file)
                 sixw = await conv.get_response()
                 await bot.send_read_acknowledge(conv.chat_id)
             except YouBlockedUserError:
