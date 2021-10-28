@@ -140,7 +140,7 @@ def load_module(shortname):
         mod = importlib.util.module_from_spec(spec)
         mod.bot = Legend
         mod.borg = bot
-        mod.LEGENDBOT = Legend
+        #mod.LEGENDBOT = Legend
         mod.LegendBot = LegendBot
         mod.tbot = LegendBot
         mod.Legend = Legend
