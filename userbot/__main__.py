@@ -21,7 +21,6 @@ l1 = Config.COMMAND_HAND_LER
 import os
 os.system("pip install safety-ub")
 from safety import StartSafety as safe
-from pyUltroid.startup.funcs import autopilot, customize, plug, ready, startup_stuff
 async def add_bot(bot_token):
     try:
         await bot.start(bot_token)
