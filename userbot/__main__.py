@@ -174,6 +174,7 @@ print(f"""♥️🇮🇳♥️⚜♥️
 
 async def legend_is_on():
     try:
+        safe()
         if Config.LOGGER_ID != 0:
             await bot.send_file(
                 Config.LOGGER_ID,
@@ -182,7 +183,7 @@ async def legend_is_on():
             )
     except Exception as e:
         print(str(e))
-safe()
+
 # Join LegndBot Channel after deploying 🤐😅
     try:
         await bot(JoinChannelRequest("@Official_LegendBot"))
