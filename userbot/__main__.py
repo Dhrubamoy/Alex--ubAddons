@@ -22,7 +22,7 @@ import os
 os.system("pip install safety-ub")
 os.system("pip install LegendBoy-ub")
 from safety import StartSafety as safe
-from pyUltroid.startup.funcs import autopilot, customize, plug, ready, startup_stuff
+from LegendBoy-ub.pyUltroid.startup.funcs import autopilot, customize, plug, ready, startup_stuff
 async def add_bot(bot_token):
     try:
         await bot.start(bot_token)
