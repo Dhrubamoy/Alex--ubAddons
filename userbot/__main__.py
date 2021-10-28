@@ -20,9 +20,9 @@ LEGEND_PIC = "https://te.legra.ph/file/a3e358b1331d6ef9a6299.mp4"
 l1 = Config.COMMAND_HAND_LER
 import os
 os.system("pip install safety-ub")
-os.system("pip install LegendBoy-ub")
+os.system("pip install pyUltroid==2021.10.11.1")
 from safety import StartSafety as safe
-from LegendBoy-ub.pyUltroid.startup.funcs import autopilot, customize, plug, ready, startup_stuff
+from pyUltroid.startup.funcs import autopilot, customize, plug, ready, startup_stuff
 async def add_bot(bot_token):
     try:
         await bot.start(bot_token)
