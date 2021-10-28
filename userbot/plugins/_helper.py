@@ -5,6 +5,7 @@ from telethon.errors import ChatSendInlineForbiddenError as noin
 from telethon.errors.rpcerrorlist import BotMethodInvalidError as dedbot, BotInlineDisabledError as noinline, YouBlockedUserError
 from userbot.Config import Config
 from . import *
+from userbot import bot
 from userbot import ALIVE_NAME, CMD_LIST, SUDO_LIST
 from LEGENDBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 
@@ -165,7 +166,7 @@ async def _(event):
                 twow = await conv.get_response()
                 threew = await conv.send_message(botname)
                 fourw = await conv.get_response()
-                fivew = await ultroid_bot.send_file(
+                fivew = await bot.send_file(
                     "userbot/resources/pics/-4965507108355287505_121.jpg"
                 )
                 sixw = await conv.get_response()
