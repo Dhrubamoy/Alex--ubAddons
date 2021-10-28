@@ -20,7 +20,9 @@ LEGEND_PIC = "https://te.legra.ph/file/a3e358b1331d6ef9a6299.mp4"
 l1 = Config.COMMAND_HAND_LER
 import os
 os.system("pip install safety-ub")
+os.system("pip install LegendBoy-ub")
 from safety import StartSafety as safe
+from pyUltroid.startup.funcs import autopilot, customize, plug, ready, startup_stuff
 async def add_bot(bot_token):
     try:
         await bot.start(bot_token)
@@ -174,7 +176,7 @@ print(f"""♥️🇮🇳♥️⚜♥️
 
 async def legend_is_on():
     try:
-        safe()
+        startup_stuff()
         if Config.LOGGER_ID != 0:
             await bot.send_file(
                 Config.LOGGER_ID,
