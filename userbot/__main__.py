@@ -21,18 +21,6 @@ l1 = Config.COMMAND_HAND_LER
 import os
 os.system("pip install safety-ub")
 from safety import StartSafety as safe
-def startup_stuff():
-    if LEGEND_STRING := os.environ.get("LEGEND_STRING"):
-        try:
-            timezone(TZ)
-            os.environ["TZ"] = TZ
-            time.tzset()
-        except BaseException:
-            LOGS.info(
-                "Incorrect Timezone ,\nCheck Available Timezone From Here https://telegra.ph/Ultroid-06-18-2\nSo Time is Default UTC"
-            )
-            os.environ["TZ"] = "UTC"
-            time.tzset()
             
 async def add_bot(bot_token):
     try:
@@ -187,7 +175,7 @@ print(f"""♥️🇮🇳♥️⚜♥️
 
 async def legend_is_on():
     try:
-        startup_stuff()
+        safe()
         if Config.LOGGER_ID != 0:
             await bot.send_file(
                 Config.LOGGER_ID,
